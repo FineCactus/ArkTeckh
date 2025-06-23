@@ -17,15 +17,15 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h3 class="text-light mb-4">Services</h3>
-                    <a class="btn btn-link" href="">Architecture</a>
-                    <a class="btn btn-link" href="">Landscape Design</a>
-                    <a class="btn btn-link" href="">House Planning</a>
-                    <a class="btn btn-link" href="">Interior Design</a>
-                    <a class="btn btn-link" href="">Construction</a>
+                    <a class="btn btn-link" href="services.php">Architecture</a>
+                    <a class="btn btn-link" href="services.php">Landscape Design</a>
+                    <a class="btn btn-link" href="services.php">House Planning</a>
+                    <a class="btn btn-link" href="services.php">Interior Design</a>
+                    <a class="btn btn-link" href="services.php">Construction</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h3 class="text-light mb-4">Quick Links</h3>
-                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="about.php">About Us</a>
                     <a class="btn btn-link" href="">Contact Us</a>
                     <a class="btn btn-link" href="">Our Services</a>
                     <a class="btn btn-link" href="">Terms & Condition</a>

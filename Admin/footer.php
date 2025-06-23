@@ -4,7 +4,7 @@
             <nav class="pull-left">
               <ul class="nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="/ArkTech/Index Page/index.html">
+                  <a class="nav-link" href="/ArkTech/Index Page/index.php">
                     ArkTech
                   </a>
                 </li>
@@ -20,7 +20,6 @@
         </footer>
       </div>
 
-      <!-- Custom template | don't include it in your project! -->
       <div class="custom-template">
         <div class="title">Settings</div>
         <div class="custom-content">

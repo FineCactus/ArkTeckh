@@ -82,7 +82,7 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu border-0 m-0">
-                        <a href="project.html" class="dropdown-item">Our Projects</a>
+                        <a href="project.php" class="dropdown-item">Our Projects</a>
                         <a href="team.html" class="dropdown-item">Team Members</a>
                         <a href="appointment.html" class="dropdown-item">Appointment</a>
                         <a href="testimonial.html" class="dropdown-item">Testimonial</a>

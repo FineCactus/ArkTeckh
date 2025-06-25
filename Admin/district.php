@@ -1,5 +1,10 @@
 
 <?php include('./header.php')?>
+
+<!-- FORM starting -->
+
+
+<form action="districtaction.php" method="POST">
 <div class="container" >
           <div class="page-inner">
             <div class="page-header">
@@ -28,7 +33,7 @@
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header">
-                    <div class="card-title">Form Elements</div>
+                    <div class="card-title">District</div>
                   </div>
                   <div class="card-body">
                     <div class="row">
@@ -43,13 +48,15 @@
                           />
                         </div>
                   <div class="card-action">
-                    <button class="btn btn-success">Submit</button>
-                    <button class="btn btn-danger">Cancel</button>
+                    <button class="btn btn-success" type="submit" name="submit">Submit</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+</form>
 
-            <?include ('./footer.php')
+<!-- FORM ending -->
+
+<!-- Footer -->

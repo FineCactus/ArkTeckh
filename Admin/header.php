@@ -190,7 +190,7 @@
                   <ul class="nav nav-collapse">
                     <li>
                       <a href="district.php">
-                        <span class="sub-item">Basic Form</span>
+                        <span class="sub-item">District</span>
                       </a>
                     </li>
                   </ul>

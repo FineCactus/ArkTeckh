@@ -34,17 +34,13 @@
                     <div class="row">
                       <div class="col-md-6 col-lg-4">
                         <div class="form-group">
-                          <label for="email2">Email Address</label>
+                          <label for="email2">District</label>
                           <input
-                            type="email"
+                            type="text"
                             class="form-control"
-                            id="email2"
-                            placeholder="Enter Email"
+                            id="district"
+                            placeholder="Enter Your District"
                           />
-                          <small id="emailHelp2" class="form-text text-muted"
-                            >We'll never share your email with anyone
-                            else.</small
-                          >
                         </div>
                   <div class="card-action">
                     <button class="btn btn-success">Submit</button>

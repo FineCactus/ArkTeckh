@@ -1,5 +1,4 @@
 <?php include('header.php');?>
-
 <link href="css/booking.css" rel="stylesheet">
 
     <!-- Page Header Start -->
@@ -15,121 +14,57 @@
         </div>
     </div>
     <!-- Page Header End -->
-
-    <div class="container py-5">
-  <div class="row g-4">
-    <!-- Card 1 -->
-    <div class="col-md-4">
-      <div class="card project-card border-0 shadow-lg rounded-4 h-100">
-        <img src="img/project-3.jpg" class="card-img-top rounded-top-4 project-img" alt="Project 1">
-        <div class="card-body text-center">
-          <h5 class="card-title fw-semibold">Modern Villa</h5>
-          <p class="text-secondary small mb-3">Completed Project</p>
-          <div class="d-flex justify-content-center gap-3">
-            <a href="#" class="btn btn-outline-primary btn-sm rounded-pill px-4">Book Now</a>
-            <a href="#" class="btn btn-outline-success btn-sm rounded-pill px-4">Details</a>
-          </div>
-        </div>
-      </div>
+    <div class="container my-4">
+  <div class="row project-card align-items-center">
+    
+    <!-- Left: Image -->
+    <div class="col-md-4 p-0">
+      <img src="img/project-1.jpg" alt="Project Image" class="img-fluid project-img">
     </div>
 
-    <!-- Card 2 -->
-    <div class="col-md-4">
-      <div class="card project-card border-0 shadow-lg rounded-4 h-100">
-        <img src="img/project-3.jpg" class="card-img-top rounded-top-4 project-img" alt="Project 2">
-        <div class="card-body text-center">
-          <h5 class="card-title fw-semibold">Luxury Office</h5>
-          <p class="text-secondary small mb-3">Interior Design</p>
-          <div class="d-flex justify-content-center gap-3">
-            <a href="#" class="btn btn-outline-primary btn-sm rounded-pill px-4">Book Now</a>
-            <a href="#" class="btn btn-outline-success btn-sm rounded-pill px-4">Details</a>
-          </div>
-        </div>
-      </div>
+    <!-- Middle: Details -->
+    <div class="col-md-6 p-4">
+      <h5 class="fw-bold mb-2">Modern Villa</h5>
+      <p class="mb-1"><strong>Location:</strong> Greenview Residency</p>
+      <p class="mb-1"><strong>Type:</strong> 4BHK Smart Home</p>
+      <p class="mb-1"><strong>Status:</strong> Completed</p>
     </div>
 
-    <div class="col-md-4">
-      <div class="card project-card border-0 shadow-lg rounded-4 h-100">
-        <img src="img/project-3.jpg" class="card-img-top rounded-top-4 project-img" alt="Project 2">
-        <div class="card-body text-center">
-          <h5 class="card-title fw-semibold">Luxury Office</h5>
-          <p class="text-secondary small mb-3">Interior Design</p>
-          <div class="d-flex justify-content-center gap-3">
-            <a href="#" class="btn btn-outline-primary btn-sm rounded-pill px-4">Book Now</a>
-            <a href="#" class="btn btn-outline-success btn-sm rounded-pill px-4">Details</a>
-          </div>
-        </div>
-      </div>
+    <!-- Right: Button -->
+    <div class="col-md-2 text-center">
+      <button class="btn btn-primary px-4 rounded-pill book-btn">Book Now</button>
     </div>
-
-    <div class="col-md-4">
-      <div class="card project-card border-0 shadow-lg rounded-4 h-100">
-        <img src="img/project-3.jpg" class="card-img-top rounded-top-4 project-img" alt="Project 2">
-        <div class="card-body text-center">
-          <h5 class="card-title fw-semibold">Luxury Office</h5>
-          <p class="text-secondary small mb-3">Interior Design</p>
-          <div class="d-flex justify-content-center gap-3">
-            <a href="#" class="btn btn-outline-primary btn-sm rounded-pill px-4">Book Now</a>
-            <a href="#" class="btn btn-outline-success btn-sm rounded-pill px-4">Details</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card project-card border-0 shadow-lg rounded-4 h-100">
-        <img src="img/project-3.jpg" class="card-img-top rounded-top-4 project-img" alt="Project 2">
-        <div class="card-body text-center">
-          <h5 class="card-title fw-semibold">Luxury Office</h5>
-          <p class="text-secondary small mb-3">Interior Design</p>
-          <div class="d-flex justify-content-center gap-3">
-            <a href="#" class="btn btn-outline-primary btn-sm rounded-pill px-4">Book Now</a>
-            <a href="#" class="btn btn-outline-success btn-sm rounded-pill px-4">Details</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card project-card border-0 shadow-lg rounded-4 h-100">
-        <img src="img/project-3.jpg" class="card-img-top rounded-top-4 project-img" alt="Project 2">
-        <div class="card-body text-center">
-          <h5 class="card-title fw-semibold">Luxury Office</h5>
-          <p class="text-secondary small mb-3">Interior Design</p>
-          <div class="d-flex justify-content-center gap-3">
-            <a href="#" class="btn btn-outline-primary btn-sm rounded-pill px-4">Book Now</a>
-            <a href="#" class="btn btn-outline-success btn-sm rounded-pill px-4">Details</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card project-card border-0 shadow-lg rounded-4 h-100">
-        <img src="img/project-3.jpg" class="card-img-top rounded-top-4 project-img" alt="Project 2">
-        <div class="card-body text-center">
-          <h5 class="card-title fw-semibold">Luxury Office</h5>
-          <p class="text-secondary small mb-3">Interior Design</p>
-          <div class="d-flex justify-content-center gap-3">
-            <a href="#" class="btn btn-outline-primary btn-sm rounded-pill px-4">Book Now</a>
-            <a href="#" class="btn btn-outline-success btn-sm rounded-pill px-4">Details</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Add more cards similarly... -->
+    
 
   </div>
 </div>
 
-    <!-- Add more cards similarly... -->
+<div class="container my-4">
+  <div class="row project-card align-items-center">
+    
+    <!-- Left: Image -->
+    <div class="col-md-4 p-0">
+      <img src="img/project-1.jpg" alt="Project Image" class="img-fluid project-img">
+    </div>
+
+    <!-- Middle: Details -->
+    <div class="col-md-6 p-4">
+      <h5 class="fw-bold mb-2">Modern Villa</h5>
+      <p class="mb-1"><strong>Location:</strong> Greenview Residency</p>
+      <p class="mb-1"><strong>Type:</strong> 4BHK Smart Home</p>
+      <p class="mb-1"><strong>Status:</strong> Completed</p>
+    </div>
+
+    <!-- Right: Button -->
+    <div class="col-md-2 text-center">
+      <button class="btn btn-primary px-4 rounded-pill book-btn">Book Now</button>
+    </div>
+    
 
   </div>
 </div>
 
 
-  </div>
-</div>
-
+<script src="js/booking.js"></script>
 
 <?php include('footer.php');?>

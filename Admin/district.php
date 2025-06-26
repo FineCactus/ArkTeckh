@@ -1,5 +1,5 @@
 
-<?php include('./header.php')?>
+<?php include('header.php');?>
 
 <form action="districtaction.php" method="POST">
 
@@ -44,7 +44,7 @@
                             name="district"
                             placeholder="Enter Your District"
                           />
-                        </div>
+                        </div><br>
                     <button class="btn btn-success" type="submit" name="submit">Submit</button>
                   </div>
                 </div>
@@ -57,3 +57,5 @@
 <!-- FORM ending -->
 
 <!-- Footer -->
+
+<?php include('footer.php');?>

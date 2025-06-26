@@ -12,7 +12,7 @@
                   <a class="nav-link" href="#"> Help </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"> Licenses </a>
+                  <a class="nav-link" href="../Index Page/contact.html"> Contact </a>
                 </li>
               </ul>
             </nav>

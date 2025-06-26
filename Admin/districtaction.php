@@ -14,21 +14,24 @@
     $rows=mysqli_num_rows($result);
     if($rows==1)
     {
-          echo "<script>alert('Already Exist!!');window.location='district.php'</script>";
+        header("Location: existbox.php");
+        exit();
     
     }
     else
     {
        $sqlquery1="INSERT INTO tbl_district (district_name) VALUES('$districtname')";
         $result1=$obj->executequery($sqlquery1);
-        if($result1==1)
-        {
-            header("Location: popup.php");
-            exit(); 
+        if ($result1 == 1)
+         {
+            header("Location: successbox.php");
+            exit();
         }
+        
         else
         {
-        echo "<script>alert('Registration Failed!!');window.location='district.php'</script>";
+            header("Location: errorbox.php");
+            exit();
     }
 }
 }

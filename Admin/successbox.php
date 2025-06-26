@@ -1,5 +1,5 @@
 <?php include('header.php');?>
-<link rel="stylesheet" href="popup.css" />
+<link rel="stylesheet" href="css/successbox.css" />
 
 
 <div class="popup" id="popup">

@@ -1,10 +1,8 @@
 
 <?php include('./header.php')?>
 
-<!-- FORM starting -->
-
-
 <form action="districtaction.php" method="POST">
+
 <div class="container" >
           <div class="page-inner">
             <div class="page-header">
@@ -43,11 +41,10 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="district"
+                            name="district"
                             placeholder="Enter Your District"
                           />
                         </div>
-                  <div class="card-action">
                     <button class="btn btn-success" type="submit" name="submit">Submit</button>
                   </div>
                 </div>

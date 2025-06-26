@@ -8,6 +8,7 @@
     {
         echo "<script>alert('Please enter a valid data!!');window.location='district.php'</script>";
     }
+    else{
     $sqlquery="SELECT * FROM tbl_district where district_name='$districtname'";
     $result=$obj->executequery($sqlquery);
     $rows=mysqli_num_rows($result);
@@ -23,12 +24,13 @@
         if($result1==1)
         {
             header("Location: popup.php");
-            exit();   
+            exit(); 
         }
         else
         {
         echo "<script>alert('Registration Failed!!');window.location='district.php'</script>";
     }
+}
 }
 }
 ?>

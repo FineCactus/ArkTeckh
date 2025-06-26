@@ -1,5 +1,5 @@
 <?php include('header.php');?>
-<link rel="stylesheet" href="district.css" />
+<link rel="stylesheet" href="popup.css" />
 
 
 <div class="popup" id="popup">

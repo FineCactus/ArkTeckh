@@ -84,8 +84,6 @@
                     <div class="dropdown-menu border-0 m-0">
                         <a href="project.php" class="dropdown-item">PROJECTS</a>
                         <a href="services.php" class="dropdown-item">SERVICES</a>
-                        <a href="team.html" class="dropdown-item">Architects</a>                        
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                     </div>
                 </div>
             </div>

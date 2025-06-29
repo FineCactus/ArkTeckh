@@ -1,3 +1,10 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -668,8 +675,9 @@
                     </div>
                     <span class="profile-username">
                       <span class="op-7">Hi,</span>
-                      <span class="fw-bold">Hizrian</span>
-                    </span>
+                      <span class="fw-bold">
+                      <?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> <!-- Added the server username -->
+                      </span>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">
                     <div class="dropdown-user-scroll scrollbar-outer">
@@ -683,8 +691,9 @@
                             />
                           </div>
                           <div class="u-text">
-                            <h4>Hizrian</h4>
-                            <p class="text-muted">hello@example.com</p>
+                          <h4><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h4>  <!-- Added the server username -->
+                          <p class="text-muted">Logged in</p>
+
                             <a
                               href="profile.html"
                               class="btn btn-xs btn-secondary btn-sm"
@@ -711,3 +720,5 @@
           </nav>
           <!-- End Navbar -->
         </div>
+
+        

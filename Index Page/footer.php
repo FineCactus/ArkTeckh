@@ -27,7 +27,7 @@
                     <h3 class="text-light mb-4">Quick Links</h3>
                     <a class="btn btn-link" href="about.php">About Us</a>
                     <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
+                    <a class="btn btn-link" href="services.php">Our Services</a>
                     <a class="btn btn-link" href="">Terms & Condition</a>
                     <a class="btn btn-link" href="">Support</a>
                 </div>

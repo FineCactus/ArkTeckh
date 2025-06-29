@@ -1,10 +1,10 @@
+<!--Session for username in header -->
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
-
-
+<!-- Header page starts here -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -190,7 +190,7 @@ if (session_status() === PHP_SESSION_NONE) {
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#forms">
                   <i class="fas fa-pen-square"></i>
-                  <p>Forms</p>
+                  <p>Location Details</p>
                   <span class="caret"></span>
                 </a>
                 <div class="collapse" id="forms">

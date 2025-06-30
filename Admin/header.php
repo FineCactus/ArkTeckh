@@ -676,7 +676,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <span class="profile-username">
                       <span class="op-7"></span>
                       <span class="fw-bold">
-                      <?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> <!-- Added the server username -->
+                     <?php if (isset($_SESSION['username'])) echo htmlspecialchars($_SESSION['username']); ?>  <!-- Added the server username -->
                       </span>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -691,7 +691,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             />
                           </div>
                           <div class="u-text">
-                          <h4><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h4>  <!-- Added the server username -->
+                          <h4><?php if (isset($_SESSION['username'])) echo htmlspecialchars($_SESSION['username']); ?></h4>  <!-- Added the server username -->
                           <p class="text-muted">Logged in</p>
 
                             <a
@@ -710,7 +710,10 @@ if (session_status() === PHP_SESSION_NONE) {
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Account Setting</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <?php if (isset($_SESSION['username'])): ?>
+                        <a href="logout.php" class="dropdown-item text-danger">Logout</a>
+                          <?php endif; ?>
+
                       </li>
                     </div>
                   </ul>

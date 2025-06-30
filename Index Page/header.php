@@ -80,7 +80,7 @@
                 <a href="index.php" class="nav-item nav-link">HOME</a>
                 <a href="booking.php" class="nav-item nav-link">BOOKING</a>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">FEATURES</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">ABOUT</a>
                     <div class="dropdown-menu border-0 m-0">
                         <a href="about.php" class="dropdown-item">ABOUT US</a>
                         <a href="project.php" class="dropdown-item">PROJECTS</a>                       

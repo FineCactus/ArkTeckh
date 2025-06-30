@@ -46,7 +46,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="assets/css/kaiadmin.min.css" />
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="assets/css/demo.css" />
+    
   </head>
   <body>
     <div class="wrapper">
@@ -217,8 +217,8 @@ if (session_status() === PHP_SESSION_NONE) {
                       </a>
                     </li>
                     <li>
-                      <a href="tables/datatables.html">
-                        <span class="sub-item">Datatables</span>
+                      <a href="districtview.php">
+                        <span class="sub-item">District View</span>
                       </a>
                     </li>
                   </ul>
@@ -674,7 +674,7 @@ if (session_status() === PHP_SESSION_NONE) {
                       />
                     </div>
                     <span class="profile-username">
-                      <span class="op-7">Hi,</span>
+                      <span class="op-7"></span>
                       <span class="fw-bold">
                       <?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> <!-- Added the server username -->
                       </span>

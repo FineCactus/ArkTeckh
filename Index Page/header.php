@@ -1,3 +1,5 @@
+<!-- THIS IS THE HEADER FILE OF EVERY INDEX FILES -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,6 +87,7 @@
                         <a href="about.php" class="dropdown-item">ABOUT US</a>
                         <a href="project.php" class="dropdown-item">PROJECTS</a>                       
                         <a href="services.php" class="dropdown-item">SERVICES</a>
+                        <a href="contact.php" class="dropdown-item">CONTACT US</a>
                     </div>
                 </div>
             </div>

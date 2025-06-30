@@ -27,8 +27,11 @@ $res = $obj->executequery($s);
             <div class="row">
               <div class="col-md-12">
                 <div class="card">
-                  <div class="card-header">
-                    <h4 class="card-title">Districts</h4>
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                      <h4 class="card-title m-0">Districts</h4>
+                      <div class="ms-auto">
+                      <input type="text" id="districtSearch" class="form-control" style="width: 250px;" placeholder="Search Districts...">
+                    </div>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -63,3 +66,15 @@ $res = $obj->executequery($s);
 <?php
 include_once("footer.php");
 ?>
+
+<script>
+  document.getElementById("districtSearch").addEventListener("keyup", function () {
+    var input = this.value.toLowerCase();
+    var rows = document.querySelectorAll("#basic-datatables tbody tr");
+    rows.forEach(function (row) {
+      var text = row.innerText.toLowerCase();
+      row.style.display = text.includes(input) ? "" : "none";
+    });
+  });
+</script>
+

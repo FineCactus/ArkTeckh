@@ -5,23 +5,43 @@ $obj = new dboperation();
 $s = "select * from tbl_district";
 $res = $obj->executequery($s);
 ?>
-<div class="row" style="margin-top:100px">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-md-flex align-items-center">
-          <div>
-            <h4 class="card-title">DISTRICT</h4>
-          </div>
-        </div>
-        <div class="table-responsive mt-4">
-          <table class="table table-bordered table-hover table-striped text-center">
-            <thead class="table-dark">
-              <tr>
-                <th scope="col">District ID</th>
-                <th scope="col">District</th>
-              </tr>
-            </thead>
+
+        <div class="container">
+          <div class="page-inner">
+            <div class="page-header">
+              <h3 class="fw-bold mb-3">DISTRICT VIEW PANEL</h3>
+              <ul class="breadcrumbs mb-3">
+                <li class="nav-home">
+                  <a href="#">
+                    <i class="icon-home"></i>
+                  </a>
+                </li>
+                <li class="separator">
+                  <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                  <a href="#">District View</a>
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4 class="card-title">Districts</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table
+                        id="basic-datatables"
+                        class="display table table-striped table-hover"
+                      >
+                        <thead>
+                          <tr>
+                            <th>District ID</th>
+                            <th>District</th>
+                          </tr>
+                        </thead>
             <tbody>
               <?php
               while ($r = mysqli_fetch_array($res)) {

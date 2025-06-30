@@ -12,7 +12,7 @@
                   <a class="nav-link" href="#"> Help </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../Index Page/contact.html"> Contact </a>
+                  <a class="nav-link" href="../Index Page/contact.php"> Contact </a>
                 </li>
               </ul>
             </nav>
@@ -52,8 +52,6 @@
 
     <!-- Kaiadmin JS -->
     <script src="assets/js/kaiadmin.min.js"></script>
-
-    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
     <script src="assets/js/setting-demo.js"></script>
     <script src="assets/js/demo.js"></script>
     <script>

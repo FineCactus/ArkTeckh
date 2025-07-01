@@ -32,6 +32,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/hosting.css" rel="stylesheet">
 </head>
 
 <body>
@@ -78,7 +79,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="" class="nav-item nav-link active">HOSTING</a>
+                <a href="#" class="nav-item nav-link active" onclick="openModal(event)">HOSTING</a>
                 <a href="index.php" class="nav-item nav-link">HOME</a>
                 <a href="booking.php" class="nav-item nav-link">BOOKING</a>
                 <div class="nav-item dropdown">
@@ -95,3 +96,63 @@
         </div>
     </nav>
     <!-- Navbar End -->
+
+    <!--HOSTING BUTTON -->
+
+<!-- Popup Modal -->
+<!-- Popup Modal -->
+<div id="fieldModal" class="modal-overlay">
+  <div class="modal-box">
+    <!-- Close Button at Top-Right -->
+    <button class="close-btn" onclick="closeModal()">×</button>
+
+    <h4>Specify your work fields</h4>
+    <div class="field-grid">
+      <div class="field-option" onclick="toggleSelection(this)">
+        <img src="img/service-1.jpg" alt="Architecture">
+        <span>Architecture</span>
+      </div>
+      <div class="field-option" onclick="toggleSelection(this)">
+        <img src="img/service-2.jpg" alt="Landscape Design">
+        <span>Landscape Design</span>
+      </div>
+      <div class="field-option" onclick="toggleSelection(this)">
+        <img src="img/service-3.jpg" alt="House Planning">
+        <span>House Planning</span>
+      </div>
+      <div class="field-option" onclick="toggleSelection(this)">
+        <img src="img/service-4.jpg" alt="Interior Design">
+        <span>Interior Design</span>
+      </div>
+      <div class="field-option" onclick="toggleSelection(this)">
+        <img src="img/service-5.jpg" alt="Renovation">
+        <span>Renovation</span>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" style="background-color: #B78D65; color: white;">Confirm</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- SCRIPT FOR HOST FEATURE -->
+ 
+<script>
+function openModal(event) {
+  event.preventDefault(); // Prevents page reload
+  document.getElementById('fieldModal').style.display = 'flex';
+}
+
+
+  function closeModal() {
+    document.getElementById('fieldModal').style.display = 'none';
+  }
+
+  function toggleSelection(element) {
+    element.classList.toggle('selected');
+  }
+</script>
+

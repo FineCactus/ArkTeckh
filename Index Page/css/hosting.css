@@ -1,0 +1,177 @@
+/* Popup Modal Styles */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 1050;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+}
+
+.modal-box h4 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.field-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.field-option {
+  width: 140px;
+  height: 160px; /* Ensures a uniform box size */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.field-option {
+  width: 140px;
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center the text vertically */
+  text-align: center;
+}
+
+/* Hidden image */
+.field-option img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 1;
+}
+
+/* Black overlay */
+.field-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+  z-index: 2;
+}
+
+/* Text centered */
+.field-option span {
+  position: relative;
+  z-index: 3;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  pointer-events: none;
+   background-color: transparent !important; /* Ensures no white background */
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+/* Hover or selected: show image, overlay, white text */
+.field-option:hover img,
+.field-option.selected img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.field-option:hover::before,
+.field-option.selected::before {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.field-option:hover span,
+.field-option.selected span {
+  color: #fff;
+}
+
+
+.field-option.selected {
+  border: 2px solid var(--primary-color);
+  transform: scale(1.03);
+  box-shadow: 0 0 10px rgba(183, 141, 101, 0.4);
+}
+
+
+.field-option span {
+  display: block;
+  padding: 8px 0;
+  font-weight: 500;
+  background-color: white;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Selection Style */
+.field-option.selected {
+  border: 3px solid #B78D65;
+  box-shadow: 0 0 10px rgba(183, 141, 101, 0.4);
+  transform: scale(1.03);
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+/*Cancel button */
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #B78D65;
+}

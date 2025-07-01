@@ -343,3 +343,83 @@ body {
         font-size: 2rem;
     }
 }
+
+/* Adds responsiveness */
+
+@media only screen and (max-width: 1024px) {
+    .img img {
+        width: 40vw;
+    }
+
+    .text h2 {
+        font-size: 2.5rem;
+    }
+
+    .form-wrapper {
+        max-width: 24rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .img img {
+        width: 60vw;
+    }
+
+    .text h2 {
+        font-size: 2rem;
+    }
+
+    .form-wrapper {
+        max-width: 22rem;
+    }
+
+    .row {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .col {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 2rem;
+    }
+
+    .container {
+        overflow-y: auto;
+    }
+
+    .text {
+        text-align: center;
+        margin: 2rem 1rem;
+    }
+
+    .container::before {
+        border-radius: 0;
+        width: 100vw;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .img img {
+        width: 80vw;
+    }
+
+    .text h2 {
+        font-size: 1.8rem;
+    }
+
+    .form-wrapper {
+        max-width: 20rem;
+    }
+
+    .input-group input {
+        padding: 0.8rem 2.5rem;
+        font-size: 0.9rem;
+    }
+
+    .form button {
+        font-size: 1rem;
+        padding: 0.5rem 0;
+    }
+}

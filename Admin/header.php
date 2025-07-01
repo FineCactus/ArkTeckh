@@ -212,11 +212,6 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="collapse" id="tables">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="tables/tables.html">
-                        <span class="sub-item">Basic Table</span>
-                      </a>
-                    </li>
-                    <li>
                       <a href="districtview.php">
                         <span class="sub-item">District View</span>
                       </a>

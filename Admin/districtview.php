@@ -67,6 +67,8 @@ $res = $obj->executequery($s);
 include_once("footer.php");
 ?>
 
+
+<!-- Script to search districts -->
 <script>
   document.getElementById("districtSearch").addEventListener("keyup", function () {
     var input = this.value.toLowerCase();

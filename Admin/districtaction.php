@@ -6,7 +6,8 @@
     $districtname=$_POST['district'];
     if(!$districtname)
     {
-        echo "<script>alert('Please enter a valid data!!');window.location='district.php'</script>";
+        header("Location: district.php?status=empty");
+            exit();
     }
     else{
     $sqlquery="SELECT * FROM tbl_district where district_name='$districtname'";
@@ -14,7 +15,7 @@
     $rows=mysqli_num_rows($result);
     if($rows==1)
     {
-        header("Location: existbox.php");
+        header("Location: district.php?status=exist");
         exit();
     
     }
@@ -24,13 +25,13 @@
         $result1=$obj->executequery($sqlquery1);
         if ($result1 == 1)
          {
-            header("Location: successbox.php");
+            header("Location: district.php?status=success");
             exit();
         }
         
         else
         {
-            header("Location: errorbox.php");
+            header("Location: district.php?status=error");
             exit();
     }
 }

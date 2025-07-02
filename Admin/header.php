@@ -110,7 +110,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </span>
                 <h4 class="text-section">Components</h4>
               </li>
-              <li class="nav-item">
+            <!--  <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#base">
                   <i class="fas fa-layer-group"></i>
                   <p>Base</p>
@@ -186,7 +186,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     </li>
                   </ul>
                 </div>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#forms">
                   <i class="fas fa-pen-square"></i>
@@ -211,7 +211,7 @@ if (session_status() === PHP_SESSION_NONE) {
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#tables">
                   <i class="fas fa-table"></i>
-                  <p>Tables</p>
+                  <p>View</p>
                   <span class="caret"></span>
                 </a>
                 <div class="collapse" id="tables">
@@ -233,12 +233,12 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="collapse" id="maps">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="maps/googlemaps.html">
+                      <a href="#">
                         <span class="sub-item">Google Maps</span>
                       </a>
                     </li>
                     <li>
-                      <a href="maps/jsvectormap.html">
+                      <a href="#">
                         <span class="sub-item">Jsvectormap</span>
                       </a>
                     </li>
@@ -254,12 +254,12 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="collapse" id="charts">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="charts/charts.html">
+                      <a href="#">
                         <span class="sub-item">Chart Js</span>
                       </a>
                     </li>
                     <li>
-                      <a href="charts/sparkline.html">
+                      <a href="#">
                         <span class="sub-item">Sparkline</span>
                       </a>
                     </li>
@@ -267,14 +267,14 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
               </li>
               <li class="nav-item">
-                <a href="widgets.html">
+                <a href="#">
                   <i class="fas fa-desktop"></i>
                   <p>Widgets</p>
                   <span class="badge badge-success">4</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../documentation/index.html">
+                <a href="#">
                   <i class="fas fa-file"></i>
                   <p>Documentation</p>
                   <span class="badge badge-secondary">1</span>
@@ -709,4 +709,5 @@ if (session_status() === PHP_SESSION_NONE) {
           <!-- End Navbar -->
         </div>
 
+        
         

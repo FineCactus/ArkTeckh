@@ -52,7 +52,7 @@ $res = $obj->executequery($s);
                 <tr>
                   <td><?php echo $r["district_id"]; ?></td>
                   <td><?php echo $r["district_name"]; ?></td>
-                  <td><a href="district_delete.php?eid=<?php echo $r['district_id']?>" onclick="return confirm('Are you sure you want to delete this district?');" style="background-color:rgb(7, 62, 118); color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">Delete</a></td>
+                  <td><a href="district_delete.php?eid=<?php echo $r['district_id']?>" onclick="return confirm('Are you sure you want to delete this district?');" style="background-color:rgb(180, 180, 180); color: black; padding: 6px 12px; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">Delete</a></td>
                 </tr>
               <?php
               }

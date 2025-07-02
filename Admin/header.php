@@ -200,6 +200,11 @@ if (session_status() === PHP_SESSION_NONE) {
                         <span class="sub-item">District</span>
                       </a>
                     </li>
+                    <li>
+                      <a href="category.php">
+                        <span class="sub-item">Category</span>
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </li>

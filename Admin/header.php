@@ -45,7 +45,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="assets/css/plugins.min.css" />
     <link rel="stylesheet" href="assets/css/kaiadmin.min.css" />
 
-    <!-- CSS Just for demo purpose, don't include it in your project -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
   </head>
   <body>

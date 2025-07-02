@@ -7,6 +7,7 @@ $obj=new dboperation();
   $res=$obj->executequery($sql);
  
   
-  echo "<script>alert('Deleted Successfully!!');window.location='districtview.php'</script>";
+  header("Location: districtview.php?status=deleted");
+        exit();
 
 ?>

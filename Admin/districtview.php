@@ -6,6 +6,8 @@ $s = "select * from tbl_district";
 $res = $obj->executequery($s);
 ?>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <div class="container">
           <div class="page-inner">
             <div class="page-header">
@@ -52,7 +54,10 @@ $res = $obj->executequery($s);
                 <tr>
                   <td><?php echo $r["district_id"]; ?></td>
                   <td><?php echo $r["district_name"]; ?></td>
-                  <td><a href="district_delete.php?eid=<?php echo $r['district_id']?>" onclick="return confirm('Are you sure you want to delete this district?');" style="background-color:rgb(180, 180, 180); color: black; padding: 6px 12px; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">Delete</a></td>
+                  <td><button class="btn-delete"
+                          data-id="<?php echo $r['district_id']; ?>"
+                          style="background-color:rgb(180, 180, 180); color: black; padding: 6px 12px; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">Delete</button>
+                  </td>
                 </tr>
               <?php
               }
@@ -64,20 +69,35 @@ $res = $obj->executequery($s);
     </div>
   </div>
 </div>
-<?php
-include_once("footer.php");
-?>
 
-
-<!-- Script to search districts -->
 <script>
-  document.getElementById("districtSearch").addEventListener("keyup", function () {
-    var input = this.value.toLowerCase();
-    var rows = document.querySelectorAll("#basic-datatables tbody tr");
-    rows.forEach(function (row) {
-      var text = row.innerText.toLowerCase();
-      row.style.display = text.includes(input) ? "" : "none";
+  document.addEventListener("DOMContentLoaded", function () {
+    const deleteButtons = document.querySelectorAll(".btn-delete");
+
+    deleteButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const districtId = this.getAttribute("data-id");
+
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'Yes, delete it!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Redirect to deletion URL
+            window.location.href = `district_delete.php?eid=${districtId}`;
+          }
+        });
+      });
     });
   });
 </script>
 
+
+<?php
+include_once("footer.php");
+?>

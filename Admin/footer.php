@@ -4,7 +4,7 @@
             <nav class="pull-left">
               <ul class="nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="/ArkTech/Index Page/index.php">
+                  <a class="nav-link" href="../Guest/index.php">
                     ArkTech
                   </a>
                 </li>
@@ -12,7 +12,7 @@
                   <a class="nav-link" href="#"> Help </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../Index Page/contact.php"> Contact </a>
+                  <a class="nav-link" href="../Guest/contact.php"> Contact </a>
                 </li>
               </ul>
             </nav>

@@ -1,3 +1,5 @@
+/*LOGIN PAGE CSS */
+
 :root {
     --primary-color: #B78D65;
     --secondary-color: #B78D65;
@@ -21,9 +23,22 @@
     box-sizing: border-box;
 }
 
-html,
 body {
-    height: 100vh;
+  background: url('img/house.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+html, body {
+    min-height: 100vh;
     overflow: hidden;
 }
 
@@ -63,7 +78,7 @@ body {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transform: scale(0);
     transition: .5s ease-in-out;
-    transition-delay: 1s;
+    transition-delay: 0.3s;
 }
 
 .input-group {
@@ -246,53 +261,9 @@ body {
     transform: translateX(0);
 }
 
-/* BACKGROUND */
-
-.container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 300vw;
-    transform: translate(35%, 0);
-    background-image: linear-gradient(-45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    transition: 1s ease-in-out;
-    z-index: 6;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-bottom-right-radius: max(50vw, 50vh);
-    border-top-left-radius: max(50vw, 50vh);
-}
-
-.container.sign-in::before {
-    transform: translate(0, 0);
-    right: 50%;
-}
-
-.container.sign-up::before {
-    transform: translate(100%, 0);
-    right: 50%;
-}
-
 /* RESPONSIVE */
 
 @media only screen and (max-width: 425px) {
-
-    .container::before,
-    .container.sign-in::before,
-    .container.sign-up::before {
-        height: 100vh;
-        border-bottom-right-radius: 0;
-        border-top-left-radius: 0;
-        z-index: 0;
-        transform: none;
-        right: 0;
-    }
-
-    /* .container.sign-in .col.sign-up {
-        transform: translateY(100%);
-    } */
-
     .container.sign-in .col.sign-in,
     .container.sign-up .col.sign-up {
         transform: translateY(0);
@@ -344,8 +315,6 @@ body {
     }
 }
 
-/* Adds responsiveness */
-
 @media only screen and (max-width: 1024px) {
     .img img {
         width: 40vw;
@@ -392,11 +361,6 @@ body {
     .text {
         text-align: center;
         margin: 2rem 1rem;
-    }
-
-    .container::before {
-        border-radius: 0;
-        width: 100vw;
     }
 }
 

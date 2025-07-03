@@ -2,7 +2,7 @@
 include("header.php");
 include("../dboperation.php");
 $obj = new dboperation();
-$s = "select * from tbl_district";
+$s = "select * from tbl_category";
 $res = $obj->executequery($s);
 ?>
 
@@ -10,7 +10,7 @@ $res = $obj->executequery($s);
         <div class="container">
           <div class="page-inner">
             <div class="page-header">
-              <h3 class="fw-bold mb-3">DISTRICT VIEW PANEL</h3>
+              <h3 class="fw-bold mb-3">CATEGORY VIEW PANEL</h3>
               <ul class="breadcrumbs mb-3">
                 <li class="nav-home">
                   <a href="#">
@@ -21,7 +21,7 @@ $res = $obj->executequery($s);
                   <i class="icon-arrow-right"></i>
                 </li>
                 <li class="nav-item">
-                  <a href="#">District View</a>
+                  <a href="#">Category View</a>
                 </li>
               </ul>
             </div>
@@ -29,9 +29,9 @@ $res = $obj->executequery($s);
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header d-flex justify-content-between align-items-center">
-                      <h4 class="card-title m-0">Districts</h4>
+                      <h4 class="card-title m-0">Category</h4>
                       <div class="ms-auto">
-                      <input type="text" id="districtSearch" class="form-control" style="width: 250px;" placeholder="Search Districts...">
+                      <input type="text" id="categorySearch" class="form-control" style="width: 250px;" placeholder="Search Categories...">
                     </div>
                   </div>
                   <div class="card-body">
@@ -42,20 +42,22 @@ $res = $obj->executequery($s);
                       >
                         <thead>
                           <tr>
-                            <th>District ID</th>
-                            <th>District</th>
+                            <th>Category ID</th>
+                            <th>Category Name</th>
+                            <th>Category Photo </th>
                           </tr>
                         </thead>
             <tbody>
               <?php
-              while ($r = mysqli_fetch_array($res)) {
+               while ($r = mysqli_fetch_array($res)) {
               ?>
                 <tr>
-                  <td><?php echo $r["district_id"]; ?></td>
-                  <td><?php echo $r["district_name"]; ?></td>
+                  <td><?php echo $r["category_id"]; ?></td>
+                  <td><?php echo $r["category_name"]; ?></td>
+                  <td> <img src="../uploads/<?php echo $r['photo']; ?>" width="100" height="100"> </td>
                   <td>
                 <button class="btn-delete"
-                         data-id="<?php echo $r['district_id']; ?>"
+                         data-id="<?php echo $r['category_id']; ?>"
                          style="background-color:rgb(220, 44, 44); color: #fff; padding: 6px 12px; border: none; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">
                       <i class="bi bi-trash"></i> Delete
                 </button>
@@ -73,7 +75,7 @@ $res = $obj->executequery($s);
 </div>
 
 <script>
-  document.getElementById("districtSearch").addEventListener("keyup", function () {
+  document.getElementById("categorySearch").addEventListener("keyup", function () {
     var input = this.value.toLowerCase();
     var rows = document.querySelectorAll("#basic-datatables tbody tr");
     rows.forEach(function (row) {
@@ -88,7 +90,7 @@ $res = $obj->executequery($s);
 
     deleteButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        const districtId = this.getAttribute("data-id");
+        const categoryId = this.getAttribute("data-id"); /* category id */
 
         Swal.fire({
           title: 'Are you sure?',
@@ -101,15 +103,15 @@ $res = $obj->executequery($s);
         }).then((result) => {
           if (result.isConfirmed) {
             // Redirect to deletion URL
-            window.location.href = `district_delete.php?eid=${districtId}`;
+            window.location.href = `category_delete.php?eid=${categoryId}`;
           }
         });
       });
     });
-  });
+  }); 
 </script>
 
 
 <?php
 include_once("footer.php");
-?>
+?>0

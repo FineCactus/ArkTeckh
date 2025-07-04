@@ -52,7 +52,7 @@
                             </div>
                             <div class="ms-4">
                                 <p class="mb-2">Mail Us Now</p>
-                                <h3 class="mb-0">archteckbooking@gmail.com</h3>
+                                <h3 class="mb-0">archtechbooking@gmail.com</h3>
                             </div>
                         </div>
                     </div>

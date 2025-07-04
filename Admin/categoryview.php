@@ -6,6 +6,7 @@ $s = "select * from tbl_category";
 $res = $obj->executequery($s);
 ?>
 
+<form action="categoryeditaction.php" method="POST" enctype="multipart/form-data">
 
         <div class="container">
           <div class="page-inner">
@@ -54,14 +55,20 @@ $res = $obj->executequery($s);
                 <tr>
                   <td><?php echo $r["category_id"]; ?></td>
                   <td><?php echo $r["category_name"]; ?></td>
-                  <td> <img src="../uploads/<?php echo $r['photo']; ?>" width="100" height="100"> </td>
+                  <td> <img src="../uploads/<?php echo $r['photo']; ?>" width="100" height="100"> </td> 
                   <td>
-                <button class="btn-delete"
-                         data-id="<?php echo $r['category_id']; ?>"
-                         style="background-color:rgb(220, 44, 44); color: #fff; padding: 6px 12px; border: none; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">
-                      <i class="bi bi-trash"></i> Delete
-                </button>
-                  </td>               
+                <a href="categoryedit.php?eid=<?php echo $r['category_id']; ?>"
+                  style="background-color:rgb(44, 130, 220); color: #fff; padding: 6px 12px; border: none; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">
+                  <i class="bi bi-pencil"></i> Edit
+                </a>
+
+            <button class="btn-delete"
+             data-id="<?php echo $r['category_id']; ?>"
+          style="background-color:rgb(220, 44, 44); color: #fff; padding: 6px 12px; border: none; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">
+          <i class="bi bi-trash"></i> Delete
+          </button>
+        </td>
+               
               </tr>
               <?php
               }
@@ -114,4 +121,4 @@ $res = $obj->executequery($s);
 
 <?php
 include_once("footer.php");
-?>0
+?>

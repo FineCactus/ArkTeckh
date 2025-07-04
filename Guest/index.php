@@ -222,6 +222,7 @@
                                 <div class="ms-4">
                                     <p class="mb-2">Call Us Now</p>
                                     <h3 class="mb-0">+91 9554785241</h3>
+                                    <h3 class="mb-0">+91 9847870034</h3>
                                 </div>
                             </div>
                         </div>

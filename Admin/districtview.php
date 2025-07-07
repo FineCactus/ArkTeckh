@@ -94,7 +94,7 @@ $res = $obj->executequery($s);
 
     deleteButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        const categoryId = this.getAttribute("data-id"); /* category id */
+        const district_id = this.getAttribute("data-id"); /* category id */
 
         Swal.fire({
           title: 'Are you sure?',
@@ -107,7 +107,7 @@ $res = $obj->executequery($s);
         }).then((result) => {
           if (result.isConfirmed) {
             // Redirect to deletion URL
-            window.location.href = `category_delete.php?eid=${categoryId}`;
+            window.location.href = `district_delete.php?eid=${district_id}`;
           }
         });
       });
@@ -122,8 +122,8 @@ $res = $obj->executequery($s);
       const categoryId = this.getAttribute("data-id");
 
       Swal.fire({
-        title: 'Edit Category',
-        text: "Do you want to edit this category?",
+        title: 'Edit District',
+        text: "Do you want to edit this district?",
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#2c82dc',
@@ -131,7 +131,7 @@ $res = $obj->executequery($s);
         confirmButtonText: 'Yes, edit it!',
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href = `categoryedit.php?eid=${categoryId}`;
+          window.location.href = `district_edit.php?eid=${district_id}`;
         }
       });
     });

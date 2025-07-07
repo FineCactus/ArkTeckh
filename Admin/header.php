@@ -134,6 +134,11 @@ if (session_status() === PHP_SESSION_NONE) {
                         <span class="sub-item">Category</span>
                       </a>
                     </li>
+                    <li>
+                      <a href="location.php">
+                        <span class="sub-item">Location</span>
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </li>
@@ -171,6 +176,10 @@ if (session_status() === PHP_SESSION_NONE) {
                     <li>
                         <a href="categoryview.php">
                         <span class="sub-item">Category Edit</span></a>
+                    </li>
+                    <li>
+                        <a href="districtview.php">
+                        <span class="sub-item">District Edit</span></a>
                     </li>
                   </ul>  
                 </div>

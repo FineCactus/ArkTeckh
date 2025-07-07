@@ -3,9 +3,9 @@
     $obj=new dboperation();
     if(isset($_POST['submit']))
     {
-    $locationname=$_POST['locationname'];
+    $locationname=$_POST['location'];
     $districtid=$_POST['districtid'];
-    $sqlquery="SELECT * FROM tbl_location where locationname='$locationname'";
+    $sqlquery="SELECT * FROM tbl_location where location_name='$locationname'";
     $result=$obj->executequery($sqlquery);
     $rows=mysqli_num_rows($result);
     if($rows==1)
@@ -15,7 +15,7 @@
     }
     else
     {
-       $sqlquery1="INSERT INTO tbl_location (locationname,districtid) VALUES('$locationname','$districtid')";
+       $sqlquery1="INSERT INTO tbl_location (location_name,district_id) VALUES('$locationname','$districtid')";
         $result1=$obj->executequery($sqlquery1);
         if($result1==1)
         {

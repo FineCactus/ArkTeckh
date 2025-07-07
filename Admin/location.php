@@ -54,7 +54,7 @@ $res = $obj->executequery($sql);
                     <input
                       type="text"
                       class="form-control"
-                      name="district"
+                      name="location"
                       placeholder="Enter Your District"
                     />
                   </div>
@@ -67,7 +67,7 @@ $res = $obj->executequery($sql);
                 <div class="form-group from-show-notify row">
                   <div class="col-lg-3 col-md-3 col-sm-12"></div>
                   <div class="col-lg-4 col-md-9 col-sm-12">
-                    <button id="displayNotif" class="btn btn-success">Submit</button>
+                    <button id="displayNotif" class="btn btn-success" type="submit" name="submit">Submit</button>
                   </div>
                 </div>
               </div>

@@ -20,7 +20,7 @@ if (isset($_POST['submit']))
      echo "<script>alert('Saved Succesfully');window.location='categoryview.php' </script>";
     }
     else{
-     echo "<script>alert('Registration failed');window.location='categorview.php' </script>";
+     echo "<script>alert('Registration failed');window.location='categoryview.php' </script>";
     }
 }
 ?>

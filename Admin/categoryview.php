@@ -6,8 +6,6 @@ $s = "select * from tbl_category";
 $res = $obj->executequery($s);
 ?>
 
-<form action="categoryeditaction.php" method="POST" enctype="multipart/form-data">
-
         <div class="container">
           <div class="page-inner">
             <div class="page-header">
@@ -57,17 +55,18 @@ $res = $obj->executequery($s);
                   <td><?php echo $r["category_name"]; ?></td>
                   <td> <img src="../uploads/<?php echo $r['photo']; ?>" width="100" height="100"> </td> 
                   <td>
-                <a href="categoryedit.php?eid=<?php echo $r['category_id']; ?>"
-                  style="background-color:rgb(44, 130, 220); color: #fff; padding: 6px 12px; border: none; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">
-                  <i class="bi bi-pencil"></i> Edit
-                </a>
 
-            <button class="btn-delete"
-             data-id="<?php echo $r['category_id']; ?>"
-          style="background-color:rgb(220, 44, 44); color: #fff; padding: 6px 12px; border: none; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">
-          <i class="bi bi-trash"></i> Delete
-          </button>
-        </td>
+                <button class="btn-edit"
+                    data-id="<?php echo $r['category_id']; ?>"
+                    style="background-color:rgb(44, 130, 220); color: #fff; padding: 6px 12px; border: none; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">
+                   <i class="bi bi-pencil"></i> Edit
+                  </button>
+                 <button class="btn-delete"
+                  data-id="<?php echo $r['category_id']; ?>"
+                style="background-color:rgb(220, 44, 44); color: #fff; padding: 6px 12px; border: none; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">
+                <i class="bi bi-trash"></i> Delete
+                </button>
+              </td>
                
               </tr>
               <?php
@@ -116,6 +115,31 @@ $res = $obj->executequery($s);
       });
     });
   }); 
+
+  document.addEventListener("DOMContentLoaded", function () {
+  const editButtons = document.querySelectorAll(".btn-edit");
+
+  editButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const categoryId = this.getAttribute("data-id");
+
+      Swal.fire({
+        title: 'Edit Category',
+        text: "Do you want to edit this category?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#2c82dc',
+        cancelButtonColor: '#aaa',
+        confirmButtonText: 'Yes, edit it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = `categoryedit.php?eid=${categoryId}`;
+        }
+      });
+    });
+  });
+});
+
 </script>
 
 

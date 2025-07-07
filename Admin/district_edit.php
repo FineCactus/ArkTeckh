@@ -112,7 +112,7 @@ if(isset($_GET["eid"]))
       }
 
       // Remove status from URL
-      window.history.replaceState({}, document.title, "category.php");
+      window.history.replaceState({}, document.title, "district.php");
     });
   </script>
 <?php endif; ?>

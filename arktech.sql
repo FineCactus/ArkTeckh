@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 07, 2025 at 08:40 AM
+-- Generation Time: Jul 07, 2025 at 09:31 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -82,10 +82,23 @@ CREATE TABLE IF NOT EXISTS `tbl_district` (
 --
 
 INSERT INTO `tbl_district` (`district_id`, `district_name`) VALUES
-(3, 'Thrissur'),
-(4, 'Kasargod'),
+(4, 'Kasargody'),
 (9, 'Ernakulam'),
 (15, 'Malappuram');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_location`
+--
+
+DROP TABLE IF EXISTS `tbl_location`;
+CREATE TABLE IF NOT EXISTS `tbl_location` (
+  `location_id` int NOT NULL AUTO_INCREMENT,
+  `location_name` varchar(50) NOT NULL,
+  `district_id` int NOT NULL,
+  PRIMARY KEY (`location_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -65,7 +65,7 @@ if(isset($_GET["eid"]))
                           <input
                             type="hidden"
                             class="form-control"
-                            name="CategoryId"
+                            name="district_id"
                             value="<?php echo $display["district_id"]; ?>"
                           />
                         </div><br>

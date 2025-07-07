@@ -119,7 +119,7 @@ $res = $obj->executequery($s);
 
   editButtons.forEach(function (btn) {
     btn.addEventListener("click", function () {
-      const categoryId = this.getAttribute("data-id");
+      const district_id = this.getAttribute("data-id");
 
       Swal.fire({
         title: 'Edit District',

@@ -8,7 +8,7 @@
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb text-uppercase mb-0">
                     <li class="breadcrumb-item"><a class="text-white" href="index.php">HOME</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="#">PEATURES</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">ABOUT</a></li>
                     <li class="breadcrumb-item text-primary active" aria-current="page">SERVICES</li>
                 </ol>
             </nav>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item d-flex position-relative text-center h-100">
-                        <img class="bg-img" src="img/service-3.jpg" alt="">
+                        <img class="bg-img" src="img/service-3.jpg" alt=""> 
                         <div class="service-text p-5">
                             <img class="mb-4" src="img/icons/icon-7.png" alt="Icon">
                             <h3 class="mb-3">House Planning</h3>

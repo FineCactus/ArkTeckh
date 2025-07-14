@@ -58,12 +58,13 @@ if (session_status() === PHP_SESSION_NONE) {
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
             <a href="index.php" class="logo">
-              <img
+              <h1>ArkTech</h1>
+            <!--  <img
                 src="assets/img/kaiadmin/logo_light.svg"
                 alt="navbar brand"
                 class="navbar-brand"
                 height="20"
-              />
+              /> -->
             </a>
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">
@@ -161,6 +162,11 @@ if (session_status() === PHP_SESSION_NONE) {
                         <span class="sub-item">Category View</span>
                       </a>
                     </li>
+                    <li>
+                    <a href="location_view.php">
+                      <span class="sub-item">Location View</span>
+                    </a>
+                  </li>
                   </ul>
                 </div>
               </li>
@@ -174,17 +180,21 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="collapse" id="submenu">
                   <ul class="nav nav-collapse">
                     <li>
+                        <a href="districtview.php">
+                        <span class="sub-item">District Edit</span></a>
+                    </li>
+                    <li>
                         <a href="categoryview.php">
                         <span class="sub-item">Category Edit</span></a>
                     </li>
                     <li>
-                        <a href="districtview.php">
-                        <span class="sub-item">District Edit</span></a>
+                        <a href="location_view.php">
+                        <span class="sub-item">Location Edit</span></a>
                     </li>
                   </ul>  
                 </div>
 
-              <li class="nav-item">
+ <!--             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#maps">
                   <i class="fas fa-map-marker-alt"></i>
                   <p>Maps</p>
@@ -203,7 +213,7 @@ if (session_status() === PHP_SESSION_NONE) {
                       </a>
                     </li>
                   </ul>
-                </div>
+                </div> 
               </li>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#charts">
@@ -224,7 +234,7 @@ if (session_status() === PHP_SESSION_NONE) {
                       </a>
                     </li>
                   </ul>
-                </div>
+                </div> 
               </li>
               <li class="nav-item">
                 <a href="#">
@@ -281,7 +291,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             </a>
                           </li>
                         </ul>
-                      </div>
+                      </div> 
                     </li>
                     <li>
                       <a href="#">
@@ -289,7 +299,7 @@ if (session_status() === PHP_SESSION_NONE) {
                       </a>
                     </li>
                   </ul>
-                </div>
+                </div> -->
               </li>
             </ul>
           </div>

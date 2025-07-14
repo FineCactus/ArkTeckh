@@ -9,7 +9,7 @@
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb text-uppercase mb-0">
                     <li class="breadcrumb-item"><a class="text-white" href="index.php">HOME</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="#">FEATURES</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">ABOUT</a></li>
                     <li class="breadcrumb-item text-primary active" aria-current="page">PROJECTS</li>
                 </ol>
             </nav>

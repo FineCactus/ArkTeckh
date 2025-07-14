@@ -10,13 +10,8 @@ $res = $obj->executequery($sql);
   <div class="container">
     <div class="page-inner">
       <div class="page-header">
-        <h3 class="fw-bold mb-3">LOCATIONS</h3>
         <ul class="breadcrumbs mb-3">
-          <li class="nav-home">
-            <a href="#"><i class="icon-home"></i></a>
-          </li>
-          <li class="separator"><i class="icon-arrow-right"></i></li>
-          <li class="nav-item"><a href="#">Locations</a></li>
+          <li class="nav-item"><a href="#"></a></li>
         </ul>
       </div>
 
@@ -35,7 +30,7 @@ $res = $obj->executequery($sql);
                     <label>District:</label>
                   </div>
                   <div class="col-lg-4 col-md-9 col-sm-8">
-                    <select class="form-select input-fixed" id="notify_state" name="districtid">
+                    <select class="form-select input-fixed" id="notify_state" name="districtid" id="districtid">
                       <option value="default">select District</option>
                       <?php while($r = mysqli_fetch_array($res)) { ?>
                         <option value="<?php echo $r["district_id"] ?>">
@@ -80,5 +75,39 @@ $res = $obj->executequery($sql);
     </div> <!-- page-inner -->
   </div> <!-- container -->
 </form>
+
+<?php if (isset($_GET['status'])): ?>
+  <script>
+    <?php if ($_GET['status'] == 'success'): ?>
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Location added successfully.',
+        confirmButtonColor: '#3085d6'
+      });
+    <?php elseif ($_GET['status'] == 'exist'): ?>
+      Swal.fire({
+        icon: 'warning',
+        title: 'Duplicate Entry',
+        text: 'This location already exists for the selected district.',
+        confirmButtonColor: '#f39c12'
+      });
+    <?php elseif ($_GET['status'] == 'empty'): ?>
+      Swal.fire({
+        icon: 'info',
+        title: 'Missing Info',
+        text: 'Please enter a location name.',
+        confirmButtonColor: '#3498db'
+      });
+    <?php elseif ($_GET['status'] == 'error'): ?>
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Something went wrong while saving the location.',
+        confirmButtonColor: '#d33'
+      });
+    <?php endif; ?>
+  </script>
+<?php endif; ?>
 
 <?php include('footer.php'); ?>

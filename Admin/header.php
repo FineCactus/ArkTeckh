@@ -57,15 +57,16 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="sidebar-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
-            <a href="index.php" class="logo">
-              <h1>ArkTech</h1>
-            <!--  <img
-                src="assets/img/kaiadmin/logo_light.svg"
-                alt="navbar brand"
-                class="navbar-brand"
-                height="20"
-              /> -->
-            </a>
+        <a href="index.php" class="logo d-flex align-items-center" style="text-decoration: none;">
+        <img
+            src="img/icon-1.png"
+            alt="navbar brand"
+            class="navbar-brand"
+            height="40"
+          />
+        <span style="color: white; font-size: 24px; font-weight: 600; margin-left: 10px;">ArkTech</span>
+        </a>
+
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">
                 <i class="gg-menu-right"></i>

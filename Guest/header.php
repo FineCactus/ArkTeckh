@@ -68,91 +68,97 @@
     </div>
     <!-- Topbar End -->
 
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-        <a href="index.php" class="navbar-brand ms-4 ms-lg-0">
-            <h1 class="text-primary m-0"><img class="me-3" src="img/icons/icon-1.png" alt="Icon">ArkTech</h1>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="#" class="nav-item nav-link active" onclick="openModal(event)">HOSTING</a>
-                <a href="index.php" class="nav-item nav-link">HOME</a>
-                <a href="booking.php" class="nav-item nav-link">BOOKING</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">ABOUT</a>
-                    <div class="dropdown-menu border-0 m-0">
-                        <a href="about.php" class="dropdown-item">ABOUT US</a>
-                        <a href="project.php" class="dropdown-item">PROJECTS</a>                       
-                        <a href="services.php" class="dropdown-item">SERVICES</a>
-                        <a href="contact.php" class="dropdown-item">CONTACT US</a>
-                    </div>
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+    <a href="index.php" class="navbar-brand ms-4 ms-lg-0 d-flex align-items-center">
+        <img class="me-2" src="img/icons/icon-1.png" alt="Icon" height="40">
+        <h1 class="text-primary m-0" style="color: white;">ArkTech</h1>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="#" class="nav-item nav-link active" onclick="openRegisterModal(event)">REGISTER</a>
+            <a href="index.php" class="nav-item nav-link">HOME</a>
+            <a href="booking.php" class="nav-item nav-link">BOOKING</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">ABOUT</a>
+                <div class="dropdown-menu border-0 m-0">
+                    <a href="about.php" class="dropdown-item">ABOUT US</a>
+                    <a href="project.php" class="dropdown-item">PROJECTS</a>                       
+                    <a href="services.php" class="dropdown-item">SERVICES</a>
                 </div>
             </div>
-            <a href="/ArkTech/Guest/login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block">LOGIN</a>
         </div>
-    </nav>
-    <!-- Navbar End -->
-
-    <!--HOSTING BUTTON -->
-
-<!-- Popup Modal -->
-<!-- Popup Modal -->
-<div id="fieldModal" class="modal-overlay">
-  <div class="modal-box">
-    <!-- Close Button at Top-Right -->
-    <button class="close-btn" onclick="closeModal()">×</button>
-
-    <h4>Specify your work fields</h4>
-    <div class="field-grid">
-      <div class="field-option" onclick="toggleSelection(this)">
-        <img src="img/service-1.jpg" alt="Architecture">
-        <span>Architecture</span>
-      </div>
-      <div class="field-option" onclick="toggleSelection(this)">
-        <img src="img/service-2.jpg" alt="Landscape Design">
-        <span>Landscape Design</span>
-      </div>
-      <div class="field-option" onclick="toggleSelection(this)">
-        <img src="img/service-3.jpg" alt="House Planning">
-        <span>House Planning</span>
-      </div>
-      <div class="field-option" onclick="toggleSelection(this)">
-        <img src="img/service-4.jpg" alt="Interior Design">
-        <span>Interior Design</span>
-      </div>
-      <div class="field-option" onclick="toggleSelection(this)">
-        <img src="img/service-5.jpg" alt="Renovation">
-        <span>Renovation</span>
-      </div>
+        <a href="/ArkTech/Guest/login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block">LOGIN</a>
     </div>
-    <div class="modal-actions">
-      <button class="btn" style="background-color: #B78D65; color: white;">Confirm</button>
+</nav>
+<!-- Navbar End -->
+
+<!-- Register Modal Start -->
+<div id="registerModal" class="modal-overlay" style="display: none;">
+  <div class="modal-box text-center" style="max-width: 600px; background-color: white; padding: 30px; border-radius: 10px; position: relative;">
+    <button class="close-btn" onclick="closeRegisterModal()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 24px;">×</button>
+    <h4 class="mb-4">Register As</h4>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="register-card" onclick="window.location.href='architect_login.php'">
+          <img src="img/architect.png" alt="Architect" class="img-fluid mb-2" style="height: 120px; object-fit: contain;">
+          <h5>Architect</h5>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="register-card" onclick="window.location.href='login.php'">
+          <img src="img/customer.png" alt="Customer" class="img-fluid mb-2" style="height: 120px; object-fit: contain;">
+          <h5>Customer</h5>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<!-- Register Modal End -->
 
-
-
-
-<!-- SCRIPT FOR HOST FEATURE -->
- 
+<!-- Register Modal Script -->
 <script>
-function openModal(event) {
-  event.preventDefault(); // Prevents page reload
-  document.getElementById('fieldModal').style.display = 'flex';
-}
-
-
-  function closeModal() {
-    document.getElementById('fieldModal').style.display = 'none';
+  function openRegisterModal(event) {
+    event.preventDefault();
+    document.getElementById('registerModal').style.display = 'flex';
   }
 
-  function toggleSelection(element) {
-    element.classList.toggle('selected');
+  function closeRegisterModal() {
+    document.getElementById('registerModal').style.display = 'none';
   }
 </script>
 
+<!-- Modal CSS -->
+<style>
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .register-card {
+    background-color: #f8f9fa;
+    border: 2px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .register-card:hover {
+    background-color: #e2e6ea;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  }
+
+  .register-card h5 {
+    margin-top: 10px;
+    color: #333;
+  }
+</style>

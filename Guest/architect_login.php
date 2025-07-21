@@ -1,4 +1,29 @@
-<?php include('../Guest/header.php'); ?>
+<?php 
+include('../Guest/header.php'); 
+ include_once("../dboperation.php");
+$obj = new dboperation();
+?>
+
+<script src="../jquery-3.6.0.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $("#district_id").change(function () {
+      var district_id = $(this).val();
+      $.ajax({
+        url: "getlocation.php",
+        method: "POST",
+        data: { districtid: district_id },
+        success: function (response) {
+          $("#location").html(response);
+        },
+        error: function () {
+          $("#location").html("<tr><td colspan='3'>Error loading locations</td></tr>");
+        }
+      });
+    });
+  });
+</script>
 
 <!-- Page Header Start -->
 <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
@@ -24,7 +49,7 @@
           <form action="architect_register_action.php" method="POST" enctype="multipart/form-data">
             <div class="row g-3">
 
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-floating">
                   <input type="text" class="form-control" name="name" id="name" placeholder="Full Name" required>
                   <label for="name">Full Name</label>
@@ -59,7 +84,34 @@
                 </div>
               </div>
 
+            <!-- District Dropdown -->
               <div class="col-md-6">
+                <div class="form-floating">
+                  <select class="form-select" name="district_id" id="district_id" required>
+                    <option value="" selected disabled>Select District</option>
+                    <?php
+                     
+                      $locs = $obj->executequery("SELECT * FROM tbl_district");
+                      while ($row = mysqli_fetch_assoc($locs)) {
+                      echo "<option value='{$row['district_id']}'>{$row['district_name']}</option>";
+                      }
+                      ?>
+                      </select>
+                    <label for="district_id">District</label>
+                  </div>
+                  </div>
+
+                  <div class="col-md-6">
+                <div class="form-floating">
+                  <select class="form-select" name="location_id" id="location" required>
+                    <option value="" selected disabled>Select Location</option>
+                   
+                      </select>
+                    <label for="location_id">Location</label>
+                  </div>
+                  </div>
+
+                <div class="col-md-6">
                 <label for="profile_pic" class="form-label">Profile Picture</label>
                 <input type="file" class="form-control" name="profile_pic" id="profile_pic">
               </div>
@@ -69,29 +121,6 @@
                 <input type="file" class="form-control" name="certificate" id="certificate">
               </div>
 
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <select class="form-select" name="location_id" id="location_id" required>
-                    <option value="" selected disabled>Select Location</option>
-                    <?php
-                    include_once("../dboperation.php");
-                    $obj = new dboperation();
-                    $locs = $obj->executequery("SELECT * FROM tbl_location");
-                    while ($row = mysqli_fetch_assoc($locs)) {
-                        echo "<option value='{$row['location_id']}'>{$row['location_name']}</option>";
-                    }
-                    ?>
-                  </select>
-                  <label for="location_id">Location</label>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <div class="form-floating">
-                  <textarea class="form-control" placeholder="Enter profile or bio" id="profile" name="profile" style="height: 100px"></textarea>
-                  <label for="profile">Profile / Biography</label>
-                </div>
-              </div>
 
               <div class="col-12 text-center mt-4">
                 <button type="submit" name="submit" class="btn btn-primary px-5 py-3">Register</button>

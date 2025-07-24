@@ -31,7 +31,7 @@ $obj = new dboperation();
     <h1 class="display-1 text-white animated slideInDown">Architect Registration</h1>
     <nav aria-label="breadcrumb animated slideInDown">
       <ol class="breadcrumb text-uppercase mb-0">
-        <li class="breadcrumb-item"><a class="text-white" href="../index.php">Home</a></li>
+        <li class="breadcrumb-item"><a class="text-white" href="index.php">Home</a></li>
         <li class="breadcrumb-item text-primary active" aria-current="page">Register</li>
       </ol>
     </nav>
@@ -46,12 +46,12 @@ $obj = new dboperation();
       <div class="col-lg-10 wow fadeInUp" data-wow-delay="0.2s">
         <div class="bg-light rounded p-5 shadow">
           <h4 class="mb-4 text-center">Create Architect Account</h4>
-          <form action="architect_register_action.php" method="POST" enctype="multipart/form-data">
+          <form action="architect_loginaction.php" method="POST" enctype="multipart/form-data">
             <div class="row g-3">
 
               <div class="col-md-12">
                 <div class="form-floating">
-                  <input type="text" class="form-control" name="name" id="name" placeholder="Full Name" required>
+                  <input type="text" class="form-control" name="architectname" id="name" placeholder="Full Name" required>
                   <label for="name">Full Name</label>
                 </div>
               </div>

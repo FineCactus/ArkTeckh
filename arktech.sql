@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 07, 2025 at 09:31 AM
+-- Generation Time: Jul 28, 2025 at 08:44 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -46,6 +46,34 @@ INSERT INTO `tbl_adminlogin` (`login_id`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_architects`
+--
+
+DROP TABLE IF EXISTS `tbl_architects`;
+CREATE TABLE IF NOT EXISTS `tbl_architects` (
+  `architect_id` int NOT NULL AUTO_INCREMENT,
+  `arch_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `profile` varchar(500) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` bigint NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `passwords` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `certificate_of_licensce` varchar(200) NOT NULL,
+  `location_id` int NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`architect_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbl_architects`
+--
+
+INSERT INTO `tbl_architects` (`architect_id`, `arch_name`, `profile`, `email`, `phone`, `username`, `passwords`, `certificate_of_licensce`, `location_id`, `status`) VALUES
+(2, 'aswin', '', 'ashin@gmail.com', 456785464, 'michael', '123321', '', 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_category`
 --
 
@@ -62,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `tbl_category` (
 --
 
 INSERT INTO `tbl_category` (`category_id`, `category_name`, `photo`) VALUES
-(13, 'Architect', 'carousel-1.jpg');
+(13, 'Architecture', 'carousel-1.jpg');
 
 -- --------------------------------------------------------
 
@@ -75,14 +103,15 @@ CREATE TABLE IF NOT EXISTS `tbl_district` (
   `district_id` int NOT NULL AUTO_INCREMENT,
   `district_name` varchar(30) NOT NULL,
   UNIQUE KEY `district_id` (`district_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_district`
 --
 
 INSERT INTO `tbl_district` (`district_id`, `district_name`) VALUES
-(4, 'Kasargody'),
+(17, 'Idukki'),
+(4, 'Kasargod'),
 (9, 'Ernakulam'),
 (15, 'Malappuram');
 
@@ -98,7 +127,16 @@ CREATE TABLE IF NOT EXISTS `tbl_location` (
   `location_name` varchar(50) NOT NULL,
   `district_id` int NOT NULL,
   PRIMARY KEY (`location_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbl_location`
+--
+
+INSERT INTO `tbl_location` (`location_id`, `location_name`, `district_id`) VALUES
+(1, 'Muvattupuzha', 9),
+(6, 'Madakkathanam', 9),
+(7, 'Thodupuzha', 17);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -98,17 +98,17 @@
 
 <!-- Register Modal Start -->
 <div id="registerModal" class="modal-overlay" style="display: none;">
-  <div class="modal-box text-center" style="max-width: 500px; background-color: white; padding: 30px; border-radius: 10px; position: relative;">
+  <div class="modal-box text-center">
     <button class="close-btn" onclick="closeRegisterModal()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 24px;">×</button>
     <h4 class="mb-4">Register As</h4>
-    <div class="row">
-      <div class="col-md-6 mb-3">
-        <div class="register-card" onclick="window.location.href='architect_login.php'">
-          <img src="img/architect.png" alt="Architect" class="img-fluid mb-2" style="height: 120px; object-fit: contain;">
-          <h5>Architect</h5>
-        </div>
-      </div>
+    <div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6 mb-3">
+    <div class="register-card" onclick="window.location.href='architect_login.php'">
+      <img src="img/architect.png" alt="Architect" class="img-fluid mb-2" style="height: 100px; object-fit: contain;">
+      <h5>Architect</h5>
     </div>
+  </div>
+</div>
   </div>
 </div>
 <!-- Register Modal End -->
@@ -155,4 +155,13 @@
     margin-top: 10px;
     color: #333;
   }
+  .modal-box {
+  width: 100%;
+  max-width: 400px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  position: relative;
+}
+
 </style>

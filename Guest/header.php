@@ -98,7 +98,7 @@
 
 <!-- Register Modal Start -->
 <div id="registerModal" class="modal-overlay" style="display: none;">
-  <div class="modal-box text-center" style="max-width: 600px; background-color: white; padding: 30px; border-radius: 10px; position: relative;">
+  <div class="modal-box text-center" style="max-width: 500px; background-color: white; padding: 30px; border-radius: 10px; position: relative;">
     <button class="close-btn" onclick="closeRegisterModal()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 24px;">×</button>
     <h4 class="mb-4">Register As</h4>
     <div class="row">
@@ -106,12 +106,6 @@
         <div class="register-card" onclick="window.location.href='architect_login.php'">
           <img src="img/architect.png" alt="Architect" class="img-fluid mb-2" style="height: 120px; object-fit: contain;">
           <h5>Architect</h5>
-        </div>
-      </div>
-      <div class="col-md-6 mb-3">
-        <div class="register-card" onclick="window.location.href='login.php'">
-          <img src="img/customer.png" alt="Customer" class="img-fluid mb-2" style="height: 120px; object-fit: contain;">
-          <h5>Customer</h5>
         </div>
       </div>
     </div>

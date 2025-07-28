@@ -113,7 +113,7 @@ $obj = new dboperation();
 
                 <div class="col-md-6">
                 <label for="profile_pic" class="form-label">Profile Picture</label>
-                <input type="file" class="form-control" name="profile_pic" id="profile_pic">
+                <input type="file" class="form-control" name="photo1" id="photo1">
               </div>
 
               <div class="col-md-6">

@@ -8,8 +8,29 @@
     $phone=$_POST['phone'];
     $username=$_POST['username'];
     $password=$_POST['password'];
+    $photo1=$_FILES['photo1']['name'];
+    $certificate=$_FILES['certificate']['name'];
+   if((!$username))
+    {
+        echo "<script>alert('Empty');window.location='architect_login.php' </script>";
+    }
+    else
+    {
+    move_uploaded_file($_FILES["photo1"]["tmp_name"], "../uploads/" . $photo1);
+    move_uploaded_file($_FILES["certificate"]["tmp_name"], "../uploads/" . $certificate);
+    $sqlquery="SELECT * FROM tbl_architects where username='$username'";
+    $result=$obj->executequery($sqlquery);
+    
+    $rows=mysqli_num_rows($result);
+    if($rows==1)
+    {
+           echo "<script>alert('Already Exist');window.location='architect_login.php' </script>";
+    
+    }
+    else
+    {
 
-       $sqlquery1="INSERT INTO tbl_architects (arch_name,email,phone,username,passwords) VALUES('$arch_name','$email','$phone','$username','$password')";
+       $sqlquery1="INSERT INTO tbl_architects (arch_name,email,phone,username,passwords,profiles,certificate_of_licensce) VALUES('$arch_name','$email','$phone','$username','$password','$photo1','$certificate')";
         $result1=$obj->executequery($sqlquery1);
         if ($result1 == 1)
          {
@@ -18,7 +39,9 @@
         
         else
         {
-            echo "<script>alert('Registration failed');window.location='architect_login.php' </script>";
+            
     }
+    }
+}
 }
 ?>

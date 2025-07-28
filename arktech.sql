@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 28, 2025 at 08:44 AM
+-- Generation Time: Jul 28, 2025 at 09:17 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -53,7 +53,7 @@ DROP TABLE IF EXISTS `tbl_architects`;
 CREATE TABLE IF NOT EXISTS `tbl_architects` (
   `architect_id` int NOT NULL AUTO_INCREMENT,
   `arch_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `profile` varchar(500) NOT NULL,
+  `profiles` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` bigint NOT NULL,
   `username` varchar(20) NOT NULL,
@@ -62,14 +62,14 @@ CREATE TABLE IF NOT EXISTS `tbl_architects` (
   `location_id` int NOT NULL,
   `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`architect_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_architects`
 --
 
-INSERT INTO `tbl_architects` (`architect_id`, `arch_name`, `profile`, `email`, `phone`, `username`, `passwords`, `certificate_of_licensce`, `location_id`, `status`) VALUES
-(2, 'aswin', '', 'ashin@gmail.com', 456785464, 'michael', '123321', '', 0, 0);
+INSERT INTO `tbl_architects` (`architect_id`, `arch_name`, `profiles`, `email`, `phone`, `username`, `passwords`, `certificate_of_licensce`, `location_id`, `status`) VALUES
+(6, 'aswin kaliyuga', 'Architect.png', 'ashin@gmail.com', 566566, 'michael', '123321', 'carousel-1.jpg', 0, 0);
 
 -- --------------------------------------------------------
 

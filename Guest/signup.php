@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login</title>
+  <title>Signup</title>
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -11,6 +11,7 @@
   <style>
     :root {
       --light-brown: #B78D65;
+      --background: #f9f5f1;
       --form-bg: rgba(255, 250, 245, 0.95);
       --text-color: #333;
       --input-border: #d9c1a7;
@@ -47,6 +48,7 @@
       padding: 2rem;
       width: 90%;
       max-width: 420px;
+      transition: all 0.3s ease;
     }
 
     .tabs {
@@ -56,25 +58,8 @@
     }
 
     .tab {
-      cursor: pointer;
-      padding: 0.5rem 1rem;
       font-weight: bold;
       color: var(--text-color);
-      border-bottom: 3px solid transparent;
-    }
-
-    .tab.active {
-      border-color: var(--light-brown);
-      color: var(--light-brown);
-    }
-
-    form {
-      display: none;
-      flex-direction: column;
-    }
-
-    form.active {
-      display: flex;
     }
 
     .input-group {
@@ -128,69 +113,39 @@
     .bottom-link a:hover {
       text-decoration: underline;
     }
+
+    @media (max-width: 480px) {
+      .auth-container {
+        padding: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div class="auth-container">
     <div class="tabs">
-      <div class="tab active" id="customer-tab">Customer</div>
-      <div class="tab" id="architect-tab">Architect</div>
+      <div class="tab">Signup</div>
     </div>
 
-    <!-- Customer Login Form -->
-    <form id="customer-form" class="active" action="loginaction.php" method="POST">
+    <form id="sign-up" action="signupaction.php" method="POST">
       <div class="input-group">
         <i class="fas fa-user"></i>
-        <input type="text" name="user" placeholder="Customer Username" required />
+        <input type="text" name="username" placeholder="Username" required />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" name="email" placeholder="Email" required />
       </div>
       <div class="input-group">
         <i class="fas fa-lock"></i>
-        <input type="password" name="pass" placeholder="Password" required />
+        <input type="password" name="password" placeholder="Password" required />
       </div>
-      <button type="submit">Login as Customer</button>
+      <button type="submit">Create Account</button>
       <div class="bottom-link">
-        Don't have an account? <a href="signup.php">Sign up</a>
-      </div>
-    </form>
-
-    <!-- Architect Login Form -->
-    <form id="architect-form" action="loginaction_architect.php" method="POST">
-      <div class="input-group">
-        <i class="fas fa-user-tie"></i>
-        <input type="text" name="user" placeholder="Architect Username" required />
-      </div>
-      <div class="input-group">
-        <i class="fas fa-lock"></i>
-        <input type="password" name="pass" placeholder="Password" required />
-      </div>
-      <button type="submit">Login as Architect</button>
-      <div class="bottom-link">
-        Don't have an account? <a href="architect_login.php">Sign up</a>
+        Already have an account? <a href="login.php">Login</a>
       </div>
     </form>
   </div>
-
-  <script>
-    const customerTab = document.getElementById('customer-tab');
-    const architectTab = document.getElementById('architect-tab');
-    const customerForm = document.getElementById('customer-form');
-    const architectForm = document.getElementById('architect-form');
-
-    customerTab.addEventListener('click', () => {
-      customerTab.classList.add('active');
-      architectTab.classList.remove('active');
-      customerForm.classList.add('active');
-      architectForm.classList.remove('active');
-    });
-
-    architectTab.addEventListener('click', () => {
-      architectTab.classList.add('active');
-      customerTab.classList.remove('active');
-      architectForm.classList.add('active');
-      customerForm.classList.remove('active');
-    });
-  </script>
-
 </body>
 </html>

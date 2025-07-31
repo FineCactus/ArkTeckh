@@ -638,7 +638,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <span class="profile-username">
                       <span class="op-7"></span>
                       <span class="fw-bold">
-                     <?php if (isset($_SESSION['username'])) echo htmlspecialchars($_SESSION['username']); ?>  <!-- Added the server username -->
+                     <?php if (isset($_SESSION['username'])) echo ($_SESSION['username']); ?>  <!-- Added the server username -->
                       </span>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -653,7 +653,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             />
                           </div>
                           <div class="u-text">
-                          <h4><?php if (isset($_SESSION['username'])) echo htmlspecialchars($_SESSION['username']); ?></h4>  <!-- Added the server username -->
+                          <h4><?php if (isset($_SESSION['username'])) echo ($_SESSION['username']); ?></h4>  <!-- Added the server username -->
                           <p class="text-muted">Logged in</p>
 
                         <?php if (isset($_SESSION['username'])): ?>

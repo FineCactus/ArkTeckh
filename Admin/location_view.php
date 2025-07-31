@@ -76,7 +76,7 @@ $result = $obj->executequery($sql);
                   <tr>
                     <th>Sl.No</th>
                     <th>Location Name</th>
-                    <th>Actions</th>
+                    <th>Actions</th>.n++++++
                   </tr>
                 </thead>
                 <tbody id="location">

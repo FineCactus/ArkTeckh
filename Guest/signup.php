@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>Signup</title>
   <link
     rel="stylesheet"
@@ -141,11 +142,50 @@
         <i class="fas fa-lock"></i>
         <input type="password" name="password" placeholder="Password" required />
       </div>
-      <button type="submit">Create Account</button>
+      <button type="submit" name="submit">Create Account</button>
       <div class="bottom-link">
         Already have an account? <a href="login.php">Login</a>
       </div>
     </form>
   </div>
 </body>
+
+<?php if (isset($_GET['status'])): ?>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let status = "<?php echo $_GET['status']; ?>";
+
+      if (status === "success") {
+        Swal.fire({
+          icon: 'success',
+          title: 'Registered successfully',
+          confirmButtonColor: '#B78D65',
+        });
+      } else if (status === "exist") {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Already Exists',
+          text: 'Username already exists!',
+          confirmButtonColor: '#B78D65',
+        });
+      } else if (status === "empty") {
+        Swal.fire({
+          icon: 'info',
+          title: 'Empty Field',
+          text: 'Please enter a username name!',
+          confirmButtonColor: '#B78D65',
+        });
+      } else if (status === "error") {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Something went wrong while creating profile.',
+        });
+      }
+
+      // Remove status from URL
+      window.history.replaceState({}, document.title, "category.php");
+    });
+  </script>
+<?php endif; ?>
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 28, 2025 at 09:17 AM
+-- Generation Time: Jul 31, 2025 at 04:16 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `tbl_architects` (
   `passwords` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `certificate_of_licensce` varchar(200) NOT NULL,
   `location_id` int NOT NULL,
-  `status` tinyint(1) NOT NULL,
+  `status` varchar(20) NOT NULL,
   PRIMARY KEY (`architect_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `tbl_architects` (
 --
 
 INSERT INTO `tbl_architects` (`architect_id`, `arch_name`, `profiles`, `email`, `phone`, `username`, `passwords`, `certificate_of_licensce`, `location_id`, `status`) VALUES
-(6, 'aswin kaliyuga', 'Architect.png', 'ashin@gmail.com', 566566, 'michael', '123321', 'carousel-1.jpg', 0, 0);
+(6, 'aswin kaliyuga', 'Architect.png', 'ashin@gmail.com', 566566, 'michael', '123321', 'carousel-1.jpg', 0, 'Accepted');
 
 -- --------------------------------------------------------
 
@@ -91,6 +91,34 @@ CREATE TABLE IF NOT EXISTS `tbl_category` (
 
 INSERT INTO `tbl_category` (`category_id`, `category_name`, `photo`) VALUES
 (13, 'Architecture', 'carousel-1.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_customer`
+--
+
+DROP TABLE IF EXISTS `tbl_customer`;
+CREATE TABLE IF NOT EXISTS `tbl_customer` (
+  `customer_id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `passwords` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `location_id` int NOT NULL,
+  `profile` varchar(1000) NOT NULL,
+  PRIMARY KEY (`customer_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbl_customer`
+--
+
+INSERT INTO `tbl_customer` (`customer_id`, `name`, `address`, `email`, `username`, `passwords`, `location_id`, `profile`) VALUES
+(3, '', '', 'ashin@gmail.com', 'as_hin18', '123', 0, ''),
+(4, '', '', 'ashin@gmail.com', 'michael', '1', 0, ''),
+(5, '', '', 'manumajith04@gmail.com', 'ashin a', '123', 0, '');
 
 -- --------------------------------------------------------
 

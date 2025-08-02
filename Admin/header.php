@@ -106,7 +106,14 @@ if (session_status() === PHP_SESSION_NONE) {
                       </a>
                     </li>
                   </ul>
-                </div>
+
+              </li>
+              <li class="nav-item">
+                <a href="architect_view.php">
+                  <i class="fas fa-file"></i>
+                  <p>Architect Registration</p>
+                  <span class="badge badge-secondary">1</span>
+                </a>
               </li>
 
 
@@ -194,23 +201,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     </li>
                   </ul>  
                 </div>
-
-                  <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#submenu">
-                  <i class="fas fa-bars"></i>
-                  <p>Architects</p>
-                  <span class="caret"></span> 
-                </a>
-                <div class="collapse" id="submenu">
-                  <ul class="nav nav-collapse">
-                    <li>
-                        <a href="architect_view.php">
-                        <span class="sub-item">Registered Architects</span></a>
-                    </li>
-                  </ul>  
-                </div>
-
- <!--             <li class="nav-item">
+ <!--         <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#maps">
                   <i class="fas fa-map-marker-alt"></i>
                   <p>Maps</p>

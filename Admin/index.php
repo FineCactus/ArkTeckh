@@ -131,7 +131,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+ <!--             <div class="col-md-4">
                 <div class="card card-primary card-round">
                   <div class="card-header">
                     <div class="card-head-row">
@@ -160,7 +160,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> 
                     <div class="card-category">March 25 - April 02</div>
                   </div>
                   <div class="card-body pb-0">
@@ -493,130 +493,52 @@
                     </div>
                   </div>
                   <div class="card-body p-0">
-                    <div class="table-responsive">
+                    <div class="table-responsive"> -->
                       <!-- Projects table -->
-                      <table class="table align-items-center mb-0">
-                        <thead class="thead-light">
-                          <tr>
-                            <th scope="col">Payment Number</th>
-                            <th scope="col" class="text-end">Date & Time</th>
-                            <th scope="col" class="text-end">Amount</th>
-                            <th scope="col" class="text-end">Status</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                      <?php
+                        include("../dboperation.php");
+                        $obj = new dboperation();
+                        $sql = "SELECT * FROM tbl_architects";
+                        $res = $obj->executequery($sql);
+                        ?>
+
+                        <table class="table align-items-center mb-0">
+                          <thead class="thead-light">
+                            <tr>
+                              <th scope="col">Architect Name</th>
+                              <th scope="col" class="text-end">Email</th>
+                              <th scope="col" class="text-end">Phone</th>
+                              <th scope="col" class="text-end">Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php while ($row = mysqli_fetch_array($res)) { ?>
+                            <tr>
+                              <th scope="row">
+                                <button class="btn btn-icon btn-round btn-success btn-sm me-2">
+                                  <i class="fa fa-user"></i>
+                                </button>
+                                <?=($row['arch_name']) ?>
+                              </th>
+                              <td class="text-end"><?=($row['email']) ?></td>
+                              <td class="text-end"><?=($row['phone']) ?></td>
+                              <td class="text-end">
+                                <?php
+                                  $status = $row["status"];
+                                  if ($status == 'Accepted') {
+                                    echo '<span class="badge badge-success">Accepted</span>';
+                                  } elseif ($status == 'Rejected') {
+                                    echo '<span class="badge badge-danger">Rejected</span>';
+                                  } else {
+                                    echo '<span class="badge badge-warning text-dark">Pending</span>';
+                                  }
+                                ?>
+                              </td>
+                            </tr>
+                            <?php } ?>
+                          </tbody>
+                        </table>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
         <?php include('./footer.php');?>

@@ -111,7 +111,7 @@ if (session_status() === PHP_SESSION_NONE) {
               <li class="nav-item">
                 <a href="architect_view.php">
                   <i class="fas fa-file"></i>
-                  <p>Architect Registration</p>
+                  <p>Registration</p>
                   <span class="badge badge-secondary">1</span>
                 </a>
               </li>

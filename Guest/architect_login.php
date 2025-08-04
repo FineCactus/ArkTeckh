@@ -136,4 +136,40 @@ $obj = new dboperation();
 </div>
 <!-- Registration Form End -->
 
+<!-- Sweet Alert -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+ 
+<?php if (isset($_GET['status'])): ?>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let status = "<?php echo $_GET['status']; ?>";
+
+      if (status === "success") {
+        Swal.fire({
+          icon: 'success',
+          title: 'Registration Successful!',
+          text: 'Please wait for admins approval.',
+        });
+      } else if (status === "exist") {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Already Exists',
+          text: 'Username already exists!',
+        });
+      } else if (status === "error") {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Something went wrong while registration.',
+        });
+      }
+
+      // Remove status from URL
+      window.history.replaceState({}, document.title, "architect_login.php");
+    });
+  </script>
+<?php endif; ?>
+
 <?php include('../Guest/footer.php'); ?>

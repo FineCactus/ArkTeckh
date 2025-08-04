@@ -12,7 +12,8 @@
     $certificate=$_FILES['certificate']['name'];
    if((!$username))
     {
-        echo "<script>alert('Empty');window.location='architect_login.php' </script>";
+        header("Location: architect_login.php?status=empty");
+        exit();
     }
     else
     {
@@ -24,7 +25,8 @@
     $rows=mysqli_num_rows($result);
     if($rows==1)
     {
-           echo "<script>alert('Already Exist');window.location='architect_login.php' </script>";
+           header("Location: architect_login.php?status=exist");
+            exit();
     
     }
     else
@@ -34,7 +36,8 @@
         $result1=$obj->executequery($sqlquery1);
         if ($result1 == 1)
          {
-            echo "<script>alert('Saved Successfully');window.location='architect_login.php' </script>";
+            header("Location: index.php?status=success");
+            exit();
         }
         
         else

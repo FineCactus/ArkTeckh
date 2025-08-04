@@ -98,7 +98,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+ <!--             <div class="row">
               <div class="col-md-8">
                 <div class="card card-round">
                   <div class="card-header">
@@ -131,7 +131,7 @@
                   </div>
                 </div>
               </div>
- <!--             <div class="col-md-4">
+            <div class="col-md-4">
                 <div class="card card-primary card-round">
                   <div class="card-header">
                     <div class="card-head-row">
@@ -513,32 +513,34 @@
                           </thead>
                           <tbody>
                             <?php while ($row = mysqli_fetch_array($res)) { ?>
-                            <tr>
-                              <th scope="row">
-                                <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                                  <i class="fa fa-user"></i>
-                                </button>
-                                <?=($row['arch_name']) ?>
-                              </th>
-                              <td class="text-end"><?=($row['email']) ?></td>
-                              <td class="text-end"><?=($row['phone']) ?></td>
-                              <td class="text-end">
-                                <?php
-                                  $status = $row["status"];
-                                  if ($status == 'Accepted') {
-                                    echo '<span class="badge badge-success">Accepted</span>';
-                                  } elseif ($status == 'Rejected') {
-                                    echo '<span class="badge badge-danger">Rejected</span>';
-                                  } else {
-                                    echo '<span class="badge badge-warning text-dark">Pending</span>';
-                                  }
-                                ?>
-                              </td>
-                            </tr>
+                              <tr>
+                                <th scope="row">
+                                  <?php if (!empty($row['profiles'])): ?>
+                                    <img src="../uploads/<?= $row['profiles'] ?>" alt="Profile" width="50" height="50" style="object-fit:cover; border-radius:50%; margin-right:10px;">
+                                  <?php else: ?>
+                                    <i class="fa fa-user-circle fa-2x text-muted me-2"></i>
+                                  <?php endif; ?>
+                                  <?= $row['arch_name'] ?>
+                                </th>
+                                <td class="text-end"><?= $row['email'] ?></td>
+                                <td class="text-end"><?= $row['phone'] ?></td>
+                                <td class="text-end">
+                                  <?php
+                                    $status = $row["status"];
+                                    if ($status == 'Accepted') {
+                                      echo '<span class="badge badge-success">Accepted</span>';
+                                    } elseif ($status == 'Rejected') {
+                                      echo '<span class="badge badge-danger">Rejected</span>';
+                                    } else {
+                                      echo '<span class="badge badge-warning text-dark">Pending</span>';
+                                    }
+                                  ?>
+                                </td>
+                              </tr>
                             <?php } ?>
                           </tbody>
                         </table>
                   </div>
                 </div>
               </div>
-        <?php include('./footer.php');?>
+        <?php include('footer.php');?>

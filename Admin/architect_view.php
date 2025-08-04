@@ -12,7 +12,6 @@ $res = $obj->executequery($sql);
     <div class="page-header">
       <h3 class="fw-bold mb-3">ARCHITECT VIEW PANEL</h3>
     </div>
-
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -39,10 +38,10 @@ $res = $obj->executequery($sql);
                 <tbody>
                   <?php while ($row = mysqli_fetch_array($res)) { ?>
                     <tr>
-                      <td><?= htmlspecialchars($row["arch_name"]) ?></td>
-                      <td><?= htmlspecialchars($row["email"]) ?></td>
-                      <td><?= htmlspecialchars($row["phone"]) ?></td>
-                      <td><?= htmlspecialchars($row["username"]) ?></td>
+                      <td><?=($row["arch_name"]) ?></td>
+                      <td><?=($row["email"]) ?></td>
+                      <td><?=($row["phone"]) ?></td>
+                      <td><?=($row["username"]) ?></td>
                       <td>
                         <?php if (!empty($row["profiles"])): ?>
                           <img src="../uploads/<?= $row["profiles"] ?>" alt="Profile Pic" width="60" height="60" style="object-fit:cover;border-radius:50%;">
@@ -52,11 +51,12 @@ $res = $obj->executequery($sql);
                       </td>
                       <td>
                         <?php if (!empty($row["certificate_of_licensce"])): ?>
-                          <a href="../uploads/<?= $row["certificate_of_licensce"] ?>" target="_blank">View</a>
+                          <a href="#" onclick="openPopup('../uploads/<?= $row['certificate_of_licensce'] ?>'); return false;">View</a>
                         <?php else: ?>
                           N/A
                         <?php endif; ?>
                       </td>
+
                       <td>
                         <?php
                           $status = $row["status"];
@@ -89,6 +89,7 @@ $res = $obj->executequery($sql);
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+  //SEARCH SECTION
   document.getElementById("architectSearch").addEventListener("keyup", function () {
     const input = this.value.toLowerCase();
     document.querySelectorAll("#architect-table tbody tr").forEach(function (row) {
@@ -97,7 +98,7 @@ $res = $obj->executequery($sql);
     });
   });
 
-  // Accept & Reject logic
+//SWEET ALERT SECTION
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".btn-accept").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -131,6 +132,10 @@ $res = $obj->executequery($sql);
       });
     });
   });
+
+function openPopup(url) {
+    window.open(url, 'CertificateWindow', 'width=600,height=500,resizable=yes,scrollbars=yes');
+  }
 </script>
 
 <?php include("footer.php"); ?>

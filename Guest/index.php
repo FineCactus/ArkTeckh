@@ -35,6 +35,7 @@
     <!-- Carousel End -->
 
 
+
     <!-- Facts Start -->
     <div class="container-xxl py-5">
         <div class="container pt-5">
@@ -313,6 +314,30 @@
         </div>
     </div>
     <!-- Testimonial End -->
+
+    <!-- Sweet Alert -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+ 
+<?php if (isset($_GET['status'])): ?>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let status = "<?php echo $_GET['status']; ?>";
+
+      if (status === "success") {
+        Swal.fire({
+          icon: 'success',
+          title: 'Registration Successful!',
+          text: 'You have been successfully registered.',
+        });
+      }
+
+      // Remove status from URL
+      window.history.replaceState({}, document.title, "index.php");
+    });
+  </script>
+<?php endif; ?>
 
 <!-- FOOTER -->
 <?php include('./footer.php');?>

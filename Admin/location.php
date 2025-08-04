@@ -31,7 +31,7 @@ $res = $obj->executequery($sql);
                   </div>
                   <div class="col-lg-4 col-md-9 col-sm-8">
                     <select class="form-select input-fixed" id="notify_state" name="districtid" id="districtid">
-                      <option value="default">select District</option>
+                      <option value="default" disabled selected hidden>select District</option>
                       <?php while($r = mysqli_fetch_array($res)) { ?>
                         <option value="<?php echo $r["district_id"] ?>">
                           <?php echo $r["district_name"] ?>

@@ -25,5 +25,19 @@ $result= $obj->executequery($sqlquery);
    header("location:..\Guest\index.php");
    } 
 }
+if(mysqli_num_rows($result) == 1) 
+{
+   $row = mysqli_fetch_array($result);
+   $_SESSION["username"] = $username;
+   $_SESSION["architect_id"] =$row["architect_id"];
+   header("location:index.php");
+} 
+ else {
+   
+         // Invalid login, display an error message
+         echo "<script>alert('Invalid Username/Password!!'); window.location='login.php'</script>";
+      }
+   // }
+
 
 ?>

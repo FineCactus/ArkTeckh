@@ -155,7 +155,7 @@
     </form>
 
     <!-- Architect Login Form -->
-    <form id="architect-form" action="architect_loginaction.php" method="POST">
+    <form id="architect-form" action="loginaction.php" method="POST">
       <div class="input-group">
         <i class="fas fa-user-tie"></i>
         <input type="text" name="user" placeholder="Architect Username" required />

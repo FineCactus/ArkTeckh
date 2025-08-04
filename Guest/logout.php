@@ -4,6 +4,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: ../Guest/index.php"); // or your login page
+header("Location: ../Guest/login.php"); // or your login page
 exit;
 ?>

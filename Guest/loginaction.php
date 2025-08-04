@@ -25,12 +25,16 @@ $result= $obj->executequery($sqlquery);
    header("location:..\Guest\index.php");
    } 
 }
+
+$sqlquery= "select * from tbl_architects where username='$username' and passwords='$password' and status='Accepted'";
+$result = $obj->executequery($sqlquery);
+
 if(mysqli_num_rows($result) == 1) 
 {
    $row = mysqli_fetch_array($result);
    $_SESSION["username"] = $username;
    $_SESSION["architect_id"] =$row["architect_id"];
-   header("location:index.php");
+   header("location:../Guest/index.php");
 } 
  else {
    

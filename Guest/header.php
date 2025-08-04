@@ -1,3 +1,9 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!-- THIS IS THE HEADER FILE OF EVERY INDEX FILES -->
 
 <!DOCTYPE html>
@@ -91,7 +97,22 @@
                 </div>
             </div>
         </div>
-        <a href="/ArkTech/Guest/login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block">LOGIN</a>
+        <?php if (isset($_SESSION['username'])): ?>
+    <div class="dropdown d-none d-lg-block">
+        <button class="btn btn-primary dropdown-toggle py-2 px-4" type="button"
+        id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+        style="outline: none; box-shadow: none; border-color: transparent;">
+        <?php echo($_SESSION['username']); ?>
+        </button>
+
+        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="/ArkTech/Guest/profile.php">My Profile</a></li>
+            <li><a class="dropdown-item" href="/ArkTech/Guest/logout.php">Logout</a></li>
+        </ul>
+    </div>
+<?php else: ?>
+    <a href="/ArkTech/Guest/login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block">LOGIN</a>
+<?php endif; ?>
     </div>
 </nav>
 <!-- Navbar End -->

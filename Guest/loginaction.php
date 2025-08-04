@@ -6,14 +6,14 @@ $username = $_POST["user"];
 $password = $_POST["pass"];
 
 
-$sqlquery = "select * from tbl_adminlogin where username='$username' and password='$password'";
+$sqlquery = "select * from tbl_customer where username='$username' and passwords='$password'";
 $result= $obj->executequery($sqlquery);
 if (mysqli_num_rows($result) == 1) {
    $row = mysqli_fetch_array($result);
    $_SESSION["username"] = $username;
    $_SESSION["login_id"] = $row["login_id"];
 
-   header("Location:/ArkTech/Admin/index.php");
+   header("Location:/ArkTech/Guest/index.php");
    exit();
 } else {
    

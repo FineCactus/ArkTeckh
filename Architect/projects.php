@@ -1,4 +1,4 @@
-<?php include("../Guest/header.php"); ?>
+<?php include("header.php"); ?>
 
 <link rel="stylesheet" href="style.css">
 
@@ -42,4 +42,4 @@
     </div>
 </div>
 
-<?php include("../Guest/footer.php"); ?>
+<?php include("footer.php"); ?>

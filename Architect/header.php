@@ -76,7 +76,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-    <a href="index.php" class="navbar-brand ms-4 ms-lg-0 d-flex align-items-center">
+    <a href="../Guest/index.php" class="navbar-brand ms-4 ms-lg-0 d-flex align-items-center">
         <img class="me-2" src="img/icons/icon-1.png" alt="Icon" height="40">
         <h1 class="text-primary m-0" style="color: white;">ArkTech</h1>
     </a>
@@ -85,18 +85,20 @@ if (session_status() === PHP_SESSION_NONE) {
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="index.php" class="nav-item nav-link">HOME</a>
+            <a href="../Guest/index.php" class="nav-item nav-link">HOME</a>
         </div>
 <?php if (isset($_SESSION['username'])): ?>
     <div class="d-flex align-items-center ms-3">
 
-        <!-- Username -->
-        <span class="text-dark fw-semibold me-3"><?php echo($_SESSION['username']); ?></span>
+        <!-- Profile Picture -->
+         <button class="btn btn-light btn-sm" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="<?php echo isset($_SESSION['profiles']) ? $_SESSION['profiles'] : '/ArkTech/Architect/img/profile.png'; ?>" 
+             alt="Profile Picture" 
+             class="rounded-circle me-2"
+             style="width: 40px; height: 40px; object-fit: cover;">
 
         <!-- Dropdown for logout/profile -->
         <div class="dropdown">
-            <button class="btn btn-light btn-sm dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-chevron-down"></i>
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                 <li><a class="dropdown-item" href="/ArkTech/Guest/profile.php">My Profile</a></li>
@@ -107,6 +109,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <?php else: ?>
     <a href="/ArkTech/Guest/login.php" class="btn btn-primary py-2 px-4 rounded-pill d-none d-lg-block">LOGIN</a>
 <?php endif; ?>
+
 
     </div>
 </nav>

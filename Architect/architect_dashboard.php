@@ -1,4 +1,4 @@
-<?php include("../Guest/header.php"); ?>
+<?php include("header.php"); ?>
 
 <link rel="stylesheet" href="style.css">
 
@@ -7,9 +7,7 @@
   <div class="sidebar">
     <ul>
       <li><i class="fas fa-home"></i> Dashboard</li>
-      <li><i class="fas fa-clipboard-list"></i> Projects</li>
-      <li><i class="fas fa-user"></i> Profile</li>
-      <li onclick="logoutConfirm()"><i class="fas fa-sign-out-alt"></i> Logout</li>
+      <li><i class="fas fa-clipboard-list"></i><a href="projects.php"> Projects</a></li>
     </ul>
   </div>
 
@@ -44,9 +42,9 @@
 <script>
   function logoutConfirm() {
     if (confirm("Are you sure you want to logout?")) {
-      window.location.href = "logout.php";
+      window.location.href = "../Guest/logout.php";
     }
   }
 </script>
 
-<?php include("../Guest/footer.php"); ?>
+<?php include("footer.php"); ?>

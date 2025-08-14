@@ -85,7 +85,7 @@ if (session_status() === PHP_SESSION_NONE) {
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="#" class="nav-item nav-link active" onclick="openRegisterModal(event)">REGISTER</a>
+            <a href="#" class="nav-item nav-link active" id="registerBtn">REGISTER</a>
             <a href="index.php" class="nav-item nav-link">HOME</a>
             <a href="booking.php" class="nav-item nav-link">BOOKING</a>
             <div class="nav-item dropdown">
@@ -97,92 +97,51 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
             </div>
         </div>
+        
         <?php if (isset($_SESSION['username'])): ?>
-    <div class="dropdown d-none d-lg-block">
-        <button class="btn btn-primary dropdown-toggle py-2 px-4" type="button"
-        id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false"
-        style="outline: none; box-shadow: none; border-color: transparent;">
-        <?php echo($_SESSION['username']); ?>
-        </button>
-
-        <ul class="dropdown-menu" aria-labelledby="userDropdown">
-            <li><a class="dropdown-item" href="/ArkTech/Guest/profile.php">My Profile</a></li>
-            <li><a class="dropdown-item" href="/ArkTech/Guest/logout.php">Logout</a></li>
-        </ul>
-    </div>
-<?php else: ?>
-    <a href="/ArkTech/Guest/login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block">LOGIN</a>
-<?php endif; ?>
+            <div class="dropdown d-none d-lg-block">
+                <button class="btn btn-primary dropdown-toggle py-2 px-4" type="button"
+                    id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                    style="outline: none; box-shadow: none; border-color: transparent;">
+                    <?php echo $_SESSION['username']; ?>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                    <?php if (isset($_SESSION['usertype']) && $_SESSION['usertype'] === 'architect'): ?>
+                        <li><a class="dropdown-item" href="/ArkTech/Architect/architect_dashboard.php">My Profile</a></li>
+                    <?php elseif (isset($_SESSION['usertype']) && $_SESSION['usertype'] === 'customer'): ?>
+                        <li><a class="dropdown-item" href="/ArkTech/Guest/profile.php">My Profile</a></li>
+                    <?php else: ?>
+                        <li><a class="dropdown-item" href="#">My Profile</a></li>
+                    <?php endif; ?>
+                    <li><a class="dropdown-item" href="/ArkTech/Guest/logout.php">Logout</a></li>
+                </ul>
+            </div>
+        <?php else: ?>
+            <a href="/ArkTech/Guest/login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block">LOGIN</a>
+        <?php endif; ?>
     </div>
 </nav>
-<!-- Navbar End -->
 
-<!-- Register Modal Start -->
-<div id="registerModal" class="modal-overlay" style="display: none;">
-  <div class="modal-box text-center">
-    <button class="close-btn" onclick="closeRegisterModal()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 24px;">×</button>
-    <h4 class="mb-4">Register As</h4>
-    <div class="row justify-content-center">
-  <div class="col-12 col-md-8 col-lg-6 mb-3">
-    <div class="register-card" onclick="window.location.href='architect_login.php'">
-      <img src="img/architect.png" alt="Architect" class="img-fluid mb-2" style="height: 100px; object-fit: contain;">
-      <h5>Architect</h5>
-    </div>
-  </div>
-</div>
-  </div>
-</div>
-<!-- Register Modal End -->
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- Register Modal Script -->
 <script>
-  function openRegisterModal(event) {
-    event.preventDefault();
-    document.getElementById('registerModal').style.display = 'flex';
-  }
-
-  function closeRegisterModal() {
-    document.getElementById('registerModal').style.display = 'none';
-  }
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('registerBtn').addEventListener('click', function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Do you wish to register as an architect?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Register',
+            cancelButtonText: 'No, Cancel',
+            confirmButtonColor: '#B78D65',
+            cancelButtonColor: 'rgba(232, 93, 93, 1)'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'architect_login.php';
+            }
+        });
+    });
+});
 </script>
-
-<!-- Modal CSS -->
-<style>
-  .modal-overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .register-card {
-    background-color: #f8f9fa;
-    border: 2px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .register-card:hover {
-    background-color: #e2e6ea;
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-  }
-
-  .register-card h5 {
-    margin-top: 10px;
-    color: #333;
-  }
-  .modal-box {
-  width: 100%;
-  max-width: 400px;
-  background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  position: relative;
-}
-
-</style>

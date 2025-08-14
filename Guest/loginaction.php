@@ -22,6 +22,7 @@ $result= $obj->executequery($sqlquery);
    $row = mysqli_fetch_array($result);
    $_SESSION["username"] = $username;
    $_SESSION["login_id"] =$row["customer_id"];
+   $_SESSION["usertype"] = "customer";
    header("location:..\Guest\index.php");
    } 
 }
@@ -34,7 +35,8 @@ if(mysqli_num_rows($result) == 1)
    $row = mysqli_fetch_array($result);
    $_SESSION["username"] = $username;
    $_SESSION["architect_id"] =$row["architect_id"];
-   header("location:../Architect/architect_dashboard.php");
+   $_SESSION["usertype"] = "architect";
+   header("location:../Architect/index.php");
 } 
  else {
    

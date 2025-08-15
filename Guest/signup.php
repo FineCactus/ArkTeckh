@@ -184,7 +184,7 @@
       }
 
       // Remove status from URL
-      window.history.replaceState({}, document.title, "category.php");
+      window.history.replaceState({}, document.title, "login.php");
     });
   </script>
 <?php endif; ?>

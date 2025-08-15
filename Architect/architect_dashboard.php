@@ -4,7 +4,6 @@ include("header.php");
 include_once("../dboperation.php");
 $obj = new dboperation();
 
-// Check if logged in and is architect
 if (!isset($_SESSION['usertype']) || $_SESSION['usertype'] != 'architect') {
     header("Location: ../login.php");
     exit();
@@ -12,32 +11,39 @@ if (!isset($_SESSION['usertype']) || $_SESSION['usertype'] != 'architect') {
 
 $architect_id = $_SESSION['architect_id'];
 
-// Fetch architect details
 $sql = "SELECT * FROM tbl_architects WHERE architect_id='$architect_id'";
 $res = $obj->executequery($sql);
 $architect = mysqli_fetch_assoc($res);
 ?>
 
 <style>
-    
     main {
         font-family: "Segoe UI", sans-serif;
         background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
         padding: 40px 0;
     }
 
+    /* Only the profile section's container */
+        .profile-container {
+            width: 90%;
+            margin: auto;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+        }
 
 
-    /* Left side: profile picture & name */
+    /* Left section: profile pic + name/email/phone side-by-side */
     .left {
         flex: 1;
-        background:#B78D65;
+        background: #B78D65;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         padding: 30px;
         color: white;
+        gap: 20px; /* space between image and text */
     }
 
     .profile-pic {
@@ -54,17 +60,24 @@ $architect = mysqli_fetch_assoc($res);
         transform: scale(1.05) rotate(2deg);
     }
 
-    .left h1 {
-        margin: 15px 0 5px;
+    .architect-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
-    .left p {
+    .architect-info h1 {
         margin: 0;
+        font-size: 28px;
+    }
+
+    .architect-info p {
+        margin: 5px 0;
         font-size: 16px;
         opacity: 0.9;
     }
 
-    /* Right side: details */
+    /* Right section: details */
     .right {
         flex: 2;
         padding: 40px;
@@ -86,7 +99,6 @@ $architect = mysqli_fetch_assoc($res);
         margin-bottom: 5px;
     }
 
-    /* Update button */
     .update-btn {
         grid-column: span 2;
         padding: 12px;
@@ -100,17 +112,23 @@ $architect = mysqli_fetch_assoc($res);
     }
 
     .update-btn:hover {
-        background: #B78D65;
+        background: #a6784f;
     }
 </style>
 
 <main>
-    <div class="container">
+    <div class="profile-container">
         <!-- Left section -->
         <div class="left">
-            <img src="<?php echo $architect['profiles'] ? '../uploads/'.$architect['profiles'] : '../uploads/default.png'; ?>" class="profile-pic" alt="Profile Picture">
-            <h1><?php echo $architect['arch_name']; ?></h1>
-            <p><?php echo $architect['email']; ?></p>
+            <img src="<?php echo $architect['profiles'] ? '../uploads/'.$architect['profiles'] : '../uploads/default.png'; ?>" 
+                 class="profile-pic" 
+                 alt="Profile Picture">
+
+            <div class="architect-info">
+                <h1><?php echo $architect['arch_name']; ?></h1>
+                <p><strong>Email:</strong> <?php echo $architect['email']; ?></p>
+                <p><strong>Phone:</strong> <?php echo $architect['phone']; ?></p>
+            </div>
         </div>
 
         <!-- Right section -->
@@ -128,22 +146,18 @@ $architect = mysqli_fetch_assoc($res);
                 <?php echo $architect['phone']; ?>
             </div>
             <div class="detail">
-                <strong>Experience</strong>
-                <?php echo $architect['experience'] ?? "Not provided"; ?>
+                <strong>Username</strong>
+                <?php echo $architect['username'] ?? "Not provided"; ?>
             </div>
             <div class="detail">
-                <strong>Specialization</strong>
-                <?php echo $architect['specialization'] ?? "Not provided"; ?>
-            </div>
-            <div class="detail">
-                <strong>Location</strong>
-                <?php echo $architect['location'] ?? "Not provided"; ?>
+                <strong>Status</strong>
+                <?php echo $architect['status'] ?? "Not provided"; ?>
             </div>
 
             <a href="update_architect_profile.php" class="update-btn">Update Profile</a>
         </div>
     </div>
-</div>
 </main>
+
 
 <?php include("footer.php"); ?>

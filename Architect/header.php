@@ -88,14 +88,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <a href="projects.php" class="nav-item nav-link active" id="registerBtn">HOSTING</a>
             <a href="index.php" class="nav-item nav-link">HOME</a>
             <a href="booking.php" class="nav-item nav-link">VIEW</a>
-            <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">ABOUT</a>
-                <div class="dropdown-menu border-0 m-0">
-                    <a href="about.php" class="dropdown-item">ABOUT US</a>
-                    <a href="project.php" class="dropdown-item">PROJECTS</a>                       
-                    <a href="services.php" class="dropdown-item">SERVICES</a>
-                </div>
-            </div>
+            <a href="booking.php" class="nav-item nav-link">PAYMENTS</a>
         </div>
         
         <?php if (isset($_SESSION['username'])): ?>

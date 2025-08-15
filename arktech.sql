@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 31, 2025 at 04:16 PM
+-- Generation Time: Aug 15, 2025 at 04:43 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -33,15 +33,14 @@ CREATE TABLE IF NOT EXISTS `tbl_adminlogin` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   PRIMARY KEY (`login_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_adminlogin`
 --
 
 INSERT INTO `tbl_adminlogin` (`login_id`, `username`, `password`) VALUES
-(3, 'an', '1'),
-(4, 'michael', '123321');
+(1, 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -62,14 +61,14 @@ CREATE TABLE IF NOT EXISTS `tbl_architects` (
   `location_id` int NOT NULL,
   `status` varchar(20) NOT NULL,
   PRIMARY KEY (`architect_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_architects`
 --
 
 INSERT INTO `tbl_architects` (`architect_id`, `arch_name`, `profiles`, `email`, `phone`, `username`, `passwords`, `certificate_of_licensce`, `location_id`, `status`) VALUES
-(6, 'aswin kaliyuga', 'Architect.png', 'ashin@gmail.com', 566566, 'michael', '123321', 'carousel-1.jpg', 0, 'Accepted');
+(2, 'Ashish', 'testimonials-4.jpg', 'alenjohn@gmail.com', 9447820276, 'architect', '1', 'branding-3.jpg', 0, 'Accepted');
 
 -- --------------------------------------------------------
 
@@ -109,16 +108,15 @@ CREATE TABLE IF NOT EXISTS `tbl_customer` (
   `location_id` int NOT NULL,
   `profile` varchar(1000) NOT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_customer`
 --
 
 INSERT INTO `tbl_customer` (`customer_id`, `name`, `address`, `email`, `username`, `passwords`, `location_id`, `profile`) VALUES
-(3, '', '', 'ashin@gmail.com', 'as_hin18', '123', 0, ''),
-(4, '', '', 'ashin@gmail.com', 'michael', '1', 0, ''),
-(5, '', '', 'manumajith04@gmail.com', 'ashin a', '123', 0, '');
+(1, '', '', 'ashin@gmail.com', 'ashin', 'ashin', 0, ''),
+(2, '', '', 'alenjohn@gmail.com', 'alen', 'alen', 0, '');
 
 -- --------------------------------------------------------
 
@@ -165,6 +163,27 @@ INSERT INTO `tbl_location` (`location_id`, `location_name`, `district_id`) VALUE
 (1, 'Muvattupuzha', 9),
 (6, 'Madakkathanam', 9),
 (7, 'Thodupuzha', 17);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_previous_works`
+--
+
+DROP TABLE IF EXISTS `tbl_previous_works`;
+CREATE TABLE IF NOT EXISTS `tbl_previous_works` (
+  `prev_work_id` int NOT NULL AUTO_INCREMENT,
+  `architect_id` int NOT NULL,
+  `title` varchar(1000) NOT NULL,
+  `description` varchar(10000) NOT NULL,
+  `category_id` int NOT NULL,
+  `location_id` int NOT NULL,
+  `image1` varchar(500) NOT NULL,
+  `image2` varchar(500) NOT NULL,
+  `image3` varchar(500) NOT NULL,
+  `created_at` date NOT NULL,
+  PRIMARY KEY (`prev_work_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

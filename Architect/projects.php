@@ -33,27 +33,24 @@
         z-index: -1;
     }
 
-        main {
-            position: relative;
-            padding: 30px 0 40px 0;   /* slightly reduced padding */
-            height: 100vh;            /* fill viewport height */
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;  /* align top, allow scrolling */     /* enable vertical scroll inside main */
-            -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-        }
+    main {
+        position: relative;
+        padding: 40px 0 60px 0;
+        min-height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        z-index: 1;
+    }
 
-        .project-card {
-            width: 90%;
-            max-width: 700px;
-            background: #fff;
-            border-radius: 14px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
-            padding: 36px 30px 40px 30px;
-            margin-bottom: 30px;       /* spacing to prevent cutoff */
-            box-sizing: border-box;
-        }
-
+    .project-card {
+        width: 90%;
+        max-width: 700px;
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+        padding: 36px 30px 40px 30px;
+    }
 
     h2 {
         text-align: center;

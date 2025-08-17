@@ -85,7 +85,7 @@ if (session_status() === PHP_SESSION_NONE) {
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="projects.php" class="nav-item nav-link active" id="registerBtn">HOSTING</a>
+            <a href="project1.php" class="nav-item nav-link active" id="registerBtn">HOSTING</a>
             <a href="index.php" class="nav-item nav-link">HOME</a>
             <a href="booking.php" class="nav-item nav-link">VIEW</a>
             <a href="booking.php" class="nav-item nav-link">PAYMENTS</a>

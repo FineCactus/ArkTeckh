@@ -56,8 +56,7 @@ while ($row = mysqli_fetch_assoc($res_dist)) {
         </div>
 
 
-      <button type="submit" class="next-btn">Next</button>
-    </form>
+      <button type="submit" class="next-btn" name="submit">Next</button>
   </div>
 </main>
 
@@ -76,4 +75,26 @@ $('#district_id').on('change', function() {
 });
 </script>
 </form>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+ 
+<?php if (isset($_GET['status'])): ?>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let status = "<?php echo $_GET['status']; ?>";
+
+      if (status === "success") {
+        Swal.fire({
+          icon: 'success',
+          title: 'Registration Successful!',
+          text: 'Please wait for admins approval.',
+        });
+      }
+
+      // Remove status from URL
+      window.history.replaceState({}, document.title, "projects.php");
+    });
+  </script>
+<?php endif; ?>
 <?php include("footer.php"); ?>

@@ -18,14 +18,12 @@ while ($row = mysqli_fetch_assoc($res_dist)) {
 ?>
 
 <link href="project1.css" rel="stylesheet">
-
+<form action="get_locationaction.php" method="POST">
 <div class="background-image"></div>
 <div class="overlay"></div>
 <main>
   <div class="project-card">
     <h2>Select Details</h2>
-    <form action="save_project.php" method="POST">
-
       <div class="form-group">
         <label for="category_id">Category</label>
         <select name="category_id" id="category_id" required>
@@ -77,5 +75,5 @@ $('#district_id').on('change', function() {
     });
 });
 </script>
-
+</form>
 <?php include("footer.php"); ?>

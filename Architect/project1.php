@@ -2,22 +2,11 @@
 include("header.php");
 include_once("../dboperation.php");
 $obj = new dboperation();
-
-$categories = [];
-$res_cat = $obj->executequery("SELECT category_id, category_name FROM tbl_category ORDER BY category_name ASC");
-while ($row = mysqli_fetch_assoc($res_cat)) {
-    $categories[] = $row;
-}
-
-$districts = [];
-$res_dist = $obj->executequery("SELECT district_id, district_name FROM tbl_district ORDER BY district_name ASC");
-while ($row = mysqli_fetch_assoc($res_dist)) {
-    $districts[] = $row;
-}
-
 ?>
 
 <link href="project1.css" rel="stylesheet">
+
+
 <form action="get_locationaction.php" method="POST">
 <div class="background-image"></div>
 <div class="overlay"></div>
@@ -28,11 +17,11 @@ while ($row = mysqli_fetch_assoc($res_dist)) {
         <label for="category_id">Category</label>
         <select name="category_id" id="category_id" required>
           <option value="" selected disabled>-- Select Category --</option>
-          <?php foreach ($categories as $category): ?>
-            <option value="<?= $category['category_id']; ?>">
-              <?= ($category['category_name']); ?>
-            </option>
-          <?php endforeach; ?>
+          <?php 
+          $locs = $obj->executequery("SELECT * FROM tbl_category");
+          while ($row = mysqli_fetch_assoc($locs)) {
+            echo "<option value='{$row['category_id']}'>{$row['category_name']}</option>";
+          }?>
         </select>
       </div>
 
@@ -40,11 +29,11 @@ while ($row = mysqli_fetch_assoc($res_dist)) {
         <label for="district_id">District</label>
         <select name="district_id" id="district_id" required>
             <option value="" selected disabled>-- Select District --</option>
-            <?php foreach ($districts as $district): ?>
-            <option value="<?= $district['district_id']; ?>">
-                <?= ($district['district_name']); ?>
-            </option>
-            <?php endforeach; ?>
+            <?php 
+          $locs = $obj->executequery("SELECT * FROM tbl_district");
+          while ($row = mysqli_fetch_assoc($locs)) {
+            echo "<option value='{$row['district_id']}'>{$row['district_name']}</option>";
+          }?>
         </select>
         </div>
 
@@ -75,26 +64,4 @@ $('#district_id').on('change', function() {
 });
 </script>
 </form>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
- 
-<?php if (isset($_GET['status'])): ?>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      let status = "<?php echo $_GET['status']; ?>";
-
-      if (status === "success") {
-        Swal.fire({
-          icon: 'success',
-          title: 'Registration Successful!',
-          text: 'Please wait for admins approval.',
-        });
-      }
-
-      // Remove status from URL
-      window.history.replaceState({}, document.title, "projects.php");
-    });
-  </script>
-<?php endif; ?>
 <?php include("footer.php"); ?>

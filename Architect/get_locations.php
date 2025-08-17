@@ -6,7 +6,7 @@ if (isset($_POST["districtid"])) {
     $obj = new dboperation();
     $result = $obj->executequery($sql);
     ?>
-    <option selected disabled>-- Select location --</option>
+    <option selected disabled required>-- Select location --</option>
     <?php
     while ($row = mysqli_fetch_array($result)) {
     ?>

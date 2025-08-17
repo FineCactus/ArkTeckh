@@ -87,7 +87,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="project1.php" class="nav-item nav-link active" id="registerBtn">HOSTING</a>
             <a href="index.php" class="nav-item nav-link">HOME</a>
-            <a href="booking.php" class="nav-item nav-link">VIEW</a>
+            <a href="architect_view.php" class="nav-item nav-link">VIEW</a>
             <a href="booking.php" class="nav-item nav-link">PAYMENTS</a>
         </div>
         

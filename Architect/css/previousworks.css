@@ -1,0 +1,32 @@
+.project-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  padding: 15px;
+  background: #fff;
+}
+
+.project-card .glass {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 10px;
+  background: linear-gradient(#fff2, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.project-card .glass:hover {
+  transform: translateY(-5px) scale(1.03);
+}
+
+.glass-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 15, 2025 at 04:43 AM
+-- Generation Time: Aug 17, 2025 at 05:06 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -61,14 +61,15 @@ CREATE TABLE IF NOT EXISTS `tbl_architects` (
   `location_id` int NOT NULL,
   `status` varchar(20) NOT NULL,
   PRIMARY KEY (`architect_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_architects`
 --
 
 INSERT INTO `tbl_architects` (`architect_id`, `arch_name`, `profiles`, `email`, `phone`, `username`, `passwords`, `certificate_of_licensce`, `location_id`, `status`) VALUES
-(2, 'Ashish', 'testimonials-4.jpg', 'alenjohn@gmail.com', 9447820276, 'architect', '1', 'branding-3.jpg', 0, 'Accepted');
+(2, 'Ashish', 'testimonials-4.jpg', 'amen12@gmail.com', 9447820276, 'architect', '1', 'branding-3.jpg', 0, 'Accepted'),
+(3, 'Amen', 'testimonials-2.jpg', 'amen12@gmail.com', 9447820276, 'amen12', '123', 'app-2.jpg', 7, 'Accepted');
 
 -- --------------------------------------------------------
 
@@ -175,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `tbl_previous_works` (
   `prev_work_id` int NOT NULL AUTO_INCREMENT,
   `architect_id` int NOT NULL,
   `title` varchar(1000) NOT NULL,
-  `description` varchar(10000) NOT NULL,
+  `descriptions` varchar(10000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `category_id` int NOT NULL,
   `location_id` int NOT NULL,
   `image1` varchar(500) NOT NULL,
@@ -183,7 +184,14 @@ CREATE TABLE IF NOT EXISTS `tbl_previous_works` (
   `image3` varchar(500) NOT NULL,
   `created_at` date NOT NULL,
   PRIMARY KEY (`prev_work_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbl_previous_works`
+--
+
+INSERT INTO `tbl_previous_works` (`prev_work_id`, `architect_id`, `title`, `descriptions`, `category_id`, `location_id`, `image1`, `image2`, `image3`, `created_at`) VALUES
+(7, 2, '', '', 13, 7, '', '', '', '0000-00-00');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -5,8 +5,9 @@ $obj = new dboperation();
 if (isset($_POST['submit'])) {
     $category_id = $_POST['category_id'];
     $location_id = $_POST['location_id'];
+    $architect_id  = $_POST['architect_id'];
 
-    $sqlquery1 = "INSERT INTO tbl_previous_works (category_id, location_id) VALUES ('$category_id', '$location_id')";
+    $sqlquery1 = "INSERT INTO tbl_previous_works (architect_id, category_id, location_id) VALUES ('$architect_id', '$category_id', '$location_id')";
     $result1 = $obj->executequery($sqlquery1);
 
     if ($result1) {

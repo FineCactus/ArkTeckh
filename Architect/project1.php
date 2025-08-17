@@ -1,13 +1,25 @@
 <?php 
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 include("header.php");
 include_once("../dboperation.php");
 $obj = new dboperation();
+
+$sql="select* from tbl_architects";
+$res=$obj->executequery($sql);
+$display=mysqli_fetch_array($res);
 ?>
 
 <link href="project1.css" rel="stylesheet">
 
 
 <form action="get_locationaction.php" method="POST">
+
+<input type="hidden" name="architect_id" value="<?php echo $display['architect_id']; ?>">
+
 <div class="background-image"></div>
 <div class="overlay"></div>
 <main>

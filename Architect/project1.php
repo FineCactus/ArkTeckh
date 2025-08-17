@@ -13,8 +13,23 @@ $res=$obj->executequery($sql);
 $display=mysqli_fetch_array($res);
 ?>
 
-<link href="project1.css" rel="stylesheet">
+<link href="css/project1.css" rel="stylesheet">
 
+<style>
+  
+    .background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background: url('img/project-1.jpg') no-repeat center center fixed;
+        background-size: cover;
+        z-index: -2;
+    }
+
+
+</style>
 
 <form action="get_locationaction.php" method="POST">
 

@@ -5,8 +5,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 include_once("../dboperation.php");
 $obj = new dboperation();
-
-// fetch all previous works
 $sql = "SELECT * FROM tbl_previous_works ORDER BY created_at DESC";
 $res = $obj->executequery($sql);
 ?>
@@ -65,7 +63,7 @@ $res = $obj->executequery($sql);
 
           <!-- Right: Button -->
           <div class="col-md-2 text-center">
-            <button class="btn btn-primary px-4 rounded-pill">View</button>
+           <a href="project_view.php?id=<?php echo $row['prev_work_id']; ?>" class="btn btn-primary btn-sm mt-2">View</a>
           </div>
           
         </div>
@@ -79,4 +77,4 @@ $res = $obj->executequery($sql);
   <?php } ?>
 </div>
 
-<?php include("../Guest/footer.php"); ?>
+<?php include("footer.php"); ?>

@@ -63,7 +63,7 @@ $res = $obj->executequery($sql);
 
           <!-- Right: Button -->
           <div class="col-md-2 text-center">
-           <a href="project_view.php?id=<?php echo $row['prev_work_id']; ?>" class="btn btn-primary btn-sm mt-2">View</a>
+            <a href="project_view.php?id=<?php echo $row['prev_work_id']; ?>" class="view-btn mt-2">View</a>
           </div>
           
         </div>

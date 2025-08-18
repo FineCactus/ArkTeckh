@@ -14,7 +14,7 @@ $project = mysqli_fetch_array($res);
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title><?php echo htmlspecialchars($project['title']); ?> | Project View</title>
+  <title><?php echo ($project['title']); ?> | Project View</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/project_view.css" rel="stylesheet">
   <style>
@@ -24,7 +24,7 @@ $project = mysqli_fetch_array($res);
 <body>
 
 <div class="container py-4" style="max-width:900px;">
-  <h1 class="project-title"><?php echo htmlspecialchars($project['title'] ?: "Untitled Project"); ?></h1>
+  <h1 class="project-title"><?php echo ($project['title'] ?: "Untitled Project"); ?></h1>
   <div class="project-date">Created on <?php echo date('F j, Y', strtotime($project['created_at'])); ?></div>
 
   <!-- Image Gallery -->
@@ -38,9 +38,9 @@ $project = mysqli_fetch_array($res);
       foreach ($images as $idx => $img) {
     ?>
       <div class="img-col" data-idx="<?php echo $idx; ?>" tabindex="0" role="button" aria-label="Open image <?php echo $idx+1; ?>">
-        <img src="../uploads/<?php echo htmlspecialchars($img ?: ''); ?>"
+        <img src="../uploads/<?php echo ($img ?: ''); ?>"
              alt="Project Image"
-             onerror="this.onerror=null;this.src='https://via.placeholder.com/320x240?text=No+Image';">
+             >
       </div>
     <?php } ?>
   </div>
@@ -49,16 +49,16 @@ $project = mysqli_fetch_array($res);
     <div class="col-lg-8">
       <div class="description-card">
         <h4>Description</h4>
-        <p><?php echo htmlspecialchars($project['descriptions'] ?: "No description available."); ?></p>
+        <p><?php echo ($project['descriptions'] ?: "No description available."); ?></p>
       </div>
     </div>
     <div class="col-lg-4">
       <div class="details-card">
         <h5>Project Details</h5>
         <ul class="details-list">
-          <li><strong>Category ID:</strong> <?php echo htmlspecialchars($project['category_id']); ?></li>
-          <li><strong>Location ID:</strong> <?php echo htmlspecialchars($project['location_id']); ?></li>
-          <li><strong>Architect ID:</strong> <?php echo htmlspecialchars($project['architect_id']); ?></li>
+          <li><strong>Category ID:</strong> <?php echo  ($project['category_id']); ?></li>
+          <li><strong>Location ID:</strong> <?php echo  ($project['location_id']); ?></li>
+          <li><strong>Architect ID:</strong> <?php echo  ($project['architect_id']); ?></li>
           <li><strong>Created:</strong> <?php echo date('F j, Y', strtotime($project['created_at'])); ?></li>
         </ul>
       </div>
@@ -82,7 +82,7 @@ $project = mysqli_fetch_array($res);
 <script>
   const images = [
     <?php foreach ($images as $img): ?>
-      "<?php echo htmlspecialchars($img ?: ''); ?>",
+      "<?php echo  ($img ?: ''); ?>",
     <?php endforeach; ?>
   ];
 

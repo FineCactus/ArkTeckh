@@ -37,7 +37,7 @@
         $result1=$obj->executequery($sqlquery1);
         if ($result1 == 1)
          {
-            header("Location: index.php?status=success");
+            header("Location: login.php?status=success");
             exit();
         }
         

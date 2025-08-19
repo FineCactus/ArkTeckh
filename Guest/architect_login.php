@@ -1,11 +1,10 @@
 <?php 
-include('../Guest/header.php'); 
- include_once("../dboperation.php");
+include('header.php'); 
+include_once("../dboperation.php");
 $obj = new dboperation();
 ?>
 
 <script src="../jquery-3.6.0.min.js"></script>
-
 <script>
   $(document).ready(function () {
     $("#district_id").change(function () {
@@ -18,12 +17,115 @@ $obj = new dboperation();
           $("#location").html(response);
         },
         error: function () {
-          $("#location").html("<tr><td colspan='3'>Error loading locations</td></tr>");
+          $("#location").html("<option>Error loading locations</option>");
         }
       });
     });
   });
 </script>
+
+<style>
+/* Modern lively form box styles */
+.bg-light.rounded.p-5.shadow {
+  background: rgba(255,255,255,0.98);
+  border-radius: 26px;
+  box-shadow: 0 8px 32px rgba(183,141,101, 0.14), 0 1.5px 4px rgba(183,141,101,0.10);
+  padding: 46px 38px 32px 38px;
+  position: relative;
+  transition: box-shadow 0.24s, border 0.28s, transform 0.25s cubic-bezier(.42,2,.44,.99);
+  border: 2px solid transparent;
+}
+.bg-light.rounded.p-5.shadow:hover {
+  border-image: linear-gradient(90deg, #B78D65, #ffd094 85%);
+  border-image-slice: 1;
+  transform: translateY(-7px) scale(1.012);
+  box-shadow: 0 16px 54px rgba(183,141,101,0.22), 0 4px 16px rgba(184,143,34,0.09);
+}
+
+.form-floating input, 
+.form-floating select {
+  border-radius: 13px !important;
+  border: 2px solid #eaeaeab5;
+  transition: border-color 0.35s cubic-bezier(.16,.86,.67,.66), box-shadow 0.25s;
+  background: rgba(255,255,255,0.97);
+  font-size: 1.04rem;
+}
+.form-floating input:focus, 
+.form-floating select:focus {
+  border-color: #B78D65;
+  box-shadow: 0 0 10px 2px #B78D65a7;
+  background: #fff;
+}
+label.form-label, .form-floating label {
+  color: #a36f3eff;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.form-floating label {
+  font-size: 1rem;
+}
+input[type="file"].form-control {
+  background: #faf6f3;
+  border-radius: 13px;
+  border: 2px solid #ece3d3;
+  color: #B78D65;
+  padding: 10px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+h4.text-center {
+  font-weight: 800;
+  color: #B78D65;
+  margin-bottom: 32px;
+  letter-spacing: .7px;
+  font-size: 2.04rem;
+  position: relative;
+}
+h4.text-center:after {
+  display: block;
+  content: "";
+  width: 64px; height: 4px;
+  margin: 20px auto 0 auto;
+  border-radius: 2.5px;
+  background: linear-gradient(90deg,#fdeab6,#B78D65 70%);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #B78D65 80%, #d6ad60 120%);
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.08rem;
+  letter-spacing: 0.7px;
+  box-shadow: 0 4px 15px -7px #B78D65a2;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.22s, box-shadow 0.32s, transform 0.11s;
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg, #ab763e 50%, #ffc48d 120%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 7px 19px -6px #B78D65b5;
+}
+.btn-outline-secondary {
+  border: 2px solid #B78D65;
+  color: #B78D65;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.19s;
+}
+.btn-outline-secondary:hover, .btn-outline-secondary:focus {
+  background: #B78D65;
+  color: #fff;
+  transform: scale(1.04);
+}
+@media (max-width: 600px) {
+  .bg-light.rounded.p-5.shadow {
+    padding: 18px 5px 18px 5px;
+  }
+}
+</style>
 
 <!-- Page Header Start -->
 <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
@@ -84,34 +186,32 @@ $obj = new dboperation();
                 </div>
               </div>
 
-            <!-- District Dropdown -->
+              <!-- District Dropdown -->
               <div class="col-md-6">
                 <div class="form-floating">
                   <select class="form-select" name="district_id" id="district_id" required>
                     <option value="" selected disabled>Select District</option>
                     <?php
-                     
                       $locs = $obj->executequery("SELECT * FROM tbl_district");
                       while ($row = mysqli_fetch_assoc($locs)) {
-                      echo "<option value='{$row['district_id']}'>{$row['district_name']}</option>";
+                        echo "<option value='{$row['district_id']}'>{$row['district_name']}</option>";
                       }
-                      ?>
-                      </select>
-                    <label for="district_id">District</label>
-                  </div>
-                  </div>
+                    ?>
+                  </select>
+                  <label for="district_id">District</label>
+                </div>
+              </div>
 
-                  <div class="col-md-6">
+              <div class="col-md-6">
                 <div class="form-floating">
                   <select class="form-select" name="location_id" id="location" required>
                     <option value="" selected disabled>Select Location</option>
-                   
-                      </select>
-                    <label for="location_id">Location</label>
-                  </div>
-                  </div>
+                  </select>
+                  <label for="location_id">Location</label>
+                </div>
+              </div>
 
-                <div class="col-md-6">
+              <div class="col-md-6">
                 <label for="profile_pic" class="form-label">Profile Picture</label>
                 <input type="file" class="form-control" name="photo1" id="photo1">
               </div>
@@ -121,12 +221,10 @@ $obj = new dboperation();
                 <input type="file" class="form-control" name="certificate" id="certificate">
               </div>
 
-
               <div class="col-12 text-center mt-4">
                 <button type="submit" name="submit" class="btn btn-primary px-5 py-3">Register</button>
                 <a href="../Guest/login.php" class="btn btn-outline-secondary px-5 py-3 ms-2">Back to Login</a>
               </div>
-
             </div>
           </form>
         </div>
@@ -137,15 +235,11 @@ $obj = new dboperation();
 <!-- Registration Form End -->
 
 <!-- Sweet Alert -->
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
- 
 <?php if (isset($_GET['status'])): ?>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       let status = "<?php echo $_GET['status']; ?>";
-
       if (status === "success") {
         Swal.fire({
           icon: 'success',
@@ -165,8 +259,6 @@ $obj = new dboperation();
           text: 'Something went wrong while registration.',
         });
       }
-
-      // Remove status from URL
       window.history.replaceState({}, document.title, "architect_login.php");
     });
   </script>

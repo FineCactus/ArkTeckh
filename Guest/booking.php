@@ -208,7 +208,7 @@ $res = $obj->executequery($sql);
 }
 
 .search-bar button:hover {
-    background-color: #a55e51;
+    background-color: #B78D65;
 }
 
 @media (max-width: 576px) {

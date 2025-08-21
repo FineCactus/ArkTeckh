@@ -42,6 +42,7 @@ $obj = new dboperation();
   box-shadow: 0 16px 54px rgba(183,141,101,0.22), 0 4px 16px rgba(184,143,34,0.09);
 }
 
+/* Form Inputs */
 .form-floating input, 
 .form-floating select {
   border-radius: 13px !important;
@@ -56,14 +57,17 @@ $obj = new dboperation();
   box-shadow: 0 0 10px 2px #B78D65a7;
   background: #fff;
 }
-label.form-label, .form-floating label {
+
+/* Scoped ONLY for labels inside .bg-light.rounded.p-5.shadow */
+.bg-light.rounded.p-5.shadow .form-floating label,
+.bg-light.rounded.p-5.shadow label.form-label {
   color: #a36f3eff;
   font-weight: 500;
   letter-spacing: 0.02em;
-}
-.form-floating label {
   font-size: 1rem;
 }
+
+/* File input */
 input[type="file"].form-control {
   background: #faf6f3;
   border-radius: 13px;
@@ -74,7 +78,8 @@ input[type="file"].form-control {
   margin-bottom: 4px;
 }
 
-h4.text-center {
+/* Scoped H4 inside form box only */
+.bg-light.rounded.p-5.shadow h4 {
   font-weight: 800;
   color: #B78D65;
   margin-bottom: 32px;
@@ -82,7 +87,7 @@ h4.text-center {
   font-size: 2.04rem;
   position: relative;
 }
-h4.text-center:after {
+.bg-light.rounded.p-5.shadow h4:after {
   display: block;
   content: "";
   width: 64px; height: 4px;
@@ -91,7 +96,8 @@ h4.text-center:after {
   background: linear-gradient(90deg,#fdeab6,#B78D65 70%);
 }
 
-.btn-primary {
+/* Scoped Buttons inside form box only */
+.bg-light.rounded.p-5.shadow .btn-primary {
   background: linear-gradient(90deg, #B78D65 80%, #d6ad60 120%);
   border: none;
   border-radius: 30px;
@@ -103,28 +109,33 @@ h4.text-center:after {
   overflow: hidden;
   transition: background 0.22s, box-shadow 0.32s, transform 0.11s;
 }
-.btn-primary:hover {
+.bg-light.rounded.p-5.shadow .btn-primary:hover {
   background: linear-gradient(90deg, #ab763e 50%, #ffc48d 120%);
   transform: translateY(-2px) scale(1.04);
   box-shadow: 0 7px 19px -6px #B78D65b5;
 }
-.btn-outline-secondary {
+
+.bg-light.rounded.p-5.shadow .btn-outline-secondary {
   border: 2px solid #B78D65;
   color: #B78D65;
   border-radius: 30px;
   font-weight: 600;
   transition: all 0.19s;
 }
-.btn-outline-secondary:hover, .btn-outline-secondary:focus {
+.bg-light.rounded.p-5.shadow .btn-outline-secondary:hover,
+.bg-light.rounded.p-5.shadow .btn-outline-secondary:focus {
   background: #B78D65;
   color: #fff;
   transform: scale(1.04);
 }
+
+/* Responsive adjustment */
 @media (max-width: 600px) {
   .bg-light.rounded.p-5.shadow {
     padding: 18px 5px 18px 5px;
   }
 }
+
 </style>
 
 <!-- Page Header Start -->
@@ -238,7 +249,7 @@ h4.text-center:after {
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php if (isset($_GET['status'])): ?>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function (/{
       let status = "<?php echo $_GET['status']; ?>";
       if (status === "success") {
         Swal.fire({

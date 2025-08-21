@@ -1,5 +1,5 @@
 <?php
-include_once("../dboperation.php");
+include_once("../../dboperation.php");
 $obj=new dboperation();
 if (isset($_POST['submit']))
 {
@@ -17,11 +17,11 @@ if (isset($_POST['submit']))
     $result=$obj->executequery($sql);
     }
     if ($result == 1){
-     header("Location: categoryview.php?status=success");
+     header("Location: ../categoryview.php?status=success");
         exit();
     }
     else{
-     header("Location: category_edit.php?status=error");
+     header("Location: ../category_edit.php?status=error");
         exit();
     }
 }

@@ -1,5 +1,5 @@
 <?php
-    include_once("../dboperation.php");
+    include_once("../../dboperation.php");
     $obj=new dboperation();
     if(isset($_POST['submit']))
     {
@@ -8,7 +8,7 @@
 
     if((!$catname))
     {
-        header("Location: category.php?status=empty");
+        header("Location: ../category.php?status=empty");
             exit();
     }
     else
@@ -21,7 +21,7 @@
     $rows=mysqli_num_rows($result);
     if($rows==1)
     {
-           header("Location: category.php?status=exist");
+           header("Location: ../category.php?status=exist");
         exit();
     
     }
@@ -31,13 +31,13 @@
         $result1=$obj->executequery($sqlquery1);
         if($result1==1)
         {
-          header("Location: categoryview.php?status=success");
+          header("Location: ../categoryview.php?status=success");
             exit();
     
         }
         else
         {
-        header("Location: category.php?status=error");
+        header("Location: ../category.php?status=error");
             exit();
 }
 }

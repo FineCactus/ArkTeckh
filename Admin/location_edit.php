@@ -15,7 +15,7 @@ if(isset($_GET["location_id"]))
  
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<form action="locationeditaction.php" method="POST">
+<form action="action_pages/locationeditaction.php" method="POST">
 
 <div class="container" >
           <div class="page-inner">

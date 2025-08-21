@@ -91,5 +91,39 @@ $result = $obj->executequery($sql);
   </div> <!-- page-inner -->
 </div> <!-- container -->
 
+<?php if (isset($_GET['status'])): ?>
+  <script>
+    <?php if ($_GET['status'] == 'success'): ?>
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Location edited successfully.',
+        confirmButtonColor: '#3085d6'
+      });
+    <?php elseif ($_GET['status'] == 'exist'): ?>
+      Swal.fire({
+        icon: 'warning',
+        title: 'Duplicate Entry',
+        text: 'This location already exists for the selected district.',
+        confirmButtonColor: '#f39c12'
+      });
+    <?php elseif ($_GET['status'] == 'empty'): ?>
+      Swal.fire({
+        icon: 'info',
+        title: 'Missing Info',
+        text: 'Please enter a location name.',
+        confirmButtonColor: '#3498db'
+      });
+    <?php elseif ($_GET['status'] == 'error'): ?>
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Something went wrong while editing the location.',
+        confirmButtonColor: '#d33'
+      });
+    <?php endif; ?>
+  </script>
+<?php endif; ?>
+
 
 <?php include("footer.php"); ?>

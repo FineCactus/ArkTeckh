@@ -3,7 +3,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<form action="categoryaction.php" method="POST" enctype="multipart/form-data">
+<form action="action_pages/categoryaction.php" method="POST" enctype="multipart/form-data">
 
 <div class="container" >
           <div class="page-inner">

@@ -6,7 +6,7 @@ $sql="select * from tbl_district";
 $res = $obj->executequery($sql);
 ?>
 
-<form action="location_action.php" method="POST">
+<form action="action_pages/location_action.php" method="POST">
   <div class="container">
     <div class="page-inner">
       <div class="page-header">

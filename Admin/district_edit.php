@@ -17,7 +17,7 @@ if(isset($_GET["eid"]))
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<form action="district_editaction.php" method="POST">
+<form action="action_pages/district_editaction.php" method="POST">
 
 <div class="container" >
           <div class="page-inner">

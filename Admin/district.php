@@ -3,7 +3,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<form action="districtaction.php" method="POST">
+<form action="action_pages/districtaction.php" method="POST">
 
 <div class="container" >
           <div class="page-inner">

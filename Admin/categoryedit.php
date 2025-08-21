@@ -17,7 +17,7 @@ if(isset($_GET["eid"]))
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<form action="categoryeditaction.php" method="POST" enctype="multipart/form-data">
+<form action="action_pages/categoryeditaction.php" method="POST" enctype="multipart/form-data">
 
 <div class="container" >
           <div class="page-inner">

@@ -1,5 +1,5 @@
 <?php
-include_once("../dboperation.php");
+include_once("../../dboperation.php");
 $obj = new dboperation();
 
 if (isset($_POST['submit'])) {
@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $district_id = $_POST['districtid']; //  matches your form field name
 
     if (empty($location_name)) {
-        header("Location: location.php?status=empty");
+        header("Location: ../location.php?status=empty");
         exit();
     }
 
@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     $rows = mysqli_num_rows($result);
 
     if ($rows > 0) {
-        header("Location: location.php?status=exist");
+        header("Location: ../location.php?status=exist");
         exit();
     } else {
         //  Corrected INSERT with district_id
@@ -25,10 +25,10 @@ if (isset($_POST['submit'])) {
         $result1 = $obj->executequery($sqlquery1);
 
         if ($result1 == 1) {
-            header("Location: location.php?status=success");
+            header("Location: ../location_view.php?status=success");
             exit();
         } else {
-            header("Location: location.php?status=error");
+            header("Location: ../location.php?status=error");
             exit();
         }
     }

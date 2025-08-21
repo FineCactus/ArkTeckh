@@ -1,5 +1,5 @@
 <?php
-include_once("../dboperation.php");
+include_once("../../dboperation.php");
 $obj=new dboperation();
 if (isset($_POST['location_id']))
 {
@@ -8,10 +8,12 @@ if (isset($_POST['location_id']))
     $sql1="UPDATE tbl_location set location_name='$location_name'where location_id=$location_id";
     $result=$obj->executequery($sql1);
     if ($result == 1){
-     echo "<script>alert('Saved Succesfully');window.location='location_view.php' </script>";
+     header("Location: ../location_view.php?status=success");
+            exit();
     }
     else{
-     echo "<script>alert('Registration failed');window.location='location_view.php' </script>";
+     header("Location: ../location_view.php?status=error");
+            exit();
     }
 }
 ?>

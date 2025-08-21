@@ -1,12 +1,12 @@
 <?php
-    include_once("../dboperation.php");
+    include_once("../../dboperation.php");
     $obj=new dboperation();
     if(isset($_POST['submit']))
     {
     $districtname=$_POST['district'];
     if(!$districtname)
     {
-        header("Location: district.php?status=empty");
+        header("Location: ../district.php?status=empty");
             exit();
     }
     else{
@@ -15,7 +15,7 @@
     $rows=mysqli_num_rows($result);
     if($rows==1)
     {
-        header("Location: district.php?status=exist");
+        header("Location: ../districtview.php?status=exist");
         exit();
     
     }
@@ -25,13 +25,13 @@
         $result1=$obj->executequery($sqlquery1);
         if ($result1 == 1)
          {
-            header("Location: district.php?status=success");
+            header("Location: ../districtview.php?status=success");
             exit();
         }
         
         else
         {
-            header("Location: district.php?status=error");
+            header("Location: ../district.php?status=error");
             exit();
     }
 }

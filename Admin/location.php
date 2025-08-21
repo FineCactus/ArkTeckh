@@ -26,10 +26,10 @@ $res = $obj->executequery($sql);
             <div class="card-body">
               <div class="form">
                 <div class="form-group form-show-notify row">
-                  <div class="col-lg-3 col-md-3 col-sm-4 text-end">
+                  <div class="col-lg-1 col-md-6 col-sm-4 text-end">
                     <label>District:</label>
                   </div>
-                  <div class="col-lg-4 col-md-9 col-sm-8">
+                  <div class="col-lg-1 col-md-9 col-sm-8">
                     <select class="form-select input-fixed" id="notify_state" name="districtid" id="districtid">
                       <option value="default" disabled selected hidden>select District</option>
                       <?php while($r = mysqli_fetch_array($res)) { ?>
@@ -42,7 +42,7 @@ $res = $obj->executequery($sql);
                 </div>
 
                 <div class="form-group form-show-notify row mt-3">
-                  <div class="col-lg-3 col-md-3 col-sm-4 text-end">
+                  <div class="col-lg-1 col-md-3 col-sm-4 text-end">
                     <label for="email2">Place</label>
                   </div>
                   <div class="col-lg-4 col-md-9 col-sm-8">
@@ -60,7 +60,7 @@ $res = $obj->executequery($sql);
             <div class="card-footer">
               <div class="form">
                 <div class="form-group from-show-notify row">
-                  <div class="col-lg-3 col-md-3 col-sm-12"></div>
+                  <div class="col-lg-1 col-md-3 col-sm-12"></div>
                   <div class="col-lg-4 col-md-9 col-sm-12">
                     <button id="displayNotif" class="btn btn-success" type="submit" name="submit">Submit</button>
                   </div>

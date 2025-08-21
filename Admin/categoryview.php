@@ -55,17 +55,6 @@ $res = $obj->executequery($s);
                   <td><?php echo $r["category_name"]; ?></td>
                   <td> <img src="../uploads/<?php echo $r['photo']; ?>" width="100" height="100"> </td> 
                   <td>
-
-                <button class="btn-edit"
-                    data-id="<?php echo $r['category_id']; ?>"
-                    style="background-color:rgb(44, 130, 220); color: #fff; padding: 6px 12px; border: none; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">
-                   <i class="bi bi-pencil"></i> Edit
-                  </button>
-                 <button class="btn-delete"
-                  data-id="<?php echo $r['category_id']; ?>"
-                style="background-color:rgb(220, 44, 44); color: #fff; padding: 6px 12px; border: none; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">
-                <i class="bi bi-trash"></i> Delete
-                </button>
               </td>
                
               </tr>
@@ -141,6 +130,38 @@ $res = $obj->executequery($s);
 });
 
 </script>
+
+<?php if (isset($_GET['status'])): ?>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let status = "<?php echo $_GET['status']; ?>";
+
+      if (status === "success") {
+        Swal.fire({
+          icon: 'success',
+          title: 'Category Added!',
+          text: 'Your category has been edited successfully.',
+        });
+      } else if (status === "error") {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Something went wrong while adding the category.',
+        });
+      }
+      else if (status === "deleted") {
+        Swal.fire({
+          icon: 'success',
+          title: 'Category Deleted!',
+          text: 'Your category has been deleted successfully.',
+        });
+      }
+
+      // Remove status from URL
+      window.history.replaceState({}, document.title, "categoryview.php");
+    });
+  </script>
+<?php endif; ?>
 
 
 <?php

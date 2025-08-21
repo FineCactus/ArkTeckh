@@ -188,15 +188,15 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="collapse" id="submenu">
                   <ul class="nav nav-collapse">
                     <li>
-                        <a href="districtview.php">
+                        <a href="districtedit.php">
                         <span class="sub-item">District Edit</span></a>
                     </li>
                     <li>
-                        <a href="categoryview.php">
+                        <a href="category_edit.php">
                         <span class="sub-item">Category Edit</span></a>
                     </li>
                     <li>
-                        <a href="location_view.php">
+                        <a href="locationedit.php">
                         <span class="sub-item">Location Edit</span></a>
                     </li>
                   </ul>  

@@ -53,6 +53,17 @@ $res = $obj->executequery($s);
                   <td><?php echo $r["district_id"]; ?></td>
                   <td><?php echo $r["district_name"]; ?></td> 
                   <td>
+
+                <button class="btn-edit"
+                    data-id="<?php echo $r['district_id']; ?>"
+                    style="background-color:rgb(44, 130, 220); color: #fff; padding: 6px 12px; border: none; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">
+                   <i class="bi bi-pencil"></i> Edit
+                  </button>
+                 <button class="btn-delete"
+                  data-id="<?php echo $r['district_id']; ?>"
+                style="background-color:rgb(220, 44, 44); color: #fff; padding: 6px 12px; border: none; text-decoration: none; border-radius: 4px; font-weight: 500; display: inline-block;">
+                <i class="bi bi-trash"></i> Delete
+                </button>
               </td>
                
               </tr>
@@ -67,7 +78,6 @@ $res = $obj->executequery($s);
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   document.getElementById("districtSearch").addEventListener("keyup", function () {
     var input = this.value.toLowerCase();
@@ -129,31 +139,6 @@ $res = $obj->executequery($s);
 });
 
 </script>
-
-<?php if (isset($_GET['status'])): ?>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      let status = "<?php echo $_GET['status']; ?>";
-
-      if (status === "success") {
-        Swal.fire({
-          icon: 'success',
-          title: 'Category Added!',
-          text: 'District edited succesfully.',
-        });
-      } else if (status === "error") {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Something went wrong...Try Again',
-        });
-      }
-
-      // Remove status from URL
-      window.history.replaceState({}, document.title, "districtview.php");
-    });
-  </script>
-<?php endif; ?>
 
 
 <?php

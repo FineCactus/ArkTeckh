@@ -17,10 +17,12 @@ if (isset($_POST['submit']))
     $result=$obj->executequery($sql);
     }
     if ($result == 1){
-     echo "<script>alert('Saved Succesfully');window.location='categoryview.php' </script>";
+     header("Location: categoryview.php?status=success");
+        exit();
     }
     else{
-     echo "<script>alert('Registration failed');window.location='categoryview.php' </script>";
+     header("Location: category_edit.php?status=error");
+        exit();
     }
 }
 ?>

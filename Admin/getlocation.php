@@ -32,3 +32,54 @@ if (isset($_POST["districtid"])) {
     }
 }
 ?>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Delete
+  const deleteButtons = document.querySelectorAll(".btn-delete");
+  deleteButtons.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault(); // prevent default link action
+      const location_id = this.getAttribute("data-id");
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "This location will be deleted!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = `location_delete.php?location_id=${location_id}`;
+        }
+      });
+    });
+  });
+
+  // Edit
+  const editButtons = document.querySelectorAll(".btn-edit");
+  editButtons.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      const location_id = this.getAttribute("data-id");
+
+      Swal.fire({
+        title: 'Edit Location',
+        text: "Do you want to edit this location?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#2c82dc',
+        cancelButtonColor: '#aaa',
+        confirmButtonText: 'Yes, edit it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = `location_edit.php?location_id=${location_id}`;
+        }
+      });
+    });
+  });
+});
+
+</script>

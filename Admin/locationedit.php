@@ -62,7 +62,7 @@ $result = $obj->executequery($sql);
           <div class="card-body">
             <div class="form-group mb-4">
               <label>Select a District</label>
-              <select class="form-control custom-select" name="districtid" id="districtid">
+              <select class="form-control" name="districtid" id="districtid">
                 <option value="" disabled selected hidden>--------Select District-----------</option>
                 <?php while ($r = mysqli_fetch_array($result)) { ?>
                   <option value="<?php echo $r["district_id"]; ?>"><?php echo $r["district_name"]; ?></option>

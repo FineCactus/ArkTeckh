@@ -31,7 +31,7 @@
         $result1=$obj->executequery($sqlquery1);
         if($result1==1)
         {
-          header("Location: category.php?status=success");
+          header("Location: categoryview.php?status=success");
             exit();
     
         }

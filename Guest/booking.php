@@ -122,8 +122,8 @@ $res = $obj->executequery($sql);
                 echo '<img src="https://via.placeholder.com/300x200?text=No+Image" class="glass-img">';
               } else {
                 foreach ($images as $img) { ?>
-                  <div class="glass" data-text="<?php echo htmlspecialchars($row['title']); ?>">
-                    <img src="../uploads/<?php echo htmlspecialchars($img); ?>" 
+                  <div class="glass" data-text="<?php echo  ($row['title']); ?>">
+                    <img src="../uploads/<?php echo  ($img); ?>" 
                          alt="Project Image" class="glass-img">
                   </div>
               <?php }
@@ -133,10 +133,10 @@ $res = $obj->executequery($sql);
 
           <!-- Middle: Details -->
           <div class="col-md-5 p-4">
-            <h4 class="fw-bold mb-2"><?php echo htmlspecialchars($row['title'] ?: "Untitled Project"); ?></h4>
-            <p class="mb-1"><strong>Category:</strong> <?php echo htmlspecialchars($row['category_name'] ?? "N/A"); ?></p>
-            <p class="mb-1"><strong>District:</strong> <?php echo htmlspecialchars($row['district_name'] ?? "N/A"); ?></p>
-            <p class="mb-1"><strong>Location:</strong> <?php echo htmlspecialchars($row['location_name'] ?? "N/A"); ?></p>
+            <h4 class="fw-bold mb-2"><?php echo  ($row['title'] ?: "Untitled Project"); ?></h4>
+            <p class="mb-1"><strong>Category:</strong> <?php echo  ($row['category_name'] ?? "N/A"); ?></p>
+            <p class="mb-1"><strong>District:</strong> <?php echo  ($row['district_name'] ?? "N/A"); ?></p>
+            <p class="mb-1"><strong>Location:</strong> <?php echo  ($row['location_name'] ?? "N/A"); ?></p>
             <p class="text-muted small mb-0"><em>Uploaded on: <?php echo date("d M Y", strtotime($row['created_at'])); ?></em></p>
           </div>
 

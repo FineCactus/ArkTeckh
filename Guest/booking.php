@@ -1,234 +1,162 @@
-<?php include('header.php'); ?>
-<link href="css/booking.css" rel="stylesheet">
-
 <?php
+include("header.php");
 include_once("../dboperation.php");
+
 $obj = new dboperation();
 
-// Fetch all previous works
-$sql = "SELECT pw.*, c.category_name, l.location_name, d.district_name 
+// Fetch all previous works with category, location, district
+$sql = "SELECT pw.*, 
+               c.category_name, 
+               l.location_name, 
+               d.district_name 
         FROM tbl_previous_works pw
         LEFT JOIN tbl_category c ON pw.category_id = c.category_id
         LEFT JOIN tbl_location l ON pw.location_id = l.location_id
         LEFT JOIN tbl_district d ON l.district_id = d.district_id
         ORDER BY pw.created_at DESC";
+
 $res = $obj->executequery($sql);
 ?>
 
-<!-- Image Slideshow Background -->
-<div class="background-slideshow">
-  <div class="slideshow-overlay"></div>
-</div>
-
-<!-- Centered Search Bar -->
-<div class="container my-4 d-flex justify-content-center position-relative" style="z-index:10;">
-    <div class="search-bar d-flex align-items-center p-2 shadow rounded-pill" style="max-width: 540px; width: 100%; background-color: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px);">
-        <input type="text" placeholder="Where" class="form-control me-3" style="flex: 1; min-width: 90px; font-weight: 500; letter-spacing: 0.02em;">
-        <input type="text" placeholder="Who" class="form-control me-3" style="flex: 1; min-width: 90px; font-weight: 500; letter-spacing: 0.02em;">
-        <button class="btn btn-danger rounded-circle px-3 d-flex justify-content-center align-items-center" style="width: 46px; height: 46px; box-shadow: 0 4px 8px rgba(183,141,101,0.35); transition: background-color 0.3s ease;">
-            <i class="fas fa-search" style="font-size: 1.2rem;"></i>
-        </button>
-    </div>
-</div>
-
-<!-- Projects Grid -->
-<div class="container my-5 position-relative" style="z-index:10;">
-    <div class="row g-4">
-        <?php while($row = mysqli_fetch_assoc($res)) { ?>
-        <div class="col-md-4">
-            <div class="project-card shadow d-flex flex-column bg-white h-100 border border-transparent" style="cursor: pointer;">
-                <div class="card-image-wrapper overflow-hidden">
-                    <img src="../uploads/<?php echo $row['image1'] ?: 'default.png'; ?>" alt="Project Image" class="img-fluid w-100 h-100">
-                </div>
-                <div class="card-body d-flex flex-column flex-grow-1 gap-2 px-4 py-3">
-                    <h5 class="card-title fw-semibold mb-1">
-                        <?php echo htmlspecialchars($row['title'] ?: "Untitled Project"); ?>
-                    </h5>
-                    <div class="text-secondary small" style="line-height: 1.4;">
-                        <p class="mb-1"><strong>Category:</strong> <?php echo htmlspecialchars($row['category_name'] ?: "N/A"); ?></p>
-                        <p class="mb-1"><strong>District:</strong> <?php echo htmlspecialchars($row['district_name'] ?: "N/A"); ?></p>
-                        <p class="mb-0"><strong>Location:</strong> <?php echo htmlspecialchars($row['location_name'] ?: "N/A"); ?></p>
-                    </div>
-                    <form action="customer_select_work.php" method="POST" class="mt-auto">
-                        <input type="hidden" name="prev_work_id" value="<?php echo $row['prev_work_id']; ?>">
-                        <button type="submit" class="btn btn-primary w-100 rounded-pill fw-semibold">
-                            Book Now
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <?php } ?>
-    </div>
-</div>
-
 <style>
-/* Background Slideshow */
-.background-slideshow {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
+    .project-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  padding: 15px;
+  background: #fff;
+}
+
+.project-card .glass {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 10px;
+  background: linear-gradient(#fff2, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.project-card .glass:hover {
+  transform: translateY(-5px) scale(1.03);
+}
+
+.glass-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.view-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #d8ad84ff 0%, #B78D65 100%);
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
   overflow: hidden;
 }
 
-.slideshow-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(252, 252, 252, 0.5);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.background-slideshow::before {
+.view-btn::after {
   content: "";
   position: absolute;
-  width: 100%;
+  top: 0;
+  left: -75%;
+  width: 50%;
   height: 100%;
-  background-image: url('img/project-1.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  animation: slideShow 9s linear infinite;
-  z-index: 0;
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-25deg);
+  transition: all 0.5s ease;
 }
 
-.background-slideshow::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: url('img/project-4.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  animation: slideShowAlt 9s linear infinite;
-  z-index: 0;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+.view-btn:hover::after {
+  left: 125%;
 }
 
-@keyframes slideShow {
-  0%, 33.333%, 100% { opacity: 1; }
-  66.666% { opacity: 0; }
+.view-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes slideShowAlt {
-  0%, 33.333%, 100% { opacity: 0; }
-  66.666% { opacity: 1; }
-}
 
-/* Project Card */
-.project-card {
-    cursor: pointer;
-    border-radius: 20px;
-    overflow: hidden;
-    background: #fff;
-    border: 1px solid rgba(183,141,101,0.2);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 24px 48px rgba(183,141,101,0.35);
-    border-color: #B78D65;
-}
-
-.card-image-wrapper {
-    max-height: 220px;
-    overflow: hidden;
-    border-radius: 20px 20px 0 0;
-}
-
-.card-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-.project-card:hover img {
-    transform: scale(1.1);
-    filter: brightness(1.05);
-}
-
-.card-body {
-    border-radius: 0 0 20px 20px;
-    padding: 20px;
-}
-
-.card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #2c2c2c;
-}
-
-.text-secondary p {
-    margin-bottom: 4px;
-    font-size: 0.9rem;
-    color: #6b6b6b;
-}
-
-.btn-primary {
-    background-color: #B78D65;
-    border: none;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #B78D65;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(183, 141, 101, 0.3);
-}
-
-/* Search Bar */
-.search-bar input {
-    border: none;
-    border-radius: 50px;
-    padding: 10px 18px;
-    outline: none;
-    font-size: 1rem;
-    color: #484848;
-    font-weight: 500;
-    background-color: #fafafa;
-    transition: background-color 0.3s ease;
-}
-
-.search-bar input:focus {
-    background-color: #fff;
-    box-shadow: 0 0 8px rgba(183, 141, 101, 0.5);
-}
-
-.search-bar button:hover {
-    background-color: #B78D65;
-}
-
-@media (max-width: 576px) {
-    .search-bar {
-        flex-direction: column !important;
-        gap: 12px;
-        padding: 1rem 1.5rem !important;
-        max-width: 100% !important;
-    }
-    .search-bar input {
-        margin-right: 0 !important;
-        width: 100% !important;
-        min-width: auto !important;
-    }
-    .search-bar button {
-        width: 100% !important;
-        height: 45px !important;
-    }
-}
 </style>
 
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<?php include('footer.php'); ?>
+<!-- Page Header -->
+<div class="container-fluid page-header py-5 mb-5">
+  <div class="container py-5">
+    <h1 class="display-1 text-white">Previous Works</h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb text-uppercase mb-0">
+        <li class="breadcrumb-item"><a class="text-white" href="dashboard.php">Dashboard</a></li>
+        <li class="breadcrumb-item text-primary active" aria-current="page">Previous Works</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<!-- Projects Section -->
+<div class="container my-5">
+  <?php if (mysqli_num_rows($res) > 0) { ?>
+    <?php while ($row = mysqli_fetch_assoc($res)) { ?>
+      
+      <div class="project-card mb-5">
+        <div class="row align-items-center">
+          
+          <!-- Left: Up to 3 Images -->
+          <div class="col-md-5 d-flex flex-wrap justify-content-center">
+            <?php 
+              $images = array_filter([$row['image1'] ?? "", $row['image2'] ?? "", $row['image3'] ?? ""]);
+              
+              if (empty($images)) {
+                echo '<img src="https://via.placeholder.com/300x200?text=No+Image" class="glass-img">';
+              } else {
+                foreach ($images as $img) { ?>
+                  <div class="glass" data-text="<?php echo htmlspecialchars($row['title']); ?>">
+                    <img src="../uploads/<?php echo htmlspecialchars($img); ?>" 
+                         alt="Project Image" class="glass-img">
+                  </div>
+              <?php }
+              }
+            ?>
+          </div>
+
+          <!-- Middle: Details -->
+          <div class="col-md-5 p-4">
+            <h4 class="fw-bold mb-2"><?php echo htmlspecialchars($row['title'] ?: "Untitled Project"); ?></h4>
+            <p class="mb-1"><strong>Category:</strong> <?php echo htmlspecialchars($row['category_name'] ?? "N/A"); ?></p>
+            <p class="mb-1"><strong>District:</strong> <?php echo htmlspecialchars($row['district_name'] ?? "N/A"); ?></p>
+            <p class="mb-1"><strong>Location:</strong> <?php echo htmlspecialchars($row['location_name'] ?? "N/A"); ?></p>
+            <p class="text-muted small mb-0"><em>Uploaded on: <?php echo date("d M Y", strtotime($row['created_at'])); ?></em></p>
+          </div>
+
+          <!-- Right: Button -->
+          <div class="col-md-2 text-center">
+            <form action="customer_select_work.php" method="POST">
+              <input type="hidden" name="prev_work_id" value="<?php echo $row['prev_work_id']; ?>">
+              <button type="submit" class="view-btn mt-2">Book Now</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+    <?php } ?>
+  <?php } else { ?>
+    <div class="text-center py-5">
+      <h4 class="text-muted">No Previous Works Available</h4>
+    </div>
+  <?php } ?>
+</div>
+
+<?php include("footer.php"); ?>

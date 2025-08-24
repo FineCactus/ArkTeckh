@@ -17,6 +17,7 @@ $project = mysqli_fetch_array($res);
   <title><?php echo ($project['title']); ?> | Project View</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/project_view.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
 
   </style>
@@ -122,6 +123,31 @@ $project = mysqli_fetch_array($res);
     if(current < images.length - 1) showImg(current + 1);
   };
 </script>
+
+<?php if (isset($_GET['status'])): ?>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let status = "<?php echo $_GET['status']; ?>";
+
+      if (status === "success") {
+        Swal.fire({
+          icon: 'success',
+          title: 'Project Added!',
+          text: 'Project has been successfully added.',
+        });
+      } else if (status === "error") {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Something went wrong while adding the project.',
+        });
+      }
+
+      // Remove status from URL
+      window.history.replaceState({}, document.title, "architect_view.php");
+    });
+  </script>
+<?php endif; ?>
 
 <?php include("footer.php"); // 🔹 Your default footer ?>
 </body>

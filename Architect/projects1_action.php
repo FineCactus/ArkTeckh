@@ -37,9 +37,11 @@ if (isset($_POST['submit'])) {
 
     if ($res == 1) {
         unset($_SESSION['prev_work_id']); // clear session
-        echo "<script>alert('Project details saved successfully.');window.location='projects.php';</script>";
+         header("Location: architect_view.php?status=success");
+            exit();
     } else {
-        echo "<script>alert('Failed to update details.');</script>";
+       header("Location: architect_view.php?status=error");
+            exit();
     }
 }
 ?>

@@ -10,88 +10,125 @@ $res = $obj->executequery($sql);
 ?>
 
 <?php include("header.php"); ?>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
   .project-card {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  padding: 15px;
-  background: #fff;
-}
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 15px;
+    background: #fff;
+  }
 
-.project-card .glass {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 10px;
-  background: linear-gradient(#fff2, transparent);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: 0.3s ease;
-  backdrop-filter: blur(10px);
-}
+  .project-card .glass {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    background: linear-gradient(#fff2, transparent);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
 
-.project-card .glass:hover {
-  transform: translateY(-5px) scale(1.03);
-}
+  .project-card .glass:hover {
+    transform: translateY(-5px) scale(1.03);
+  }
 
-.glass-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-}
+  .glass-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
 
-.view-btn {
-  display: inline-block;
-  padding: 10px 25px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #fff;
-  background: linear-gradient(135deg, #d8ad84ff 0%, #B78D65 100%);
-  border: none;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  position: relative;
-  overflow: hidden;
-}
+  
+  .view-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #d8ad84ff 0%, #B78D65 100%);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
 
-.view-btn::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: skewX(-25deg);
-  transition: all 0.5s ease;
-}
+  .view-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-25deg);
+    transition: all 0.5s ease;
+  }
 
-.view-btn:hover::after {
-  left: 125%;
-}
+  .view-btn:hover::after {
+    left: 125%;
+  }
 
-.view-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 20px rgba(255, 255, 255, 0.3);
-}
+  .view-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(255, 255, 255, 0.3);
+  }
 
+  .delete-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6b6b 0%, #c0392b 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
 
+.delete-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-25deg);
+    transition: all 0.5s ease;
+  }
+
+.delete-btn:hover::after {
+    left: 125%;
+  }
+
+.delete-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(255, 0, 0, 0.3);
+  }
   </style>
 
 <!-- Page Header -->
 <div class="container-fluid page-header py-5 mb-5">
   <div class="container py-5">
-    <h1 class="display-1 text-white">Previous Works</h1>
+    <h1 class="display-1 text-white">Uploaded Works</h1>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb text-uppercase mb-0">
         <li class="breadcrumb-item"><a class="text-white" href="dashboard.php">Dashboard</a></li>
-        <li class="breadcrumb-item text-primary active" aria-current="page">Previous Works</li>
+        <li class="breadcrumb-item text-primary active" aria-current="page">Uploaded Works</li>
       </ol>
     </nav>
   </div>
@@ -133,10 +170,16 @@ $res = $obj->executequery($sql);
             <p class="text-muted small mb-0"><em>Uploaded on: <?php echo date("d M Y", strtotime($row['created_at'])); ?></em></p>
           </div>
 
-          <!-- Right: Button -->
-          <div class="col-md-2 text-center">
-            <a href="project_view.php?id=<?php echo $row['prev_work_id']; ?>" class="view-btn mt-2">View</a>
-          </div>
+            <!-- Right: Buttons -->
+<div class="col-md-2 d-flex justify-content-center align-items-center gap-2">
+  <a href="project_view.php?id=<?php echo $row['prev_work_id']; ?>" 
+     class="view-btn">View</a>
+
+  <button onclick="confirmDelete(<?php echo $row['prev_work_id']; ?>)" 
+          class="delete-btn">Delete</button>
+</div>
+
+
           
         </div>
       </div>
@@ -148,5 +191,32 @@ $res = $obj->executequery($sql);
     </div>
   <?php } ?>
 </div>
+
+
+<?php if (isset($_GET['status'])): ?>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let status = "<?php echo $_GET['status']; ?>";
+
+      if (status === "success") {
+        Swal.fire({
+          icon: 'success',
+          title: 'Project Added!',
+          text: 'Project has been successfully added.',
+        });
+      } else if (status === "error") {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Something went wrong while adding the project.',
+        });
+      }
+
+      // Remove status from URL
+      window.history.replaceState({}, document.title, "architect_view_view.php");
+    });
+  </script>
+<?php endif; ?>
+
 
 <?php include("footer.php"); ?>

@@ -1,9 +1,8 @@
 <?php
 include("../dboperation.php");
-include("header.php");  // 🔹 Your default header
+include("header.php");
 
 $obj = new dboperation();
-
 $id = $_GET['id'];
 $sql = "SELECT * FROM tbl_previous_works WHERE prev_work_id = '$id'";
 $res = $obj->executequery($sql);
@@ -16,139 +15,150 @@ $project = mysqli_fetch_array($res);
   <meta charset="UTF-8">
   <title><?php echo ($project['title']); ?> | Project View</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="css/project_view.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
+    /* Scoped under .project-view-page to avoid affecting header/footer */
+    .project-view-page {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      padding: 30px 0;
+    }
 
+    .project-view-page .container {
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .project-view-page .project-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    .project-view-page .project-date {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+    }
+
+    /* Image gallery */
+    .project-view-page .img-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .project-view-page .img-col img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-view-page .img-col img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Content area */
+    .project-view-page .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .project-view-page .col-8 {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    .project-view-page .col-4 {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .project-view-page .description-card,
+    .project-view-page .details-card {
+      background: #fdfdfd;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+
+    .project-view-page .description-card h4 {
+      margin-bottom: 15px;
+    }
+
+    .project-view-page .details-card h5 {
+      margin-bottom: 15px;
+    }
+
+    .project-view-page .details-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .project-view-page .details-list li {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .project-view-page .details-list strong {
+      color: #34495e;
+    }
   </style>
 </head>
 <body>
 
-<div class="container py-4" style="max-width:900px;">
-  <h1 class="project-title"><?php echo ($project['title'] ?: "Untitled Project"); ?></h1>
-  <div class="project-date">Created on <?php echo date('F j, Y', strtotime($project['created_at'])); ?></div>
+<div class="project-view-page">
+  <div class="container">
+    <h1 class="project-title"><?php echo ($project['title'] ?: "Untitled Project"); ?></h1>
+    <div class="project-date">Created on <?php echo date('F j, Y', strtotime($project['created_at'])); ?></div>
 
-  <!-- Image Gallery -->
-  <div class="img-row mb-4">
-    <?php
-      $images = [
-        $project['image1'],
-        $project['image2'],
-        $project['image3']
-      ];
-      foreach ($images as $idx => $img) {
-    ?>
-      <div class="img-col" data-idx="<?php echo $idx; ?>" tabindex="0" role="button" aria-label="Open image <?php echo $idx+1; ?>">
-        <img src="../uploads/<?php echo ($img ?: ''); ?>"
-             alt="Project Image"
-             >
-      </div>
-    <?php } ?>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="description-card">
-        <h4>Description</h4>
-        <p><?php echo ($project['descriptions'] ?: "No description available."); ?></p>
-      </div>
+    <!-- Image Gallery -->
+    <div class="img-row">
+      <?php
+        $images = [$project['image1'], $project['image2'], $project['image3']];
+        foreach ($images as $idx => $img) {
+          if($img) {
+            echo '<div class="img-col">
+                    <img src="../uploads/'.$img.'" alt="Project Image">
+                  </div>';
+          }
+        }
+      ?>
     </div>
-    <div class="col-lg-4">
-      <div class="details-card">
-        <h5>Project Details</h5>
-        <ul class="details-list">
-          <li><strong>Category ID:</strong> <?php echo  ($project['category_id']); ?></li>
-          <li><strong>Location ID:</strong> <?php echo  ($project['location_id']); ?></li>
-          <li><strong>Architect ID:</strong> <?php echo  ($project['architect_id']); ?></li>
-          <li><strong>Created:</strong> <?php echo date('F j, Y', strtotime($project['created_at'])); ?></li>
-        </ul>
+
+    <div class="row">
+      <div class="col-8">
+        <div class="description-card">
+          <h4>Description</h4>
+          <p><?php echo ($project['descriptions'] ?: "No description available."); ?></p>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="details-card">
+          <h5>Project Details</h5>
+          <ul class="details-list">
+            <li><strong>Category ID:</strong> <?php echo ($project['category_id']); ?></li>
+            <li><strong>Location ID:</strong> <?php echo ($project['location_id']); ?></li>
+            <li><strong>Architect ID:</strong> <?php echo ($project['architect_id']); ?></li>
+            <li><strong>Created:</strong> <?php echo date('F j, Y', strtotime($project['created_at'])); ?></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Bootstrap Modal for image viewer -->
-<div class="modal fade" id="imgModal" tabindex="-1" aria-hidden="true" aria-labelledby="imgModalLabel" aria-modal="true" role="dialog">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <button type="button" class="modal-arrow arrow-left" style="display:none" aria-label="Previous image">&#8249;</button>
-      <img id="modalImg" src="" alt="Image Preview" class="modal-img">
-      <button type="button" class="modal-arrow arrow-right" style="display:none" aria-label="Next image">&#8250;</button>
-      <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  const images = [
-    <?php foreach ($images as $img): ?>
-      "<?php echo  ($img ?: ''); ?>",
-    <?php endforeach; ?>
-  ];
-
-  const modal = new bootstrap.Modal(document.getElementById('imgModal'));
-  const modalImg = document.getElementById('modalImg');
-  const leftBtn = document.querySelector('.arrow-left');
-  const rightBtn = document.querySelector('.arrow-right');
-
-  let current = 0;
-  function showImg(idx) {
-    current = idx;
-    let imgSrc = images[idx] ? "../uploads/" + images[idx] : "https://via.placeholder.com/320x240?text=No+Image";
-    modalImg.src = imgSrc;
-    leftBtn.style.display = idx > 0 ? 'flex' : 'none';  // Using flex to center arrow content
-    rightBtn.style.display = idx < images.length - 1 ? 'flex' : 'none';
-    modal.show();
-  }
-
-  document.querySelectorAll('.img-col').forEach(function(col) {
-    col.addEventListener('click', function() {
-      let idx = parseInt(this.getAttribute('data-idx'));
-      showImg(idx);
-    });
-    col.addEventListener('keypress', function(e){
-      if(e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        let idx = parseInt(this.getAttribute('data-idx'));
-        showImg(idx);
-      }
-    });
-  });
-
-  leftBtn.onclick = function() {
-    if(current > 0) showImg(current - 1);
-  };
-  rightBtn.onclick = function() {
-    if(current < images.length - 1) showImg(current + 1);
-  };
-</script>
-
-<?php if (isset($_GET['status'])): ?>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      let status = "<?php echo $_GET['status']; ?>";
-
-      if (status === "success") {
-        Swal.fire({
-          icon: 'success',
-          title: 'Project Added!',
-          text: 'Project has been successfully added.',
-        });
-      } else if (status === "error") {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Something went wrong while adding the project.',
-        });
-      }
-
-      // Remove status from URL
-      window.history.replaceState({}, document.title, "architect_view.php");
-    });
-  </script>
-<?php endif; ?>
-
-<?php include("footer.php"); // 🔹 Your default footer ?>
+<?php include("footer.php"); ?>
 </body>
 </html>

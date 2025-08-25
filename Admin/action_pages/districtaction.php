@@ -25,7 +25,7 @@
         $result1=$obj->executequery($sqlquery1);
         if ($result1 == 1)
          {
-            header("Location: ../districtview.php?status=success");
+            header("Location: ../districtview.php?status=successs");
             exit();
         }
         

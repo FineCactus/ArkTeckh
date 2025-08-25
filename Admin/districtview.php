@@ -138,7 +138,7 @@ $res = $obj->executequery($s);
       if (status === "success") {
         Swal.fire({
           icon: 'success',
-          title: 'Category Added!',
+          title: 'District edited!',
           text: 'District edited succesfully.',
         });
       } else if (status === "error") {
@@ -147,7 +147,13 @@ $res = $obj->executequery($s);
           title: 'Error',
           text: 'Something went wrong...Try Again',
         });
-      }
+      } else if (status === "successs") {
+        Swal.fire({
+          icon: 'success',
+          title: 'District Added!',
+          text: 'District added succesfully.',
+        });
+      } 
 
       // Remove status from URL
       window.history.replaceState({}, document.title, "districtview.php");

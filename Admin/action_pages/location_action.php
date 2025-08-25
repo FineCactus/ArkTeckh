@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
         $result1 = $obj->executequery($sqlquery1);
 
         if ($result1 == 1) {
-            header("Location: ../location_view.php?status=success");
+            header("Location: ../location_view.php?status=successs");
             exit();
         } else {
             header("Location: ../location.php?status=error");

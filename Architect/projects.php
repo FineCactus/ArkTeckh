@@ -12,6 +12,15 @@ $display=mysqli_fetch_array($res);
 <link href="css/projects.css" rel="stylesheet">
 
 <style>
+    html, body {
+    height: auto;       /* allow page to grow */
+    min-height: 100%;
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    overflow-x: hidden; /* keep horizontal scroll hidden */
+    overflow-y: auto;   /* enable vertical scroll */
+}
+
     /* Background */
     .background-image {
         position: fixed;

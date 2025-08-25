@@ -114,6 +114,13 @@ $result = $obj->executequery($sql);
         text: 'Please enter a location name.',
         confirmButtonColor: '#3498db'
       });
+      <?php elseif ($_GET['status'] == 'successs'): ?>
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Location added successfully.',
+        confirmButtonColor: '#3085d6'
+      });
     <?php elseif ($_GET['status'] == 'error'): ?>
       Swal.fire({
         icon: 'error',

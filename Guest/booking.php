@@ -116,7 +116,7 @@ $res = $obj->executequery($sql);
           <!-- Left: Up to 3 Images -->
           <div class="col-md-5 d-flex flex-wrap justify-content-center">
             <?php 
-              $images = array_filter([$row['image1'] ?? "", $row['image2'] ?? "", $row['image3'] ?? ""]);
+              $images = array_filter([$row['image1'] ?? ""]);
               
               if (empty($images)) {
                 echo '<img src="https://via.placeholder.com/300x200?text=No+Image" class="glass-img">';
@@ -140,13 +140,12 @@ $res = $obj->executequery($sql);
             <p class="text-muted small mb-0"><em>Uploaded on: <?php echo date("d M Y", strtotime($row['created_at'])); ?></em></p>
           </div>
 
-          <!-- Right: Button -->
+          <!-- Right: Redirect Button -->
           <div class="col-md-2 text-center">
-            <form action="customer_select_work.php" method="POST">
-              <input type="hidden" name="prev_work_id" value="<?php echo $row['prev_work_id']; ?>">
-              <button type="submit" class="view-btn mt-2">Book Now</button>
-            </form>
+            <a href="project_view.php?id=<?php echo $row['prev_work_id']; ?>" 
+              class="view-btn mt-2">View More</a>
           </div>
+
 
         </div>
       </div>

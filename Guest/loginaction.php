@@ -12,6 +12,7 @@ if(mysqli_num_rows($result) == 1)
    $_SESSION["username"] = $username;
    $_SESSION["login_id"] =$row["loginid"];
    header("location:..\Admin\index.php");
+   exit();
 } 
 else
 {
@@ -24,6 +25,7 @@ $result= $obj->executequery($sqlquery);
    $_SESSION["login_id"] =$row["customer_id"];
    $_SESSION["usertype"] = "customer";
    header("location:..\Guest\index.php");
+   exit();
    } 
 }
 
@@ -37,11 +39,13 @@ if(mysqli_num_rows($result) == 1)
    $_SESSION["architect_id"] =$row["architect_id"];
    $_SESSION["usertype"] = "architect";
    header("location:../Architect/index.php");
+   exit();
 } 
  else {
    
          // Invalid login, display an error message
-         echo "<script>alert('Invalid Username/Password!!'); window.location='login.php'</script>";
+         header("Location: login.php?status=error");
+         exit();
       }
    // }
 

@@ -8,6 +8,7 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
     :root {
       --light-brown: #b78d65;
@@ -30,7 +31,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       overflow: hidden;
       position: relative;
     }
@@ -49,6 +50,7 @@
       background-size: 300% 300%;
       animation: gradientMove 8s ease infinite;
       z-index: -2;
+      pointer-events: none;
     }
 
     @keyframes gradientMove {
@@ -151,6 +153,7 @@
     .input-group {
       position: relative;
       margin-bottom: 1.2rem;
+      cursor: auto;
     }
 
     .input-group i {
@@ -283,13 +286,24 @@
       customerForm.classList.remove('active');
     });
 
-    /* Parallax effect on mouse move */
-    document.addEventListener("mousemove", (e) => {
-      let moveX = (e.clientX / window.innerWidth - 0.5) * 10;
-      let moveY = (e.clientY / window.innerHeight - 0.5) * 10;
-      document.body.style.backgroundPosition = `${50 + moveX}% ${50 + moveY}%`;
-    });
   </script>
+
+  <?php if (isset($_GET['status'])): ?>
+  <script>
+    <?php if ($_GET['status'] == 'error'): ?>
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Invalid Username or Password.',
+        confirmButtonColor: '#d33',
+        allowOutsideClick: true,
+        allowEscapeKey: true,
+        allowEnterKey: true,
+        focusConfirm: false 
+      });
+    <?php endif; ?>
+  </script>
+<?php endif; ?>
 
 </body>
 </html>

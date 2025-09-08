@@ -245,7 +245,7 @@
       </div>
       <button type="submit">Login as Customer</button>
       <div class="bottom-link">
-        Don’t have an account? <a href="signup.php">Sign up</a>
+        Don’t have an account? <a href="customer_signup.php">Sign up</a>
       </div>
     </form>
 

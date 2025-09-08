@@ -1,0 +1,97 @@
+    main {
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+        padding: 40px 0;
+    }
+
+    /* Only the profile section's container */
+        .profile-container {
+            width: 90%;
+            margin: auto;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+        }
+
+
+    /* Left section: profile pic + name/email/phone side-by-side */
+    .left {
+        flex: 1;
+        background: #B78D65;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 30px;
+        color: white;
+        gap: 20px; /* space between image and text */
+    }
+
+    .profile-pic {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid rgba(255,255,255,0.7);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .profile-pic:hover {
+        transform: scale(1.05) rotate(2deg);
+    }
+
+    .architect-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .architect-info h1 {
+        margin: 0;
+        font-size: 28px;
+    }
+
+    .architect-info p {
+        margin: 5px 0;
+        font-size: 16px;
+        opacity: 0.9;
+    }
+
+    /* Right section: details */
+    .right {
+        flex: 2;
+        padding: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .detail {
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0px 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .detail strong {
+        display: block;
+        color: #B78D65;
+        margin-bottom: 5px;
+    }
+
+    .update-btn {
+        grid-column: span 2;
+        padding: 12px;
+        background: #B78D65;
+        color: white;
+        text-align: center;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.3s ease;
+    }
+
+    .update-btn:hover {
+        background: #a6784f;
+    }

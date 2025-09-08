@@ -106,14 +106,8 @@ if (session_status() === PHP_SESSION_NONE) {
                     <?php echo $_SESSION['username']; ?>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                    <?php if (isset($_SESSION['usertype']) && $_SESSION['usertype'] === 'architect'): ?>
-                        <li><a class="dropdown-item" href="/ArkTech/Architect/architect_dashboard.php">My Profile</a></li>
-                    <?php elseif (isset($_SESSION['usertype']) && $_SESSION['usertype'] === 'customer'): ?>
                         <li><a class="dropdown-item" href="/ArkTech/Guest/profile.php">My Profile</a></li>
-                    <?php else: ?>
-                        <li><a class="dropdown-item" href="#">My Profile</a></li>
-                    <?php endif; ?>
-                    <li><a class="dropdown-item" href="/ArkTech/Guest/logout.php">Logout</a></li>
+                        <li><a class="dropdown-item" href="/ArkTech/Guest/logout.php">Logout</a></li>
                 </ul>
             </div>
         <?php else: ?>

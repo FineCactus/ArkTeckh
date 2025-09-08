@@ -249,7 +249,7 @@ input[type="file"].form-control {
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php if (isset($_GET['status'])): ?>
   <script>
-    document.addEventListener('DOMContentLoaded', function (/{
+    document.addEventListener('DOMContentLoaded', function (){
       let status = "<?php echo $_GET['status']; ?>";
       if (status === "success") {
         Swal.fire({

@@ -113,17 +113,20 @@ $res = $obj->executequery($sql);
       <div class="project-card mb-5">
         <div class="row align-items-center">
           
-          <!-- Left: Up to 3 Images -->
+          <!-- Left: 3 images -->
           <div class="col-md-5 d-flex flex-wrap justify-content-center">
             <?php 
-              $images = array_filter([$row['image1'] ?? ""]);
-              
-              if (empty($images)) {
+              $images = [];
+              if (!empty($row['image1'])) $images[] = $row['image1'];
+              if (!empty($row['image2'])) $images[] = $row['image2'];
+              if (!empty($row['image3'])) $images[] = $row['image3'];
+
+              if (count($images) == 0) {
                 echo '<img src="https://via.placeholder.com/300x200?text=No+Image" class="glass-img">';
               } else {
                 foreach ($images as $img) { ?>
-                  <div class="glass" data-text="<?php echo  ($row['title']); ?>">
-                    <img src="../uploads/<?php echo  ($img); ?>" 
+                  <div class="glass" data-text="<?php echo ($row['title']); ?>">
+                    <img src="../uploads/<?php echo ($img); ?>" 
                          alt="Project Image" class="glass-img">
                   </div>
               <?php }
@@ -134,9 +137,9 @@ $res = $obj->executequery($sql);
           <!-- Middle: Details -->
           <div class="col-md-5 p-4">
             <h4 class="fw-bold mb-2"><?php echo  ($row['title'] ?: "Untitled Project"); ?></h4>
-            <p class="mb-1"><strong>Category:</strong> <?php echo  ($row['category_name'] ?? "N/A"); ?></p>
-            <p class="mb-1"><strong>District:</strong> <?php echo  ($row['district_name'] ?? "N/A"); ?></p>
-            <p class="mb-1"><strong>Location:</strong> <?php echo  ($row['location_name'] ?? "N/A"); ?></p>
+            <p class="mb-1"><strong>Category:</strong> <?php echo  ($row['category_name']); ?></p>
+            <p class="mb-1"><strong>District:</strong> <?php echo  ($row['district_name']); ?></p>
+            <p class="mb-1"><strong>Location:</strong> <?php echo  ($row['location_name']); ?></p>
             <p class="text-muted small mb-0"><em>Uploaded on: <?php echo date("d M Y", strtotime($row['created_at'])); ?></em></p>
           </div>
 

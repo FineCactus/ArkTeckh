@@ -4,10 +4,21 @@ include("header.php");
 
 $obj = new dboperation();
 $id = $_GET['id'];
-$sql = "SELECT * FROM tbl_previous_works WHERE prev_work_id = '$id'";
+
+$sql = "SELECT pw.*, 
+               c.category_name, 
+               l.location_name, 
+               a.arch_name
+        FROM tbl_previous_works pw
+        LEFT JOIN tbl_category c ON pw.category_id = c.category_id
+        LEFT JOIN tbl_location l ON pw.location_id = l.location_id
+        LEFT JOIN tbl_architects a ON pw.architect_id = a.architect_id
+        WHERE pw.prev_work_id = '$id'";
+
 $res = $obj->executequery($sql);
 $project = mysqli_fetch_array($res);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -147,12 +158,12 @@ $project = mysqli_fetch_array($res);
       <div class="col-4">
         <div class="details-card">
           <h5>Project Details</h5>
-          <ul class="details-list">
-            <li><strong>Category ID:</strong> <?php echo ($project['category_id']); ?></li>
-            <li><strong>Location ID:</strong> <?php echo ($project['location_id']); ?></li>
-            <li><strong>Architect ID:</strong> <?php echo ($project['architect_id']); ?></li>
-            <li><strong>Created:</strong> <?php echo date('F j, Y', strtotime($project['created_at'])); ?></li>
-          </ul>
+<ul class="details-list">
+  <li><strong>Category:</strong> <?php echo ($project['category_name'] ?: "N/A"); ?></li>
+  <li><strong>Location:</strong> <?php echo ($project['location_name'] ?: "N/A"); ?></li>
+  <li><strong>Created:</strong> <?php echo date('F j, Y', strtotime($project['created_at'])); ?></li>
+</ul>
+
         </div>
       </div>
     </div>

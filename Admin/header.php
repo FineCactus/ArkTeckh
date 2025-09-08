@@ -128,7 +128,7 @@ if (session_status() === PHP_SESSION_NONE) {
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#forms">
                   <i class="fas fa-pen-square"></i>
-                  <p>Location Details</p>
+                  <p>Details Entry</p>
                   <span class="caret"></span>
                 </a>
                 <div class="collapse" id="forms">
@@ -146,6 +146,11 @@ if (session_status() === PHP_SESSION_NONE) {
                     <li>
                       <a href="location.php">
                         <span class="sub-item">Location</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="subscription.php">
+                        <span class="sub-item">Subscription</span>
                       </a>
                     </li>
                   </ul>

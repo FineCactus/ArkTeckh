@@ -105,7 +105,7 @@
     }
 
     .popular-tag {
-        background: #B78D65;
+        background: #f70707ff;
         color: #fff;
         font-size: 0.8rem;
         padding: 4px 12px;
@@ -125,31 +125,16 @@
         <p class="section-subtitle">Enjoy unlimited access to premium features</p>
         <div class="row justify-content-center mt-5">
 
-            <!-- Monthly Plan -->
-            <div class="col-md-5 col-lg-4 mb-4 d-flex">
-                <div class="pricing-card w-100">
-                    <div class="plan-name">Monthly Plan</div>
-                    <div class="price">&#8377;150<span>/ month</span></div>
-                    <ul class="features">
-                        <li>Unlimited Project Upload</li>
-                        <li>High-Quality Content</li>
-                        <li>Cancel Anytime</li>
-                    </ul>
-                    <a href="#" class="btn-subscribe">Choose Monthly</a>
-                </div>
-            </div>
-
             <!-- Yearly Plan -->
             <div class="col-md-5 col-lg-4 mb-4 d-flex">
                 <div class="pricing-card w-100">
                     <span class="popular-tag">Most Popular</span>
                     <div class="plan-name">Yearly Plan</div>
-                    <div class="price">&#8377;1530<span>/ year</span></div>
+                    <div class="price">&#8377;500<span>/ year</span></div>
                     <ul class="features">
                         <li>Unlimited Project Upload</li>
                         <li>High-Quality Content</li>
                         <li>Cancel Anytime</li>
-                        <li>Save 15%</li>
                     </ul>
                     <a href="#" class="btn-subscribe">Choose Yearly</a>
                 </div>

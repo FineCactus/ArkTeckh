@@ -295,7 +295,7 @@
         icon: 'error',
         title: 'Error',
         text: 'Invalid Username or Password.',
-        confirmButtonColor: '#d33',
+        confirmButtonColor: '#B78D65',
         allowOutsideClick: true,
         allowEscapeKey: true,
         allowEnterKey: true,

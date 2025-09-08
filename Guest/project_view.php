@@ -24,7 +24,6 @@ $project = mysqli_fetch_array($res);
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title><?php echo ($project['title']); ?> | Project View</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     /* Scoped under .project-view-page to avoid affecting header/footer */
@@ -125,6 +124,48 @@ $project = mysqli_fetch_array($res);
     .project-view-page .details-list strong {
       color: #34495e;
     }
+    .project-view-page .book-section {
+  max-width: 1000px;
+  margin: 30px auto 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* Book form matches section width, centers content, removes default space */
+.project-view-page .book-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Button takes full form width and inherits style */
+.project-view-page .book-btn {
+  display: block;
+  width: 100%;
+  padding: 16px 0;
+  background: #B78D65;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(26,115,232,0.07);
+  transition: background 0.2s;
+  cursor: pointer;
+  max-width: 400px;
+}
+
+/* Button hover effect */
+.project-view-page .book-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
   </style>
 </head>
 <body>
@@ -157,20 +198,24 @@ $project = mysqli_fetch_array($res);
       </div>
       <div class="col-4">
         <div class="details-card">
-          <h5>Project Details</h5>
-<ul class="details-list">
-  <li><strong>Category:</strong> <?php echo ($project['category_name'] ?: "N/A"); ?></li>
-  <li><strong>Location:</strong> <?php echo ($project['location_name'] ?: "N/A"); ?></li>
-  <li><strong>Architect:</strong> <?php echo ($project['arch_name'] ?: "N/A"); ?></li>
-  <li><strong>Created:</strong> <?php echo date('F j, Y', strtotime($project['created_at'])); ?></li>
-</ul>
-
+          <h5>Details</h5>
+            <ul class="details-list">
+              <li><strong>Category:</strong> <?php echo ($project['category_name'] ?: "N/A"); ?></li>
+              <li><strong>Location:</strong> <?php echo ($project['location_name'] ?: "N/A"); ?></li>
+              <li><strong>Architect:</strong> <?php echo ($project['arch_name'] ?: "N/A"); ?></li>
+            </ul>
         </div>
       </div>
     </div>
   </div>
+<div class="book-section">
+  <form action="index.php" method="post" class="book-form">
+      <input type="hidden" name="architect_id" value="<?php echo $project['architect_id']; ?>">
+      <input type="hidden" name="project_id" value="<?php echo $project['prev_work_id']; ?>">
+      <button type="submit" class="book-btn">Book Now</button>
+    </form>
 </div>
-
+</div>
 <?php include("footer.php"); ?>
 </body>
 </html>

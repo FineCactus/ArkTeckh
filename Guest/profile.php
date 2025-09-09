@@ -19,11 +19,11 @@ $res = $obj->executequery($sql);
 $customer = mysqli_fetch_assoc($res);
 
 // ✅ Defensive values (avoid warnings)
-$name     = $customer['name'] ?? "Not available";
+$name     = $customer['cname'] ?? "Not available";
 $email    = $customer['email'] ?? "Not available";
 $phone    = $customer['phone'] ?? "Not available";
 $username = $customer['username'] ?? "Not provided";
-$status   = $customer['status'] ?? "Not provided";
+$addres  = $customer['addres'] ?? "Not provided";
 ?>
 
 <!-- Custom CSS -->
@@ -75,7 +75,10 @@ $status   = $customer['status'] ?? "Not provided";
 <main>
     <div class="profile-container">
         <!-- Left Section -->
-        <div class="left">
+         <div class="left">
+            <img src="<?php echo $customer['cprofile'] ? '../uploads/'.$customer['cprofile'] : '../uploads/default.png'; ?>" 
+                 class="profile-pic" 
+                 alt="Profile Picture">
             <div class="architect-info">
                 <h1><?php echo $name; ?></h1>
                 <p><strong>Email:</strong> <?php echo $email; ?></p>
@@ -102,8 +105,8 @@ $status   = $customer['status'] ?? "Not provided";
                 <?php echo $username; ?>
             </div>
             <div class="detail">
-                <strong>Status</strong>
-                <?php echo $status; ?>
+                <strong>Address</strong>
+                <?php echo $addres; ?>
             </div>
 
             <a href="update_customer_profile.php" class="update-btn">Update Profile</a>

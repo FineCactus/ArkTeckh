@@ -290,18 +290,56 @@
 
   <?php if (isset($_GET['status'])): ?>
   <script>
-    <?php if ($_GET['status'] == 'error'): ?>
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Invalid Username or Password.',
-        confirmButtonColor: '#B78D65',
-        allowOutsideClick: true,
-        allowEscapeKey: true,
-        allowEnterKey: true,
-        focusConfirm: false 
-      });
-    <?php endif; ?>
+    document.addEventListener('DOMContentLoaded', function () {
+      let status = "<?php echo $_GET['status']; ?>";
+
+      if (status === "success") {
+        Swal.fire({
+          icon: 'success',
+          title: 'Registered successfully',
+          confirmButtonColor: '#B78D65',
+          allowOutsideClick: true,
+          allowEscapeKey: true,
+          allowEnterKey: true,
+          focusConfirm: false 
+        });
+      } else if (status === "exist") {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Already Exists',
+          text: 'Username already exists!',
+          confirmButtonColor: '#B78D65',
+          allowOutsideClick: true,
+          allowEscapeKey: true,
+          allowEnterKey: true,
+          focusConfirm: false 
+        });
+      } else if (status === "empty") {
+        Swal.fire({
+          icon: 'info',
+          title: 'Empty Field',
+          text: 'Please enter a username!',
+          confirmButtonColor: '#B78D65',
+          allowOutsideClick: true,
+          allowEscapeKey: true,
+          allowEnterKey: true,
+          focusConfirm: false 
+        });
+      } else if (status === "error") {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Something went wrong while creating profile.',
+          allowOutsideClick: true,
+          allowEscapeKey: true,
+          allowEnterKey: true,
+          focusConfirm: false 
+        });
+      }
+
+      // Remove status from URL
+      window.history.replaceState({}, document.title, "customer_signup.php");
+    });
   </script>
 <?php endif; ?>
 

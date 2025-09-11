@@ -5,9 +5,17 @@ if (session_status() === PHP_SESSION_NONE) {
 
 include_once("../dboperation.php");
 $obj = new dboperation();
-$sql = "SELECT * FROM tbl_previous_works ORDER BY created_at DESC";
+
+$current_arch_id = $_SESSION['architect_id'];
+
+$sql = "SELECT * 
+        FROM tbl_previous_works 
+        WHERE architect_id = '$current_arch_id' 
+        ORDER BY created_at DESC";
+
 $res = $obj->executequery($sql);
 ?>
+
 
 <?php include("header.php"); ?>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -175,7 +183,7 @@ $res = $obj->executequery($sql);
   <a href="project_view.php?id=<?php echo $row['prev_work_id']; ?>" 
      class="view-btn">View</a>
 
-  <button onclick="confirmDelete(<?php echo $row['prev_work_id']; ?>)" 
+  <button data-id="<?php echo $row['prev_work_id']; ?>"
           class="delete-btn">Delete</button>
 </div>
 
@@ -213,10 +221,37 @@ $res = $obj->executequery($sql);
       }
 
       // Remove status from URL
-      window.history.replaceState({}, document.title, "architect_view_view.php");
+      window.history.replaceState({}, document.title, "architect_view.php");
     });
-  </script>
+  </script> 
 <?php endif; ?>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const deleteButtons = document.querySelectorAll(".delete-btn");
+
+  deleteButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const work_id = this.getAttribute("data-id");
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "This project will be permanently deleted!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = `project_deleteaction.php?eid=${work_id}`;
+        }
+      });
+    });
+  });
+});
+</script>
+
 
 
 <?php include("footer.php"); ?>

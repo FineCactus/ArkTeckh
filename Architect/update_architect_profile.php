@@ -4,7 +4,7 @@ include("header.php");
 include_once("../dboperation.php");
 $obj = new dboperation();
 
-if (!isset($_SESSION['usertype']) || $_SESSION['usertype'] != 'architect') {
+if (!isset($_SESSION['architect_id'])) {
     header("Location: ../login.php");
     exit();
 }
@@ -27,7 +27,7 @@ $architect = mysqli_fetch_assoc($res);
     </div>
     <form action="profile_action.php" method="POST" enctype="multipart/form-data">
       <div>
-        <label for="arch_name">Full Name (Read only)</label>
+        <label for="arch_name">Full Name </label>
         <input type="text" id="arch_name" name="arch_name"
                value="<?php echo ($architect['arch_name']); ?>" readonly>
       </div>

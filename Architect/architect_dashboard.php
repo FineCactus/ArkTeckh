@@ -2,9 +2,9 @@
 session_start();
 include("header.php");
 include_once("../dboperation.php");
-$obj = new dboperation();
+$obj = new dboperation(); 
 
-if (!isset($_SESSION['usertype']) || $_SESSION['usertype'] != 'architect') {
+if (!isset($_SESSION['architect_id'])) {
     header("Location: ../login.php");
     exit();
 }

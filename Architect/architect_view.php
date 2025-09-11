@@ -8,10 +8,13 @@ $obj = new dboperation();
 
 $current_arch_id = $_SESSION['architect_id'];
 
-$sql = "SELECT * 
-        FROM tbl_previous_works 
-        WHERE architect_id = '$current_arch_id' 
-        ORDER BY created_at DESC";
+$sql = "SELECT pw.*, l.location_name 
+        FROM tbl_previous_works pw
+        JOIN tbl_location l 
+          ON pw.location_id = l.location_id
+        WHERE pw.architect_id = '$current_arch_id'
+        ORDER BY pw.created_at DESC";
+
 
 $res = $obj->executequery($sql);
 ?>
@@ -107,26 +110,26 @@ $res = $obj->executequery($sql);
     overflow: hidden;
   }
 
-.delete-btn::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -75%;
-    width: 50%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: skewX(-25deg);
-    transition: all 0.5s ease;
-  }
+    .delete-btn::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: skewX(-25deg);
+        transition: all 0.5s ease;
+      }
 
-.delete-btn:hover::after {
-    left: 125%;
-  }
+    .delete-btn:hover::after {
+        left: 125%;
+      }
 
-.delete-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 20px rgba(255, 0, 0, 0.3);
-  }
+    .delete-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 20px rgba(255, 0, 0, 0.3);
+      }
   </style>
 
 <!-- Page Header -->
@@ -174,7 +177,7 @@ $res = $obj->executequery($sql);
           <!-- Middle: Details -->
           <div class="col-md-5 p-4">
             <h4 class="fw-bold mb-2"><?php echo  ($row['title']); ?></h4>
-            <p class="mb-1"><strong>Location:</strong> <?php echo  ($row['location_id']); ?></p>
+            <p class="mb-1"><strong>Location:</strong> <?php echo ($row['location_name']); ?></p>
             <p class="text-muted small mb-0"><em>Uploaded on: <?php echo date("d M Y", strtotime($row['created_at'])); ?></em></p>
           </div>
 

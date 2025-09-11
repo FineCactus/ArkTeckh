@@ -54,35 +54,62 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <title>Edit Project - <?php echo $project['title']; ?></title>
   <style>
     body {
-      background: #f4f6f9;
-      font-family: "Segoe UI", Tahoma, sans-serif;
       margin: 0;
       padding: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: linear-gradient(135deg, #f9f9f9, #e8e4dd);
+      overflow-x: hidden;
     }
     .edit-page {
-      padding: 40px 20px;
-    }
-    .form-container {
-      max-width: 800px;
-      margin: auto;
-      background: #fff;
-      padding: 35px;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    }
-    .form-container h2 {
-      margin-bottom: 25px;
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #2c3e50;
-      text-align: center;
+      padding: 50px 20px;
+      position: relative;
     }
 
-    /* 👇 Added grid layout */
+    /* floating background circle */
+    .edit-page::before {
+      content: "";
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(183,141,101,0.3), transparent 70%);
+      top: -150px;
+      right: -100px;
+      z-index: 0;
+    }
+
+    .form-container {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+      margin: auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+    .form-container h2 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2c3e50;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+    .form-container h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #B78D65;
+      margin: 12px auto 0;
+      border-radius: 3px;
+    }
+
     .form-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 22px;
     }
     .form-group {
       display: flex;
@@ -96,52 +123,72 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       font-weight: 600;
       margin-bottom: 8px;
       color: #444;
+      font-size: 0.95rem;
     }
     input, select, textarea {
-      padding: 12px 14px;
-      border-radius: 8px;
+      padding: 13px 15px;
+      border-radius: 10px;
       border: 1px solid #ccc;
       font-size: 1rem;
-      transition: 0.2s;
+      transition: all 0.3s ease;
+      background: #fafafa;
     }
     input:focus, select:focus, textarea:focus {
-      border-color: #2c3e50;
+      border-color: #B78D65;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(183,141,101,0.15);
       outline: none;
-      box-shadow: 0 0 0 3px rgba(44,62,80,0.1);
     }
     textarea {
       resize: vertical;
-      min-height: 120px;
+      min-height: 140px;
     }
     .file-inputs {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;       /* spacing between file inputs */
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
-    .file-inputs input {
-        margin-bottom: 0; /* remove extra margin since gap handles spacing */
+
+    /* Preview styles */
+    .preview {
+      margin-top: 10px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .preview img {
+      width: 100px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #eee;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .preview img:hover {
+      transform: scale(1.05);
     }
 
     button {
       width: 100%;
-      padding: 14px;
+      padding: 15px;
       border: none;
-      border-radius: 10px;
-      background: #B78D65;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #B78D65, #9e734a);
       color: white;
-      font-size: 1.1rem;
-      font-weight: 600;
+      font-size: 1.15rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: 0.3s;
-      grid-column: span 2; /* full width button */
+      transition: all 0.3s ease;
+      grid-column: span 2;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
     button:hover {
-      background: #B78D65;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, #9e734a, #B78D65);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     }
 
-    /* Responsive stacking */
     @media (max-width: 768px) {
       .form-grid {
         grid-template-columns: 1fr;
@@ -156,7 +203,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="edit-page">
   <div class="form-container">
     <h2>Edit Project</h2>
-    <!-- 👇 Added form-grid -->
     <form action="" method="POST" enctype="multipart/form-data" class="form-grid">
       
       <div class="form-group">
@@ -195,16 +241,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <div class="form-group file-inputs full-width">
         <label>Update Images (optional)</label>
-        <input type="file" name="image1">
-        <input type="file" name="image2">
-        <input type="file" name="image3">
-        </div>
+        <input type="file" name="image1" accept="image/*" onchange="previewImage(this,1)">
+        <input type="file" name="image2" accept="image/*" onchange="previewImage(this,2)">
+        <input type="file" name="image3" accept="image/*" onchange="previewImage(this,3)">
+        <div class="preview" id="preview"></div>
+      </div>
 
-
-      <button type="submit">Update Project</button>
+      <button type="submit"> Update Project</button>
     </form>
   </div>
 </div>
+
+<script>
+  function previewImage(input, index) {
+    const preview = document.getElementById("preview");
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        let img = document.getElementById("imgPreview" + index);
+        if (!img) {
+          img = document.createElement("img");
+          img.id = "imgPreview" + index;
+          preview.appendChild(img);
+        }
+        img.src = e.target.result;
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
 </body>
 </html>
 

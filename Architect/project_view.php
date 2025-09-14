@@ -17,226 +17,174 @@ $res = $obj->executequery($sql);
 $project = mysqli_fetch_array($res);
 ?>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    /* Scoped under .project-view-page to avoid affecting header/footer */
-    .project-view-page {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #f5f7fa;
-      color: #333;
-      padding: 30px 0;
-    }
-
-    .project-view-page .container {
-      max-width: 1000px;
-      margin: auto;
-      background: #fff;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    .project-view-page .project-title {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: #2c3e50;
-    }
-
-    .project-view-page .project-date {
-      color: #777;
-      font-size: 0.9rem;
-      margin-bottom: 25px;
-    }
-
-    /* Image gallery */
-    .project-view-page .img-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-
-    .project-view-page .img-col img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .project-view-page .img-col img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    }
-
-    /* Content area */
-    .project-view-page .row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .project-view-page .col-8 {
-      flex: 2;
-      min-width: 300px;
-    }
-
-    .project-view-page .col-4 {
-      flex: 1;
-      min-width: 250px;
-    }
-
-    .project-view-page .description-card,
-    .project-view-page .details-card {
-      background: #fdfdfd;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-    }
-
-    .project-view-page .description-card h4 {
-      margin-bottom: 15px;
-    }
-
-    .project-view-page .details-card h5 {
-      margin-bottom: 15px;
-    }
-
-    .project-view-page .details-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .project-view-page .details-list li {
-      margin-bottom: 10px;
-      font-size: 0.95rem;
-    }
-
-    .project-view-page .details-list strong {
-      color: #34495e;
-    }
-    .project-view-page .book-section {
-      max-width: 1000px;
-      margin: 30px auto 0 auto;
-      display: flex;
-      justify-content: center;
-    }
-
-    /* Book form matches section width, centers content, removes default space */
-    .project-view-page .book-form {
-      width: 100%;
-      max-width: 400px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* Button takes full form width and inherits style */
-    .project-view-page .book-btn {
-      display: block;
-      width: 100%;
-      padding: 16px 0;
-      background: #B78D65;
-      color: #fff;
-      font-size: 1.2rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 10px;
-      text-align: center;
-      text-decoration: none;
-      box-shadow: 0 3px 8px rgba(26,115,232,0.07);
-      transition: background 0.2s;
-      cursor: pointer;
-      max-width: 400px;
-    }
-
-    /* Button hover effect */
-    .project-view-page .book-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-    }
-
-  </style>
-</head>
-<body>
-
-<div class="project-view-page">
-  <div class="container">
-    <h1 class="project-title"><?php echo ($project['title'] ?: "Untitled Project"); ?></h1>
-    <div class="project-date">Created on <?php echo date('F j, Y', strtotime($project['created_at'])); ?></div>
-
-    <!-- Image Gallery -->
-    <div class="img-row">
-      <?php
-        $images = [$project['image1'], $project['image2'], $project['image3']];
-        foreach ($images as $idx => $img) {
-          if($img) {
-            echo '<div class="img-col">
-                    <img src="../uploads/'.$img.'" alt="Project Image">
-                  </div>';
-          }
-        }
-      ?>
-    </div>
-
-    <div class="row">
-      <div class="col-8">
-        <div class="description-card">
-          <h4>Description</h4>
-          <p><?php echo ($project['descriptions'] ?: "No description available."); ?></p>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="details-card">
-          <h5>Details</h5>
-            <ul class="details-list">
-              <li><strong>Category:</strong> <?php echo ($project['category_name'] ?: "N/A"); ?></li>
-              <li><strong>Location:</strong> <?php echo ($project['project_location'] ?: "N/A"); ?></li>
-            </ul>
-        </div>
-      </div>
-    </div>
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+  <div class="container py-5">
+    <h1 class="display-1 text-white animated slideInDown"><?php echo ($project['title'] ?: "Untitled Project"); ?></h1>
+    <nav aria-label="breadcrumb animated slideInDown">
+      <ol class="breadcrumb text-uppercase mb-0">
+        <li class="breadcrumb-item"><div class="text-white">Created on <?php echo date('F j, Y', strtotime($project['created_at'])); ?></div></li>
+      </ol>
+    </nav>
   </div>
-<div class="book-section">
-  <form action="index.php" method="post" class="book-form">
-      <input type="hidden" name="architect_id" value="<?php echo $project['architect_id']; ?>">
-      <input type="hidden" name="project_id" value="<?php echo $project['prev_work_id']; ?>">
-      <button type="button" class="book-btn" id="editProjectBtn">Update Details</button>
-    </form>
-</div>
 </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const editBtn = document.getElementById("editProjectBtn");
+<style>
+  /* Lively Project View Design */
+  .project-view-container {
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+    background: rgba(255,255,255,0.98);
+    border-radius: 26px;
+    box-shadow: 0 8px 32px rgba(183,141,101, 0.14), 0 1.5px 4px rgba(183,141,101,0.10);
+    padding: 46px 38px 32px 38px;
+    transition: all 0.25s;
+    border: 2px solid transparent;
+  }
+  .project-view-container:hover {
+    border-image: linear-gradient(90deg, #B78D65, #ffd094 85%);
+    border-image-slice: 1;
+    box-shadow: 0 16px 54px rgba(183,141,101,0.22), 0 4px 16px rgba(184,143,34,0.09);
+  }
 
-    editBtn.addEventListener("click", function () {
-      Swal.fire({
-        title: 'Edit Project',
-        text: "Do you want to edit this project?",
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#B78D65',
-        cancelButtonColor: '#e28181ff',
-        confirmButtonText: 'Yes, edit it!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.location.href = "edit_project.php?id=<?php echo $project['prev_work_id']; ?>";
-        }
-      });
-    });
-  });
-</script>
+  /* Titles */
+  .project-view-container h2 {
+    color: #B78D65;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    position: relative;
+  }
+  .project-view-container h2:after {
+    content: "";
+    width: 64px; height: 4px;
+    margin: 20px auto 0 auto;
+    display: block;
+    border-radius: 2.5px;
+    background: linear-gradient(90deg,#fdeab6,#B78D65 70%);
+  }
+
+  /* Image gallery */
+  .project-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  .project-images img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .project-images img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 16px 36px rgba(183,141,101,0.22);
+  }
+
+  /* Description & Details Cards */
+  .card {
+    background: rgba(255,255,255,0.97);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(183,141,101,0.1);
+    padding: 25px;
+    margin-bottom: 20px;
+  }
+  .card h4, .card h5 {
+    color: #B78D65;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  /* Details list */
+  .details-list {
+    list-style: none;
+    padding: 0;
+  }
+  .details-list li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #333;
+  }
+  .details-list li strong {
+    color: #B78D65;
+  }
+
+  /* Update Button */
+  .update-btn {
+    display: inline-block;
+    padding: 12px 35px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #d8ad84ff 0%, #B78D65 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  .update-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-25deg);
+    transition: all 0.5s ease;
+  }
+  .update-btn:hover::after {
+    left: 125%;
+  }
+  .update-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(255, 255, 255, 0.3);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .project-view-container {
+      padding: 20px;
+    }
+  }
+</style>
+
+<div class="project-view-container">
+  <h2><?php echo ($project['title'] ?: "Untitled Project"); ?></h2>
+  <div class="project-images">
+    <?php
+    $images = [$project['image1'], $project['image2'], $project['image3']];
+    foreach ($images as $img) {
+        if ($img) echo '<img src="../uploads/'.$img.'" alt="Project Image">';
+    }
+    ?>
+  </div>
+
+  <div class="card">
+    <h4>Description</h4>
+    <p><?php echo ($project['descriptions'] ?: "No description available."); ?></p>
+  </div>
+
+  <div class="card">
+    <h5>Details</h5>
+    <ul class="details-list">
+      <li><strong>Category:</strong> <?php echo ($project['category_name'] ?: "N/A"); ?></li>
+      <li><strong>Architect:</strong> <?php echo ($project['arch_name'] ?: "N/A"); ?></li>
+      <li><strong>Location:</strong> <?php echo ($project['project_location'] ?: "N/A"); ?></li>
+    </ul>
+  </div>
+
+  <form action="edit_project.php" method="get" class="text-center">
+    <input type="hidden" name="id" value="<?php echo $project['prev_work_id']; ?>">
+    <button type="submit" class="update-btn">Update Details</button>
+  </form>
+</div>
 
 <?php include("footer.php"); ?>
-</body>
-</html>

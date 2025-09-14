@@ -7,12 +7,12 @@ include_once("../dboperation.php");
 $obj = new dboperation();
 
 if (isset($_POST['submit'])) {
-    $architect_id = $_POST['architect_id'];
+    $architect_id = $_SESSION['architect_id'];   
     $category_id = $_POST['category_id'];
     $district_id = $_POST['district_id'];
     $location_id = $_POST['location_id'];
 
-    $sql = "INSERT INTO tbl_previous_works (architect_id, category_id, location_id, created_at) 
+    $sql = "INSERT INTO tbl_previous_works (architect_id, category_id, project_location, created_at) 
             VALUES ('$architect_id', '$category_id', '$location_id', NOW())";
 
     $result = $obj->executequery($sql);

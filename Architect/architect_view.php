@@ -8,14 +8,10 @@ $obj = new dboperation();
 
 $current_arch_id = $_SESSION['architect_id'];
 
-$sql = "SELECT pw.*, l.location_name 
+$sql = "SELECT pw.*
         FROM tbl_previous_works pw
-        JOIN tbl_location l 
-          ON pw.location_id = l.location_id
         WHERE pw.architect_id = '$current_arch_id'
         ORDER BY pw.created_at DESC";
-
-
 $res = $obj->executequery($sql);
 ?>
 
@@ -177,7 +173,7 @@ $res = $obj->executequery($sql);
           <!-- Middle: Details -->
           <div class="col-md-5 p-4">
             <h4 class="fw-bold mb-2"><?php echo  ($row['title']); ?></h4>
-            <p class="mb-1"><strong>Location:</strong> <?php echo ($row['location_name']); ?></p>
+            <p class="mb-1"><strong>Location:</strong> <?php echo ($row['project_location']); ?></p>
             <p class="text-muted small mb-0"><em>Uploaded on: <?php echo date("d M Y", strtotime($row['created_at'])); ?></em></p>
           </div>
 

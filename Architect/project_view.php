@@ -7,11 +7,9 @@ $id = $_GET['id'];
 
 $sql = "SELECT pw.*, 
                c.category_name, 
-               l.location_name, 
                a.arch_name
         FROM tbl_previous_works pw
         LEFT JOIN tbl_category c ON pw.category_id = c.category_id
-        LEFT JOIN tbl_location l ON pw.location_id = l.location_id
         LEFT JOIN tbl_architects a ON pw.architect_id = a.architect_id
         WHERE pw.prev_work_id = '$id'";
 
@@ -201,7 +199,7 @@ $project = mysqli_fetch_array($res);
           <h5>Details</h5>
             <ul class="details-list">
               <li><strong>Category:</strong> <?php echo ($project['category_name'] ?: "N/A"); ?></li>
-              <li><strong>Location:</strong> <?php echo ($project['location_name'] ?: "N/A"); ?></li>
+              <li><strong>Location:</strong> <?php echo ($project['project_location'] ?: "N/A"); ?></li>
             </ul>
         </div>
       </div>
@@ -211,7 +209,7 @@ $project = mysqli_fetch_array($res);
   <form action="index.php" method="post" class="book-form">
       <input type="hidden" name="architect_id" value="<?php echo $project['architect_id']; ?>">
       <input type="hidden" name="project_id" value="<?php echo $project['prev_work_id']; ?>">
-      <a href="edit_project.php?id=<?php echo $project['prev_work_id']; ?>" class="book-btn">Update Project</a>
+      <a href="edit_project.php?id=<?php echo $project['prev_work_id']; ?>" class="book-btn">Update Details</a>
     </form>
 </div>
 </div>

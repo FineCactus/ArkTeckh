@@ -12,14 +12,13 @@ $project = mysqli_fetch_array($res);
 
 // Fetch dropdown data
 $categories = $obj->executequery("SELECT * FROM tbl_category");
-$locations  = $obj->executequery("SELECT * FROM tbl_location");
 
 // Update logic
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $_POST['title'];
     $desc  = $_POST['descriptions'];
     $cat   = $_POST['category_id'];
-    $loc   = $_POST['location_id'];
+    $loc   = $_POST['project_location'];
 
     // Handle image uploads
     $imgSql = "";
@@ -35,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   SET title='$title',
                       descriptions='$desc',
                       category_id='$cat',
-                      location_id='$loc'
+                      project_location='$loc'
                       $imgSql
                   WHERE prev_work_id = '$id'";
 
@@ -229,15 +228,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <div class="form-group">
         <label>Location</label>
-        <select name="location_id" required>
-          <?php while($loc = mysqli_fetch_array($locations)) { ?>
-            <option value="<?php echo $loc['location_id']; ?>" 
-              <?php if($loc['location_id'] == $project['location_id']) echo "selected"; ?>>
-              <?php echo $loc['location_name']; ?>
-            </option>
-          <?php } ?>
-        </select>
+        <input type="text" name="project_location" 
+              value="<?php echo($project['project_location']); ?>" 
+              required>
       </div>
+
 
       <div class="form-group file-inputs full-width">
         <label>Update Images (optional)</label>

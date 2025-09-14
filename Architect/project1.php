@@ -125,44 +125,51 @@ $display=mysqli_fetch_array($res);
       font-size: 15px;
   }
   /* Style for dropdowns */
-  select {
-      width: 100%;
-      padding: 14px 18px;
-      border-radius: 12px;
-      border: 2px solid #ddd;
-      background-color: #fff;
-      box-sizing: border-box;
-      font-size: 16px;
-      color: #3e3127;
-      transition: all 0.3s ease;
-      font-family: "Segoe UI", sans-serif;
+  /* Style for dropdowns and textboxes (replace your old select block with this) */
+    .form-group select,
+    .form-group input[type="text"] {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    background-color: #fff;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #3e3127;
+    transition: all 0.25s ease;
+    font-family: "Segoe UI", sans-serif;
+    }
 
-      /* Remove default arrow */
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
+    /* Select-only: remove default arrow + custom arrow icon */
+    .form-group select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23B78D65' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 18px;
+    padding-right: 45px; /* space for arrow */
+    }
 
-      /* Add custom arrow */
-      background-image: url("data:image/svg+xml;utf8,<svg fill='%23B78D65' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-      background-repeat: no-repeat;
-      background-position: right 15px center;
-      background-size: 18px;
-      padding-right: 45px; /* space for arrow */
-  }
+    /* Hover state */
+    .form-group select:hover,
+    .form-group input[type="text"]:hover {
+    border-color: #B78D65;
+    background-color: #faf7f2;
+    box-shadow: 0 4px 10px rgba(183, 141, 101, 0.15);
+    }
 
-  select:hover {
-      border-color: #B78D65;
-      background-color: #faf7f2;
-      box-shadow: 0 4px 10px rgba(183, 141, 101, 0.15);
-  }
+    /* Focus state (fixed selector) */
+    .form-group select:focus,
+    .form-group input[type="text"]:focus {
+    border-color: #B78D65;
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(183, 141, 101, 0.3);
+    transform: scale(1.02);
+    }
 
-  select:focus {
-      border-color: #B78D65;
-      outline: none;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(183, 141, 101, 0.3);
-      transform: scale(1.02);
-  }
 
 
   /* Button */
@@ -231,31 +238,14 @@ $display=mysqli_fetch_array($res);
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="location_id">Location</label>
-        <select name="location_id" id="location_id" required>
-          <option value="">-- Select Location --</option>
-        </select>
-      </div>
+    <div class="form-group">
+         <label for="location_id">Location</label>
+         <input type="text" name="location_id" id="location_id" placeholder="Enter Location" required>
+</div>
+
 
       <button type="submit" class="next-btn" name="submit">Next →</button>
     </div>
   </main>
 </form>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$('#district_id').on('change', function() {
-    var districtid = $(this).val();
-    $.ajax({
-        type: 'POST',
-        url: 'get_locations.php',
-        data: {districtid: districtid},
-        success: function(html) {
-            $('#location_id').html(html);
-        }
-    });
-});
-</script>
-
 <?php include("footer.php"); ?>

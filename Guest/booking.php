@@ -5,15 +5,12 @@ include_once("../dboperation.php");
 $obj = new dboperation();
 
 // Fetch all previous works with category, location, district
-$sql = "SELECT pw.*, 
-               c.category_name, 
-               l.location_name, 
-               d.district_name 
+$sql = "SELECT pw.*, c.category_name
         FROM tbl_previous_works pw
         LEFT JOIN tbl_category c ON pw.category_id = c.category_id
-        LEFT JOIN tbl_location l ON pw.location_id = l.location_id
-        LEFT JOIN tbl_district d ON l.district_id = d.district_id
         ORDER BY pw.created_at DESC";
+
+
 
 $res = $obj->executequery($sql);
 ?>
@@ -138,8 +135,7 @@ $res = $obj->executequery($sql);
           <div class="col-md-5 p-4">
             <h4 class="fw-bold mb-2"><?php echo  ($row['title'] ?: "Untitled Project"); ?></h4>
             <p class="mb-1"><strong>Category:</strong> <?php echo  ($row['category_name']); ?></p>
-            <p class="mb-1"><strong>District:</strong> <?php echo  ($row['district_name']); ?></p>
-            <p class="mb-1"><strong>Location:</strong> <?php echo  ($row['location_name']); ?></p>
+            <p class="mb-1"><strong>Location:</strong> <?php echo ($row['project_location']); ?></p>
             <p class="text-muted small mb-0"><em>Uploaded on: <?php echo date("d M Y", strtotime($row['created_at'])); ?></em></p>
           </div>
 

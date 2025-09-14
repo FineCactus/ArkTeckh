@@ -157,7 +157,7 @@ $project = mysqli_fetch_array($res);
 </style>
 
 <div class="project-view-container">
-  <h2><?php echo ($project['title'] ?: "Untitled Project"); ?></h2>
+  <h2>Project Details</h2>
   <div class="project-images">
     <?php
     $images = [$project['image1'], $project['image2'], $project['image3']];
@@ -176,7 +176,6 @@ $project = mysqli_fetch_array($res);
     <h5>Details</h5>
     <ul class="details-list">
       <li><strong>Category:</strong> <?php echo ($project['category_name'] ?: "N/A"); ?></li>
-      <li><strong>Architect:</strong> <?php echo ($project['arch_name'] ?: "N/A"); ?></li>
       <li><strong>Location:</strong> <?php echo ($project['project_location'] ?: "N/A"); ?></li>
     </ul>
   </div>

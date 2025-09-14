@@ -1,229 +1,263 @@
-<?php include("header.php"); 
-
+<?php 
+include("header.php"); 
 include_once("../dboperation.php");
 $obj = new dboperation();
 
-$sql="select* from tbl_previous_works";
+$sql="SELECT * FROM tbl_previous_works";
 $res=$obj->executequery($sql);
 $display=mysqli_fetch_array($res);
-
 ?>
 
-<link href="css/projects.css" rel="stylesheet">
-
 <style>
-    html, body {
-    height: auto;       /* allow page to grow */
-    min-height: 100%;
-    margin: 0;
-    font-family: "Segoe UI", sans-serif;
-    overflow-x: hidden; /* keep horizontal scroll hidden */
-    overflow-y: auto;   /* enable vertical scroll */
-}
+  /* Scoped Form Box (same lively design) */
+  .bg-light.rounded.p-5.shadow {
+    background: rgba(255,255,255,0.98);
+    border-radius: 26px;
+    box-shadow: 0 8px 32px rgba(183,141,101, 0.14), 0 1.5px 4px rgba(183,141,101,0.10);
+    padding: 46px 38px 32px 38px;
+    transition: all 0.25s;
+    border: 2px solid transparent;
+  }
+  .bg-light.rounded.p-5.shadow:hover {
+    border-image: linear-gradient(90deg, #B78D65, #ffd094 85%);
+    border-image-slice: 1;
+    box-shadow: 0 16px 54px rgba(183,141,101,0.22), 0 4px 16px rgba(184,143,34,0.09);
+  }
 
-    /* Background */
-    .background-image {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-        background: url('img/project-1.jpg') no-repeat center center fixed;
-        background-size: cover;
-        z-index: -2;
-    }
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-        background: linear-gradient(120deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
-        backdrop-filter: blur(6px);
-        z-index: -1;
-    }
+  /* Floating inputs */
+  .form-floating input, 
+  .form-floating textarea,
+  .form-floating select {
+    border-radius: 13px !important;
+    border: 2px solid #eaeaeab5;
+    transition: 0.3s;
+    background: rgba(255,255,255,0.97);
+    font-size: 1.04rem;
+  }
+  .form-floating input:focus,
+  .form-floating textarea:focus,
+  .form-floating select:focus {
+    border-color: #B78D65;
+    box-shadow: 0 0 10px 2px #B78D65a7;
+  }
 
-    /* Layout */
-    body, html {
-        height: 100%;
-        margin: 0;
-        font-family: "Segoe UI", sans-serif;
-        overflow-x: hidden;
-    }
-    main {
-        position: relative;
-        padding: 40px 0 60px 0;
-        min-height: 90vh;
-        display: flex;
-        justify-content: center;
-        align-items: start;
-        z-index: 1;
-    }
+  /* Labels */
+  .bg-light.rounded.p-5.shadow .form-floating label,
+  .bg-light.rounded.p-5.shadow label.form-label {
+    color: #a36f3eff;
+    font-weight: 500;
+    font-size: 1rem;
+  }
 
-    /* Card */
-    .project-card {
-        width: 90%;
-        max-width: 700px;
-        background: rgba(255, 255, 255, 0.85);
-        border-radius: 18px;
-        padding: 36px 30px 40px 30px;
-        backdrop-filter: blur(8px);
+  /* Title */
+  .bg-light.rounded.p-5.shadow h4 {
+    font-weight: 800;
+    color: #B78D65;
+    margin-bottom: 32px;
+    font-size: 2rem;
+    text-align: center;
+    position: relative;
+  }
+  .bg-light.rounded.p-5.shadow h4:after {
+    content: "";
+    width: 64px; height: 4px;
+    margin: 20px auto 0 auto;
+    display: block;
+    border-radius: 2.5px;
+    background: linear-gradient(90deg,#fdeab6,#B78D65 70%);
+  }
 
-        /* lively effects */
-        border: 2px solid transparent;
-        background-clip: padding-box, border-box;
-        background-origin: border-box;
-        background-image: 
-            linear-gradient(white, white), 
-            linear-gradient(135deg, #B78D65, #a6784f);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  /* Buttons */
+  .bg-light.rounded.p-5.shadow .btn-primary {
+    background: linear-gradient(90deg, #B78D65 80%, #d6ad60 120%);
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.08rem;
+    letter-spacing: 0.7px;
+    padding: 12px 20px;
+    transition: 0.25s;
+  }
+  .bg-light.rounded.p-5.shadow .btn-primary:hover {
+    background: linear-gradient(90deg, #ab763e 50%, #ffc48d 120%);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 7px 19px -6px #B78D65b5;
+  }
 
-        animation: floatCard 5s ease-in-out infinite;
-        transition: all 0.3s ease;
+  /* Responsive */
+  @media (max-width: 600px) {
+    .bg-light.rounded.p-5.shadow {
+      padding: 20px;
     }
-    .project-card:hover {
-        transform: translateY(-6px) scale(1.02);
-        box-shadow: 0 12px 32px rgba(183, 141, 101, 0.25);
-        border-color: #B78D65;
+  }
+  /* Fancy upload box */
+  .upload-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+    border: 2px dashed #B78D65;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #fffaf3, #fff);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #a36f3e;
+    position: relative;
+    overflow: hidden;
     }
-    @keyframes floatCard {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
-    }
-
-    /* Heading */
-    h2 {
-        text-align: center;
-        color: #3e3127;
-        font-weight: 700;
-        margin-bottom: 30px;
-        font-size: 28px;
-        letter-spacing: 0.6px;
-        position: relative;
-    }
-    h2::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60px;
-        height: 3px;
-        border-radius: 2px;
-        background: #B78D65;
-    }
-
-    /* Labels */
-    label {
-        font-weight: 600;
-        margin: 15px 0 8px;
-        display: block;
-        color: #5a4a39;
-        font-size: 15px;
+    .upload-box:hover {
+    background: #fff6eb;
+    box-shadow: 0 0 12px rgba(183,141,101,0.35);
+    transform: scale(1.03);
     }
 
-    /* Inputs & Textarea */
-    input[type="text"], textarea, input[type="file"] {
-        width: 100%;
-        padding: 14px 15px;
-        border-radius: 12px;
-        border: 2px solid #ddd;
-        background-color: #fff;
-        font-size: 15px;
-        color: #3e3127;
-        transition: all 0.3s ease;
-        font-family: "Segoe UI", sans-serif;
-        box-sizing: border-box;
+    /* hide the real input */
+    .upload-box input[type="file"] {
+    display: none;
     }
 
-    input[type="text"]:focus,
-    textarea:focus {
-        border-color: #B78D65;
-        outline: none;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(183, 141, 101, 0.3);
-        transform: scale(1.02);
+    .upload-box span {
+    pointer-events: none;
     }
 
-    /* File upload layout */
-    .file-row {
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
-        margin-top: 10px;
+    /* preview image */
+    .upload-box img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    top: 0;
+    left: 0;
     }
-    .file-col {
-        flex: 1;
-    }
-    input[type="file"] {
-        padding: 10px;
-        border-radius: 10px;
-        border: 1px dashed #B78D65;
-        cursor: pointer;
-        background: #faf7f2;
-    }
-    input[type="file"]:hover {
-        background: #fff7ef;
-        border-color: #a6784f;
+    .next-btn {
+    display: inline-block;
+    padding: 12px 35px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #d8ad84ff 0%, #B78D65 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
     }
 
-    /* Button */
-    button {
-        background: linear-gradient(135deg, #B78D65, #a6784f);
-        color: white;
-        padding: 15px 0;
-        border: none;
-        border-radius: 14px;
-        font-size: 18px;
-        font-weight: 700;
-        letter-spacing: 0.7px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        width: 100%;
-        margin-top: 20px;
-        box-shadow: 0 6px 16px rgba(183, 141, 101, 0.25);
+    .next-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-25deg);
+    transition: all 0.5s ease;
     }
-    button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 22px rgba(183, 141, 101, 0.35);
+
+    .next-btn:hover::after {
+    left: 125%;
     }
+
+    .next-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(255, 255, 255, 0.3);
+    }
+
+
 </style>
 
-<div class="background-image"></div>
-<div class="overlay"></div>
+<!-- Page Header -->
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+  <div class="container py-5">
+    <h1 class="display-1 text-white animated slideInDown">Add Project</h1>
+    <nav aria-label="breadcrumb animated slideInDown">
+      <ol class="breadcrumb text-uppercase mb-0">
+        <li class="breadcrumb-item"><a class="text-white" href="index.php">Home</a></li>
+        <li class="breadcrumb-item text-primary active" aria-current="page">Projects</li>
+      </ol>
+    </nav>
+  </div>
+</div>
 
-<main>
-    <div class="project-card">
-        <h2>Add New Project</h2>
-        <form action="projects1_action.php" method="POST" enctype="multipart/form-data">
+<!-- Form Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="bg-light rounded p-5 shadow">
+          <h4 class="mb-4">Add New Project</h4>
+          <form action="projects1_action.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="prev_work_id" value="<?php echo $display['prev_work_id']; ?>">
 
             <!-- Project Title -->
-            <label for="project_title">Project Title</label>
-            <input type="text" id="project_title" name="project_title" placeholder="Enter project title" required>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="project_title" name="project_title" placeholder="Enter project title" required>
+              <label for="project_title">Project Title</label>
+            </div>
 
             <!-- Project Description -->
-            <label for="project_description">Description</label>
-            <textarea id="project_description" name="project_description" rows="5" placeholder="Enter project details" required></textarea>
+            <div class="form-floating mb-3">
+              <textarea class="form-control" id="project_description" name="project_description" placeholder="Enter project details" style="height: 120px;" required></textarea>
+              <label for="project_description">Description</label>
+            </div>
 
             <!-- Upload Images -->
-            <label>Upload Images (3 only)</label>
-            <div class="file-row">
-                <div class="file-col">
-                    <input type="file" name="photo1" accept="image/*" required>
-                </div>
-                <div class="file-col">
-                    <input type="file" name="photo2" accept="image/*" required>
-                </div>
-                <div class="file-col">
-                    <input type="file" name="photo3" accept="image/*" required>
-                </div>
+            <label class="form-label">Upload Images</label>
+            <div class="row g-3 mb-3">
+            <div class="col-md-4">
+                <label class="upload-box">
+                <input type="file" name="photo1" accept="image/*" required onchange="previewImage(this)">
+                <span>📷 Upload 1</span>
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label class="upload-box">
+                <input type="file" name="photo2" accept="image/*" required onchange="previewImage(this)">
+                <span>📷 Upload 2</span>
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label class="upload-box">
+                <input type="file" name="photo3" accept="image/*" required onchange="previewImage(this)">
+                <span>📷 Upload 3</span>
+                </label>
+            </div>
             </div>
 
             <!-- Submit -->
-            <button type="submit" name="submit">Submit Project</button>
-        </form>
+            <div class="col-12 text-center mt-4">
+              <button type="submit" class="next-btn" name="submit">Submit Project</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
     </div>
-</main>
+  </div>
+</div>
+<!-- Form End -->
+
+<!-- Script to display the image -->
+<script>
+function previewImage(input) {
+  if (input.files && input.files[0]) {
+    let reader = new FileReader();
+    reader.onload = function(e) {
+      const box = input.closest('.upload-box');
+      box.innerHTML = "<img src='" + e.target.result + "' alt='Preview'>";
+      box.appendChild(input);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+</script>
 
 <?php include("footer.php"); ?>

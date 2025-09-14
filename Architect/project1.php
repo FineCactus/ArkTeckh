@@ -92,44 +92,43 @@ $display=mysqli_fetch_array($res);
       padding: 20px;
     }
   }
-  /* Next Button - same style as View */
-.next-btn {
-  display: inline-block;
-  padding: 12px 35px;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #fff;
-  background: linear-gradient(135deg, #d8ad84ff 0%, #B78D65 100%);
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  position: relative;
-  overflow: hidden;
-}
+  .next-btn {
+    display: inline-block;
+    padding: 12px 35px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #d8ad84ff 0%, #B78D65 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
 
-.next-btn::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: skewX(-25deg);
-  transition: all 0.5s ease;
-}
+  .next-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-25deg);
+    transition: all 0.5s ease;
+  }
 
-.next-btn:hover::after {
-  left: 125%;
-}
+  .next-btn:hover::after {
+    left: 125%;
+  }
 
-.next-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 20px rgba(255, 255, 255, 0.3);
-}
+  .next-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(255, 255, 255, 0.3);
+  }
 
 </style>
 

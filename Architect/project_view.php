@@ -21,6 +21,7 @@ $project = mysqli_fetch_array($res);
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
@@ -209,10 +210,33 @@ $project = mysqli_fetch_array($res);
   <form action="index.php" method="post" class="book-form">
       <input type="hidden" name="architect_id" value="<?php echo $project['architect_id']; ?>">
       <input type="hidden" name="project_id" value="<?php echo $project['prev_work_id']; ?>">
-      <a href="edit_project.php?id=<?php echo $project['prev_work_id']; ?>" class="book-btn">Update Details</a>
+      <button type="button" class="book-btn" id="editProjectBtn">Update Details</button>
     </form>
 </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const editBtn = document.getElementById("editProjectBtn");
+
+    editBtn.addEventListener("click", function () {
+      Swal.fire({
+        title: 'Edit Project',
+        text: "Do you want to edit this project?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#B78D65',
+        cancelButtonColor: '#e28181ff',
+        confirmButtonText: 'Yes, edit it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "edit_project.php?id=<?php echo $project['prev_work_id']; ?>";
+        }
+      });
+    });
+  });
+</script>
+
 <?php include("footer.php"); ?>
 </body>
 </html>

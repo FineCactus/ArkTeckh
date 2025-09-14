@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   WHERE prev_work_id = '$id'";
 
     if ($obj->executequery($updateSql)) {
-        echo "<script>alert('Project updated successfully!'); window.location='project_view.php?id=$id';</script>";
+        echo "<script>window.location='project_view.php?id=$id';</script>";
     } else {
         echo "<script>alert('Error updating project.');</script>";
     }

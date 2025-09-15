@@ -273,15 +273,13 @@ $architect = mysqli_fetch_array($res2);
 
 <!-- Book Now Button -->
 <!-- Book Now Button -->
-<form id="bookForm" action="booking.php" method="get" class="text-center">
-  <input type="hidden" name="id" value="<?php echo $project['prev_work_id']; ?>">
+<form id="bookForm" action="contact_architect.php" method="get" class="text-center">
+  <input type="hidden" name="arch_id" value="<?php echo $architect['architect_id']; ?>">
   <button type="button" class="book-btn" id="bookBtn">
-    <i class="fas fa-calendar-check"></i> Book Now
+    <i class="fas fa-calendar-check"></i> Contact Architect
   </button>
 </form>
 
-<!-- SweetAlert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   document.getElementById("bookBtn").addEventListener("click", function() {
     Swal.fire({
@@ -299,6 +297,7 @@ $architect = mysqli_fetch_array($res2);
     });
   });
 </script>
+
 
 
 <!-- FontAwesome Icons -->

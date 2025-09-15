@@ -87,7 +87,6 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="#" class="nav-item nav-link active" id="registerBtn">REGISTER</a>
             <a href="index.php" class="nav-item nav-link">HOME</a>
-            <a href="booking.php" class="nav-item nav-link">BOOKING</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">ABOUT</a>
                 <div class="dropdown-menu border-0 m-0">
@@ -96,6 +95,8 @@ if (session_status() === PHP_SESSION_NONE) {
                     <a href="services.php" class="dropdown-item">SERVICES</a>
                 </div>
             </div>
+            <a href="booking.php" class="nav-item nav-link">BOOKING</a>
+            <a href="#" class="nav-item nav-link">DASHBOARD</a>
         </div>
         
         <?php if (isset($_SESSION['username'])): ?>

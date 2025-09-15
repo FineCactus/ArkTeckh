@@ -179,7 +179,7 @@ $project = mysqli_fetch_array($res);
     </ul>
   </div>
 
-    <form action="booking.php" method="get" class="text-center">
+    <form action="architect_view.php" method="get" class="text-center">
       <input type="hidden" name="id" value="<?php echo $project['prev_work_id']; ?>">
       <button type="submit" class="update-btn">View Architect</button>
     </form>

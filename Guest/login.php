@@ -218,6 +218,41 @@
       color: var(--dark-brown);
       text-decoration: underline;
     }
+    .update-btn {
+    display: inline-block;
+    padding: 12px 35px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #d8ad84ff 0%, #B78D65 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    }
+    .update-btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: skewX(-25deg);
+      transition: all 0.5s ease;
+    }
+    .update-btn:hover::after {
+      left: 125%;
+    }
+    .update-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px rgba(255, 255, 255, 0.3);
+    }
   </style>
 </head>
 <body>
@@ -236,13 +271,13 @@
     <form id="customer-form" class="active" action="loginaction.php" method="POST">
       <div class="input-group">
         <i class="fas fa-user"></i>
-        <input type="text" name="user" placeholder="Customer Username" required />
+        <input type="text" name="user" placeholder="Username" required />
       </div>
       <div class="input-group">
         <i class="fas fa-lock"></i>
         <input type="password" name="pass" placeholder="Password" required />
       </div>
-      <button type="submit">Login</button>
+      <button type="submit" class="update-btn">LOGIN</button>
       <div class="bottom-link">
         Don’t have an account? <a href="customer_signup.php">Sign up</a>
       </div>
@@ -290,7 +325,8 @@
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          text: 'Something went wrong while creating profile.',
+          text: 'Invalid username or password!',
+          confirmButtonColor: '#B78D65',
           allowOutsideClick: true,
           allowEscapeKey: true,
           allowEnterKey: true,

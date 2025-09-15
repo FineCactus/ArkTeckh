@@ -17,7 +17,7 @@ if(isset($_GET["eid"]))
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<form action="action_pages/categoryeditaction.php" method="POST" enctype="multipart/form-data">
+<form action="action_pages/categoryeditaction.php" method="POST">
 
 <div class="container" >
           <div class="page-inner">
@@ -61,18 +61,7 @@ if(isset($_GET["eid"]))
                             placeholder="Enter Your Name"
                           />
                           </div>
-                          <div class="form-group">
-                          <label for="email2"></label>
-                          <img src="../uploads/<?php echo $display['photo']; ?>" width="100" height="100">
-                        </div><br>
-                          <div class="form-group">
-                          <label for="email2">Image</label>
-                          <input
-                            type="file"
-                            class="form-control"
-                            name="photo"
-                          />
-                        </div><br>
+                          <br>
                           <div class="form-group">
                           <input
                             type="hidden"

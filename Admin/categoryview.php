@@ -43,7 +43,6 @@ $res = $obj->executequery($s);
                           <tr>
                             <th>Category ID</th>
                             <th>Category Name</th>
-                            <th>Category Photo </th>
                           </tr>
                         </thead>
             <tbody>
@@ -53,7 +52,6 @@ $res = $obj->executequery($s);
                 <tr>
                   <td><?php echo $r["category_id"]; ?></td>
                   <td><?php echo $r["category_name"]; ?></td>
-                  <td> <img src="../uploads/<?php echo $r['photo']; ?>" width="100" height="100"> </td> 
                   <td>
               </td>
                

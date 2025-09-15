@@ -49,40 +49,101 @@ $architect = mysqli_fetch_array($res2);
     padding: 40px;
   }
 
-  .left-card, .right-card {
-    background: rgba(255,255,255,0.97);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(183,141,101,0.1);
-    padding: 25px;
+  /* Architect Card */
+  .left-card {
+    background: linear-gradient(145deg, #ffffff, #f7f2ee);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(183,141,101,0.18);
+    padding: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .left-card h3, .right-card h3 {
-    color: #B78D65;
-    font-weight: 800;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
+  .left-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(183,141,101,0.28);
+  }
+
+  .left-card-header {
+    background: linear-gradient(135deg, #d8ad84, #b78d65);
+    padding: 18px;
     text-align: center;
+    color: #fff;
+  }
+
+  .left-card-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 1px;
   }
 
   .arch-profile {
+    padding: 30px 20px;
     text-align: center;
   }
+
   .arch-profile img {
     width: 140px;
     height: 140px;
     object-fit: cover;
     border-radius: 50%;
     margin-bottom: 15px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    border: 6px solid #fff;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
   }
+
+  .arch-profile img:hover {
+    transform: scale(1.08);
+  }
+
   .arch-profile h4 {
     color: #333;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    font-weight: 700;
   }
-  .arch-profile p {
+
+  .arch-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .arch-info li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
     font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 6px;
+    color: #444;
+    justify-content: center;
+  }
+
+  .arch-info li i {
+    color: #b78d65;
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+
+  .arch-info li span {
+    color: #333;
+    font-weight: 500;
+  }
+
+  /* Right Card */
+  .right-card {
+    background: rgba(255,255,255,0.97);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(183,141,101,0.1);
+    padding: 25px;
+  }
+
+  .right-card h3 {
+    color: #B78D65;
+    font-weight: 800;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
   }
 
   .project-images {
@@ -128,6 +189,7 @@ $architect = mysqli_fetch_array($res2);
     color: #B78D65;
   }
 
+  /* Book Button */
   .book-btn {
     display: block;
     margin: 35px auto 0 auto;
@@ -172,16 +234,21 @@ $architect = mysqli_fetch_array($res2);
   }
 </style>
 
+<!-- Architect + Project Section -->
 <div class="view-architect-container">
   <!-- Architect Details (Left) -->
   <div class="left-card">
-    <h3>Architect Details</h3>
+    <div class="left-card-header">
+      <h3>Architect Details</h3>
+    </div>
     <div class="arch-profile">
       <img src="../uploads/<?php echo $architect['profiles'] ?: 'default.png'; ?>" alt="Architect">
       <h4><?php echo $architect['arch_name']; ?></h4>
-      <p>Email: <?php echo $architect['email'] ?: "N/A"; ?></p>
-      <p>Phone: <?php echo $architect['phone'] ?: "N/A"; ?></p>
-      <p>Profile: <?php echo $architect['status'] ?: "N/A"; ?></p>
+      <ul class="arch-info">
+        <li><i class="fas fa-user-tie"></i><span><?php echo $architect['status'] ?: "N/A"; ?></span></li>
+        <li><i class="fas fa-phone-alt"></i><span><?php echo $architect['phone'] ?: "N/A"; ?></span></li>
+        <li><i class="fas fa-envelope"></i><span><?php echo $architect['email'] ?: "N/A"; ?></span></li>
+      </ul>
     </div>
   </div>
 
@@ -207,7 +274,10 @@ $architect = mysqli_fetch_array($res2);
 <!-- Book Now Button -->
 <form action="booking.php" method="get" class="text-center">
   <input type="hidden" name="id" value="<?php echo $project['prev_work_id']; ?>">
-  <button type="submit" class="book-btn">Book Now</button>
+  <button type="submit" class="book-btn"><i class="fas fa-calendar-check"></i> Book Now</button>
 </form>
+
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <?php include("footer.php"); ?>

@@ -3,7 +3,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<form action="action_pages/categoryaction.php" method="POST" enctype="multipart/form-data">
+<form action="action_pages/categoryaction.php" method="POST">
 
 <div class="container" >
           <div class="page-inner">
@@ -31,15 +31,7 @@
                             name="catname"
                             placeholder="Enter Your Name"
                           />
-                          </div>
-                          <div class="form-group">
-                          <label for="email2">Image</label>
-                          <input
-                            type="file"
-                            class="form-control"
-                            name="photo"
-                          />
-                        </div><br>
+                          </div><br>
                     <button class="btn btn-success" type="submit" name="submit">Submit</button>
                   </div>
                 </div>

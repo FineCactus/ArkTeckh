@@ -4,7 +4,6 @@
     if(isset($_POST['submit']))
     {
     $catname=$_POST['catname'];
-    $photo=$_FILES['photo']['name'];
 
     if((!$catname))
     {
@@ -13,8 +12,6 @@
     }
     else
     {
-    move_uploaded_file($_FILES["photo"]["tmp_name"], "../uploads/" . $photo);
-
     $sqlquery="SELECT * FROM tbl_category where category_name='$catname'";
     $result=$obj->executequery($sqlquery);
     
@@ -27,7 +24,7 @@
     }
     else
     {
-       $sqlquery1="INSERT INTO tbl_category (category_name,photo) VALUES('$catname','$photo')";
+       $sqlquery1="INSERT INTO tbl_category (category_name) VALUES('$catname')";
         $result1=$obj->executequery($sqlquery1);
         if($result1==1)
         {

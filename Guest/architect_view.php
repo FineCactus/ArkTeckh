@@ -65,7 +65,7 @@ $architect = mysqli_fetch_array($res2);
   }
 
   .left-card-header {
-    background: linear-gradient(135deg, #d8ad84, #b78d65);
+    background: linear-gradient(135deg, #d8ad84, #eacbadff);
     padding: 18px;
     text-align: center;
     color: #fff;

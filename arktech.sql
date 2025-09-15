@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 15, 2025 at 09:16 AM
+-- Generation Time: Sep 15, 2025 at 10:12 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -99,17 +99,20 @@ DROP TABLE IF EXISTS `tbl_category`;
 CREATE TABLE IF NOT EXISTS `tbl_category` (
   `category_id` int NOT NULL AUTO_INCREMENT,
   `category_name` varchar(50) NOT NULL,
-  `photo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_category`
 --
 
-INSERT INTO `tbl_category` (`category_id`, `category_name`, `photo`) VALUES
-(15, 'Architecture', 'branding-2.jpg'),
-(19, 'Renovation', 'house2.jpg');
+INSERT INTO `tbl_category` (`category_id`, `category_name`) VALUES
+(1, 'Architecture'),
+(2, 'Landscape Design'),
+(3, 'House Planning'),
+(4, 'Interior design'),
+(5, 'Renovation'),
+(6, 'Construction');
 
 -- --------------------------------------------------------
 
@@ -258,11 +261,11 @@ CREATE TABLE IF NOT EXISTS `tbl_previous_works` (
 --
 
 INSERT INTO `tbl_previous_works` (`prev_work_id`, `architect_id`, `title`, `descriptions`, `category_id`, `project_location`, `image1`, `image2`, `image3`, `created_at`) VALUES
-(5, 5, 'Office Renovation', 'Office renovation is the process of upgrading, redesigning, or restructuring an existing workplace to improve its functionality, aesthetics, and efficiency. It may involve changes such as modernizing interiors, optimizing layouts, upgrading furniture and fixtures, improving lighting and ventilation, or incorporating new technology. The goal of office renovation is to create a comfortable, productive, and inspiring environment that reflects the company’s culture, supports employee well-being, and leaves a positive impression on clients and visitors.', 19, 'Muvattupuzha', 'mj___photograph_y-20240118-0002.jpg', '1757585441_mj___photograph_y-20240118-0009.jpg', 'mj___photograph_y-20240118-0007.jpg', '2025-09-10'),
-(7, 2, 'Construction', 'Best House planning', 19, 'Kattapana', 'app-1.jpg', 'app-2.jpg', 'app-3.jpg', '2025-09-14'),
-(8, 2, 'Plantation', 'Best Garden designs', 19, 'Kothamangalam', 'books-3.jpg', 'branding-1.jpg', 'branding-2.jpg', '2025-09-14'),
-(11, 5, 'Office Renovation', 'Makes it work friendly environment', 15, 'Muttom', 'app-1.jpg', '1757924238_branding-2.jpg', '1757914468_branding-3.jpg', '2025-09-14'),
-(10, 5, 'Modification', 'Best Modifications', 19, 'Madakkathanam', '1757872431_branding-3.jpg', 'branding-2.jpg', 'books-3.jpg', '2025-09-14');
+(5, 5, 'Office Renovation', 'Office renovation is the process of upgrading, redesigning, or restructuring an existing workplace to improve its functionality, aesthetics, and efficiency. It may involve changes such as modernizing interiors, optimizing layouts, upgrading furniture and fixtures, improving lighting and ventilation, or incorporating new technology. The goal of office renovation is to create a comfortable, productive, and inspiring environment that reflects the company’s culture, supports employee well-being, and leaves a positive impression on clients and visitors.', 1, 'Muvattupuzha', 'mj___photograph_y-20240118-0002.jpg', '1757585441_mj___photograph_y-20240118-0009.jpg', 'mj___photograph_y-20240118-0007.jpg', '2025-09-10'),
+(7, 2, 'Construction', 'Best House planning', 2, 'Kattapana', 'app-1.jpg', 'app-2.jpg', 'app-3.jpg', '2025-09-14'),
+(8, 2, 'Plantation', 'Best Garden designs', 3, 'Kothamangalam', 'books-3.jpg', 'branding-1.jpg', '1757930194_app-2.jpg', '2025-09-14'),
+(11, 5, 'Office Renovation', 'Makes it work friendly environment', 4, 'Muttom', 'app-1.jpg', '1757924238_branding-2.jpg', '1757914468_branding-3.jpg', '2025-09-14'),
+(10, 5, 'Modification', 'Best Modifications', 5, 'Madakkathanam', '1757872431_branding-3.jpg', '1757930245_branding-2.jpg', 'books-3.jpg', '2025-09-14');
 
 -- --------------------------------------------------------
 

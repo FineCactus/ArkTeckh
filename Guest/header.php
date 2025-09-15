@@ -96,7 +96,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
             </div>
             <a href="booking.php" class="nav-item nav-link">BOOKING</a>
-            <a href="#" class="nav-item nav-link">DASHBOARD</a>
+            <a href="customer_dashboard.php" class="nav-item nav-link">DASHBOARD</a>
         </div>
         
         <?php if (isset($_SESSION['username'])): ?>

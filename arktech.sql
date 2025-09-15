@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 15, 2025 at 10:12 AM
+-- Generation Time: Sep 15, 2025 at 04:09 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -234,6 +234,32 @@ INSERT INTO `tbl_location` (`location_id`, `location_name`, `district_id`) VALUE
 (37, 'Mavelikkara', 4),
 (38, 'Karthikappally', 4),
 (39, 'Muvattupuzha', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_messages`
+--
+
+DROP TABLE IF EXISTS `tbl_messages`;
+CREATE TABLE IF NOT EXISTS `tbl_messages` (
+  `msg_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `architect_id` int NOT NULL,
+  `message` text NOT NULL,
+  `free_time` varchar(500) NOT NULL,
+  `created_at` timestamp NOT NULL,
+  PRIMARY KEY (`msg_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbl_messages`
+--
+
+INSERT INTO `tbl_messages` (`msg_id`, `user_id`, `architect_id`, `message`, `free_time`, `created_at`) VALUES
+(1, 1, 5, 'When will you be free', 'Evening 6 PM', '2025-09-15 14:50:45'),
+(2, 1, 5, 'Please contact me', 'Morning 10AM', '2025-09-15 15:24:53'),
+(3, 3, 5, 'hello', 't', '2025-09-15 16:01:18');
 
 -- --------------------------------------------------------
 

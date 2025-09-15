@@ -36,27 +36,28 @@ $architect = mysqli_fetch_array($res);
         </div>
         <div class="card-body">
           <form action="send_message.php" method="post">
-            <input type="hidden" name="architect_id" value="<?php echo $architect['architect_id']; ?>">
+              <input type="hidden" name="architect_id" value="<?php echo $architect['architect_id']; ?>">
+              <input type="hidden" name="customer_id" value="<?php echo $_SESSION['customer_id']; ?>">
 
-            <div class="mb-3">
-              <label class="form-label fw-bold">Your Message</label>
-              <textarea name="message" class="form-control" rows="4" placeholder="Write your message..." required></textarea>
-            </div>
+              <div class="mb-3">
+                <label class="form-label fw-bold">Your Message</label>
+                <textarea name="message" class="form-control" rows="4" placeholder="Write your message..." required></textarea>
+              </div>
 
-            <div class="mb-3">
-              <label class="form-label fw-bold">Preferred Free Time</label>
-              <input type="text" name="free_time" class="form-control" placeholder="Eg: Evening after 6 PM, Weekend, etc." required>
-            </div>
+              <div class="mb-3">
+                <label class="form-label fw-bold">Preferred Free Time</label>
+                <input type="text" name="free_time" class="form-control" placeholder="Eg: Evening after 6 PM, Weekend, etc." required>
+              </div>
 
-            <div class="d-grid">
-              <button type="submit" class="btn btn-brown">
-                <i class="fas fa-paper-plane"></i> Send Message
-              </button>
-            </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-brown">
+                  <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+              </div>
           </form>
+
         </div>
       </div>
-
     </div>
   </div>
 </div>

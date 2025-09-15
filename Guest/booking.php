@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 // previous_works.php
 include("header.php");
 include_once("../dboperation.php");
@@ -193,14 +196,17 @@ $res = $obj->executequery($sql);
           </div>
 
           <!-- Right: Redirect Button -->
-          <div class="col-md-2 text-center">
-            <a href="project_view.php?id=<?php echo $row['prev_work_id']; ?>" 
-              class="view-btn mt-2">View More</a>
-          </div>
+        <div class="col-md-2 text-center">
+          <?php if (isset($_SESSION['customer_id']) || isset($_SESSION['arch_id']) || isset($_SESSION['admin_id'])) { ?>
+              <a href="project_view.php?id=<?php echo $row['prev_work_id']; ?>" 
+                class="view-btn mt-2">View More</a>
+          <?php } else { ?>
+              <button type="button" class="view-btn mt-2" onclick="loginAlert()">View More</button>
+          <?php } ?>
+            </div> 
+          </div> 
+        </div> 
 
-
-        </div>
-      </div>
 
     <?php } ?>
   <?php } else { ?>
@@ -209,5 +215,20 @@ $res = $obj->executequery($sql);
     </div>
   <?php } ?>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+function loginAlert() {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Login Required',
+        text: 'Please login to view project details!',
+        confirmButtonText: 'Go to Login'
+    }).then(() => {
+        window.location.href = 'login.php';
+    });
+}
+</script>
+
 
 <?php include("footer.php"); ?>

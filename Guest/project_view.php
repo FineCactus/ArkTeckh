@@ -31,7 +31,7 @@ $project = mysqli_fetch_array($res);
 <style>
   /* Lively Project View Design */
   .project-view-container {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto 50px auto;
     background: rgba(255,255,255,0.98);
     border-radius: 26px;
@@ -179,7 +179,7 @@ $project = mysqli_fetch_array($res);
     </ul>
   </div>
 
-    <form action="" method="get" class="text-center">
+    <form action="booking.php" method="get" class="text-center">
       <input type="hidden" name="id" value="<?php echo $project['prev_work_id']; ?>">
       <button type="submit" class="update-btn">View Architect</button>
     </form>

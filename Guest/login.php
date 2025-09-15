@@ -229,8 +229,7 @@
 
   <div class="auth-container">
     <div class="tabs">
-      <div class="tab active" id="customer-tab">Customer</div>
-      <div class="tab" id="architect-tab">Architect</div>
+      <div class="tab active" id="customer-tab">LOGIN</div>
     </div>
 
     <!-- Customer Login Form -->
@@ -243,50 +242,12 @@
         <i class="fas fa-lock"></i>
         <input type="password" name="pass" placeholder="Password" required />
       </div>
-      <button type="submit">Login as Customer</button>
+      <button type="submit">Login</button>
       <div class="bottom-link">
         Don’t have an account? <a href="customer_signup.php">Sign up</a>
       </div>
     </form>
-
-    <!-- Architect Login Form -->
-    <form id="architect-form" action="loginaction.php" method="POST">
-      <div class="input-group">
-        <i class="fas fa-user-tie"></i>
-        <input type="text" name="user" placeholder="Architect Username" required />
-      </div>
-      <div class="input-group">
-        <i class="fas fa-lock"></i>
-        <input type="password" name="pass" placeholder="Password" required />
-      </div>
-      <button type="submit">Login as Architect</button>
-      <div class="bottom-link">
-        Don’t have an account? <a href="architect_login.php">Sign up</a>
-      </div>
-    </form>
   </div>
-
-  <script>
-    const customerTab = document.getElementById('customer-tab');
-    const architectTab = document.getElementById('architect-tab');
-    const customerForm = document.getElementById('customer-form');
-    const architectForm = document.getElementById('architect-form');
-
-    customerTab.addEventListener('click', () => {
-      customerTab.classList.add('active');
-      architectTab.classList.remove('active');
-      customerForm.classList.add('active');
-      architectForm.classList.remove('active');
-    });
-
-    architectTab.addEventListener('click', () => {
-      architectTab.classList.add('active');
-      customerTab.classList.remove('active');
-      architectForm.classList.add('active');
-      customerForm.classList.remove('active');
-    });
-
-  </script>
 
   <?php if (isset($_GET['status'])): ?>
   <script>

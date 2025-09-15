@@ -272,10 +272,34 @@ $architect = mysqli_fetch_array($res2);
 </div>
 
 <!-- Book Now Button -->
-<form action="booking.php" method="get" class="text-center">
+<!-- Book Now Button -->
+<form id="bookForm" action="booking.php" method="get" class="text-center">
   <input type="hidden" name="id" value="<?php echo $project['prev_work_id']; ?>">
-  <button type="submit" class="book-btn"><i class="fas fa-calendar-check"></i> Book Now</button>
+  <button type="button" class="book-btn" id="bookBtn">
+    <i class="fas fa-calendar-check"></i> Book Now
+  </button>
 </form>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  document.getElementById("bookBtn").addEventListener("click", function() {
+    Swal.fire({
+      title: 'Do You Wish to Contact <?php echo addslashes($architect['arch_name']); ?>?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Contact',
+      cancelButtonText: 'Cancel',
+      confirmButtonColor: '#b78d65',
+      cancelButtonColor: '#dd7676ff',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        document.getElementById("bookForm").submit();
+      }
+    });
+  });
+</script>
+
 
 <!-- FontAwesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">

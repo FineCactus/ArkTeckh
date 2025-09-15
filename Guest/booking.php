@@ -95,8 +95,30 @@ $res = $obj->executequery($sql);
     transform: translateY(-3px);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
   }
+  .filter-bar {
+  background: #fff;
+  border-radius: 15px;
+  padding: 15px 20px;
+  }
 
+  .fancy-select,
+  .fancy-input {
+    border-radius: 50px;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
 
+  .fancy-select:focus,
+  .fancy-input:focus {
+    border-color: #B78D65;
+    box-shadow: 0 0 10px rgba(183,141,101,0.3);
+  }
+
+  .search-wrapper {
+    position: relative;
+  }
 </style>
 
 <!-- Page Header -->
@@ -112,11 +134,11 @@ $res = $obj->executequery($sql);
   </div>
 </div>
 
-<!-- Category Filter -->
-<div class="container mb-4">
-  <form method="get" class="row g-2">
+<!-- Category Dropdown -->
+<div class="container mb-5">
+  <form method="get" class="row g-3 justify-content-left align-items-center filter-bar">    
     <div class="col-md-4">
-      <select name="category" class="form-select" onchange="this.form.submit()">
+      <select name="category" class="form-select fancy-select" onchange="this.form.submit()">
         <option value="">All Categories</option>
         <?php
         if ($catRes && mysqli_num_rows($catRes)) {
@@ -132,7 +154,6 @@ $res = $obj->executequery($sql);
     </div>
   </form>
 </div>
-
 
 <!-- Projects Section -->
 <div class="container my-5">

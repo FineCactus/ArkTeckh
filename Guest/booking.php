@@ -1,17 +1,27 @@
 <?php
+// previous_works.php
 include("header.php");
 include_once("../dboperation.php");
 
 $obj = new dboperation();
 
-// Fetch all previous works with category, location, district
+// --- Category filter (sanitize)
+$category = (isset($_GET['category']) && $_GET['category'] !== '') ? (int) $_GET['category'] : '';
+
+// --- Fetch categories for the dropdown
+$catSql = "SELECT * FROM tbl_category ORDER BY category_name ASC";
+$catRes = $obj->executequery($catSql);
+
+// --- Main query (apply category filter if set)
 $sql = "SELECT pw.*, c.category_name
         FROM tbl_previous_works pw
-        LEFT JOIN tbl_category c ON pw.category_id = c.category_id
-        ORDER BY pw.created_at DESC";
+        LEFT JOIN tbl_category c ON pw.category_id = c.category_id";
 
+if ($category !== '') {
+    $sql .= " WHERE pw.category_id = {$category}";
+}
 
-
+$sql .= " ORDER BY pw.created_at DESC";
 $res = $obj->executequery($sql);
 ?>
 
@@ -22,69 +32,69 @@ $res = $obj->executequery($sql);
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   padding: 15px;
   background: #fff;
-}
+  }
 
-.project-card .glass {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 10px;
-  background: linear-gradient(#fff2, transparent);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: 0.3s ease;
-  backdrop-filter: blur(10px);
-}
+  .project-card .glass {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    background: linear-gradient(#fff2, transparent);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
 
-.project-card .glass:hover {
-  transform: translateY(-5px) scale(1.03);
-}
+  .project-card .glass:hover {
+    transform: translateY(-5px) scale(1.03);
+  }
 
-.glass-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-}
+  .glass-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
 
-.view-btn {
-  display: inline-block;
-  padding: 10px 25px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #fff;
-  background: linear-gradient(135deg, #d8ad84ff 0%, #B78D65 100%);
-  border: none;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  position: relative;
-  overflow: hidden;
-}
+  .view-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #d8ad84ff 0%, #B78D65 100%);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
 
-.view-btn::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: skewX(-25deg);
-  transition: all 0.5s ease;
-}
+  .view-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-25deg);
+    transition: all 0.5s ease;
+  }
 
-.view-btn:hover::after {
-  left: 125%;
-}
+  .view-btn:hover::after {
+    left: 125%;
+  }
 
-.view-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-}
+  .view-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  }
 
 
 </style>
@@ -101,6 +111,28 @@ $res = $obj->executequery($sql);
     </nav>
   </div>
 </div>
+
+<!-- Category Filter -->
+<div class="container mb-4">
+  <form method="get" class="row g-2">
+    <div class="col-md-4">
+      <select name="category" class="form-select" onchange="this.form.submit()">
+        <option value="">All Categories</option>
+        <?php
+        if ($catRes && mysqli_num_rows($catRes)) {
+            while ($cat = mysqli_fetch_assoc($catRes)) {
+                $selected = ($category == $cat['category_id']) ? 'selected' : '';
+                echo "<option value='{$cat['category_id']}' $selected>".($cat['category_name'])."</option>";
+            }
+        } else {
+            echo "<option value=''>No categories</option>";
+        }
+        ?>
+      </select>
+    </div>
+  </form>
+</div>
+
 
 <!-- Projects Section -->
 <div class="container my-5">

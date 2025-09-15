@@ -22,7 +22,7 @@ $project = mysqli_fetch_array($res);
     <h1 class="display-1 text-white animated slideInDown"><?php echo ($project['title'] ?: "Untitled Project"); ?></h1>
     <nav aria-label="breadcrumb animated slideInDown">
       <ol class="breadcrumb text-uppercase mb-0">
-        <li class="breadcrumb-item"><div class="text-white">Created on <?php echo date('F j, Y', strtotime($project['created_at'])); ?></div></li>
+        <li class="breadcrumb-item"><div class="text-white">Posted on <?php echo date('F j, Y', strtotime($project['created_at'])); ?></div></li>
       </ol>
     </nav>
   </div>
@@ -110,6 +110,42 @@ $project = mysqli_fetch_array($res);
   .details-list li strong {
     color: #B78D65;
   }
+  /* Update Button */
+  .update-btn {
+    display: inline-block;
+    padding: 12px 35px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #d8ad84ff 0%, #B78D65 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  .update-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-25deg);
+    transition: all 0.5s ease;
+  }
+  .update-btn:hover::after {
+    left: 125%;
+  }
+  .update-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(255, 255, 255, 0.3);
+  }
   /* Responsive */
   @media (max-width: 600px) {
     .project-view-container {
@@ -139,9 +175,14 @@ $project = mysqli_fetch_array($res);
     <ul class="details-list">
       <li><strong>Category:</strong> <?php echo ($project['category_name'] ?: "N/A"); ?></li>
       <li><strong>Location:</strong> <?php echo ($project['project_location'] ?: "N/A"); ?></li>
+      <li><strong>Work By :</strong> <?php echo ($project['arch_name'] ?: "N/A"); ?></li>
     </ul>
   </div>
 
-</div>
+    <form action="" method="get" class="text-center">
+      <input type="hidden" name="id" value="<?php echo $project['prev_work_id']; ?>">
+      <button type="submit" class="update-btn">View Architect</button>
+    </form>
+  </div>
 
 <?php include("footer.php"); ?>

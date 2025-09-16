@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 15, 2025 at 04:09 PM
+-- Generation Time: Sep 16, 2025 at 01:48 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -52,6 +52,7 @@ DROP TABLE IF EXISTS `tbl_architects`;
 CREATE TABLE IF NOT EXISTS `tbl_architects` (
   `architect_id` int NOT NULL AUTO_INCREMENT,
   `arch_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `about` mediumtext NOT NULL,
   `profiles` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` bigint NOT NULL,
@@ -61,17 +62,18 @@ CREATE TABLE IF NOT EXISTS `tbl_architects` (
   `location_id` int NOT NULL,
   `status` varchar(20) NOT NULL,
   PRIMARY KEY (`architect_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_architects`
 --
 
-INSERT INTO `tbl_architects` (`architect_id`, `arch_name`, `profiles`, `email`, `phone`, `username`, `passwords`, `certificate_of_licensce`, `location_id`, `status`) VALUES
-(2, 'Ashish', 'testimonials-4.jpg', 'amen12@gmail.com', 9447820276, 'architect', '1', 'branding-3.jpg', 0, 'Accepted'),
-(3, 'Amen', 'testimonials-5.jpg', 'amen12@gmail.com', 9447820276, 'amen12', '123', 'app-2.jpg', 7, 'Rejected'),
-(4, 'Rejo Joseph', 'testimonials-4.jpg', 'rejojosephv@gmail.com', 9947948925, 'rejo', 'rejo', 'books-2.jpg', 7, 'Accepted'),
-(5, 'Ashok', 'mj___photograph_y-20240118-0004.jpg', 'ashokkj@gmail.com', 9447820275, 'Ashok', '1', 'portfolio_pic1.jpg', 3, 'Accepted');
+INSERT INTO `tbl_architects` (`architect_id`, `arch_name`, `about`, `profiles`, `email`, `phone`, `username`, `passwords`, `certificate_of_licensce`, `location_id`, `status`) VALUES
+(2, 'Ashish', 'I am a passionate architect with a strong interest in designing functional and sustainable spaces that blend creativity with practicality. With experience in residential and commercial projects, I focus on creating designs that reflect both modern aesthetics and client needs. I believe architecture is not just about buildings, but about shaping experiences and improving lives. I am constantly exploring new trends, materials, and technologies to deliver innovative solutions while ensuring quality and efficiency.', 'testimonials-4.jpg', 'amen12@gmail.com', 9447820276, 'architect', '1', 'branding-3.jpg', 0, 'Accepted'),
+(3, 'Amen', 'I am a passionate architect with a strong interest in designing functional and sustainable spaces that blend creativity with practicality. With experience in residential and commercial projects, I focus on creating designs that reflect both modern aesthetics and client needs. I believe architecture is not just about buildings, but about shaping experiences and improving lives. I am constantly exploring new trends, materials, and technologies to deliver innovative solutions while ensuring quality and efficiency.', 'testimonials-5.jpg', 'amen12@gmail.com', 9447820276, 'amen12', '123', 'app-2.jpg', 7, 'Rejected'),
+(4, 'Rejo Joseph', 'I am a passionate architect with a strong interest in designing functional and sustainable spaces that blend creativity with practicality. With experience in residential and commercial projects, I focus on creating designs that reflect both modern aesthetics and client needs. I believe architecture is not just about buildings, but about shaping experiences and improving lives. I am constantly exploring new trends, materials, and technologies to deliver innovative solutions while ensuring quality and efficiency.', 'testimonials-4.jpg', 'rejojosephv@gmail.com', 9947948925, 'rejo', 'rejo', 'books-2.jpg', 7, 'Accepted'),
+(5, 'Ashok', 'I am a passionate architect with a strong interest in designing functional and sustainable spaces that blend creativity with practicality. With experience in residential and commercial projects, I focus on creating designs that reflect both modern aesthetics and client needs. I believe architecture is not just about buildings, but about shaping experiences and improving lives. I am constantly exploring new trends, materials, and technologies to deliver innovative solutions while ensuring quality and efficiency.', 'mj___photograph_y-20240118-0004.jpg', 'ashokkj@gmail.com', 9447820275, 'Ashok', '1', 'portfolio_pic1.jpg', 3, 'Accepted'),
+(6, 'Felix Johnson', 'I am a passionate architect with a strong interest in designing functional and sustainable spaces that blend creativity with practicality. With experience in residential and commercial projects, I focus on creating designs that reflect both modern aesthetics and client needs. I believe architecture is not just about buildings, but about shaping experiences and improving lives. I am constantly exploring new trends, materials, and technologies to deliver innovative solutions while ensuring quality and efficiency.', 'testimonials-5.jpg', 'felixjohnson@gmail.com', 9847870035, 'felix', '1', 'WebWizard.webp', 12, 'Accepted');
 
 -- --------------------------------------------------------
 
@@ -250,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `tbl_messages` (
   `free_time` varchar(500) NOT NULL,
   `created_at` timestamp NOT NULL,
   PRIMARY KEY (`msg_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_messages`
@@ -259,7 +261,8 @@ CREATE TABLE IF NOT EXISTS `tbl_messages` (
 INSERT INTO `tbl_messages` (`msg_id`, `user_id`, `architect_id`, `message`, `free_time`, `created_at`) VALUES
 (1, 1, 5, 'When will you be free', 'Evening 6 PM', '2025-09-15 14:50:45'),
 (2, 1, 5, 'Please contact me', 'Morning 10AM', '2025-09-15 15:24:53'),
-(3, 3, 5, 'hello', 't', '2025-09-15 16:01:18');
+(3, 3, 5, 'hello', 't', '2025-09-15 16:01:18'),
+(4, 3, 2, 'Hello I m available', 'h', '2025-09-15 16:43:41');
 
 -- --------------------------------------------------------
 

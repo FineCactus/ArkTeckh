@@ -96,7 +96,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
             </div>
             <a href="booking.php" class="nav-item nav-link">BOOKING</a>
-            <a href="customer_dashboard.php" class="nav-item nav-link">DASHBOARD</a>
+            <a href="customer_dashboard.php" class="nav-item nav-link require-login">DASHBOARD</a>
         </div>
         
         <?php if (isset($_SESSION['username'])): ?>
@@ -135,6 +135,48 @@ document.addEventListener('DOMContentLoaded', function () {
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = 'architect_login.php';
+            }
+        });
+    });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // SweetAlert for REGISTER (already there)
+    document.getElementById('registerBtn').addEventListener('click', function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Do you wish to register as an architect?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Register',
+            cancelButtonText: 'No, Cancel',
+            confirmButtonColor: '#B78D65',
+            cancelButtonColor: 'rgba(232, 93, 93, 1)'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'architect_login.php';
+            }
+        });
+    });
+
+    // Check if user is logged in (using PHP session variable)
+    var isLoggedIn = <?php echo isset($_SESSION['username']) ? 'true' : 'false'; ?>;
+
+    // Attach SweetAlert for protected links
+    document.querySelectorAll('.require-login').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            if (!isLoggedIn) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'You have to login first',
+                    icon: 'warning',
+                    confirmButtonText: 'Go to Login',
+                    confirmButtonColor: '#B78D65'
+                }).then(() => {
+                    window.location.href = '/ArkTech/Guest/login.php';
+                });
             }
         });
     });

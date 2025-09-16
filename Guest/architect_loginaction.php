@@ -11,6 +11,7 @@
     $photo1=$_FILES['photo1']['name'];
     $certificate=$_FILES['certificate']['name'];
     $location_id = $_POST['location_id'];
+    $about=$_POST['about'];
    if((!$username))
     {
         header("Location: architect_login.php?status=empty");
@@ -33,7 +34,7 @@
     else
     {
 
-       $sqlquery1="INSERT INTO tbl_architects (arch_name,email,phone,username,passwords,profiles,certificate_of_licensce,location_id) VALUES('$arch_name','$email','$phone','$username','$password','$photo1','$certificate','$location_id')";
+       $sqlquery1="INSERT INTO tbl_architects (arch_name,email,phone,username,passwords,about,profiles,certificate_of_licensce,location_id) VALUES('$arch_name','$email','$phone','$username','$password','$about','$photo1','$certificate','$location_id')";
         $result1=$obj->executequery($sqlquery1);
         if ($result1 == 1)
          {

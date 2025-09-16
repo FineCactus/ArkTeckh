@@ -25,116 +25,143 @@ $obj = new dboperation();
 </script>
 
 <style>
-/* Modern lively form box styles */
-.bg-light.rounded.p-5.shadow {
-  background: rgba(255,255,255,0.98);
-  border-radius: 26px;
-  box-shadow: 0 8px 32px rgba(183,141,101, 0.14), 0 1.5px 4px rgba(183,141,101,0.10);
-  padding: 46px 38px 32px 38px;
-  position: relative;
-  transition: box-shadow 0.24s, border 0.28s, transform 0.25s cubic-bezier(.42,2,.44,.99);
-  border: 2px solid transparent;
-}
-.bg-light.rounded.p-5.shadow:hover {
-  border-image: linear-gradient(90deg, #B78D65, #ffd094 85%);
-  border-image-slice: 1;
-  transform: translateY(-7px) scale(1.012);
-  box-shadow: 0 16px 54px rgba(183,141,101,0.22), 0 4px 16px rgba(184,143,34,0.09);
-}
+    /* Modern lively form box styles */
+    .bg-light.rounded.p-5.shadow {
+      background: rgba(255,255,255,0.98);
+      border-radius: 26px;
+      box-shadow: 0 8px 32px rgba(183,141,101, 0.14), 0 1.5px 4px rgba(183,141,101,0.10);
+      padding: 46px 38px 32px 38px;
+      position: relative;
+      transition: box-shadow 0.24s, border 0.28s, transform 0.25s cubic-bezier(.42,2,.44,.99);
+      border: 2px solid transparent;
+    }
+    .bg-light.rounded.p-5.shadow:hover {
+      border-image: linear-gradient(90deg, #B78D65, #ffd094 85%);
+      border-image-slice: 1;
+      transform: translateY(-7px) scale(1.012);
+      box-shadow: 0 16px 54px rgba(183,141,101,0.22), 0 4px 16px rgba(184,143,34,0.09);
+    }
 
-/* Form Inputs */
-.form-floating input, 
-.form-floating select {
-  border-radius: 13px !important;
-  border: 2px solid #eaeaeab5;
-  transition: border-color 0.35s cubic-bezier(.16,.86,.67,.66), box-shadow 0.25s;
-  background: rgba(255,255,255,0.97);
-  font-size: 1.04rem;
-}
-.form-floating input:focus, 
-.form-floating select:focus {
-  border-color: #B78D65;
-  box-shadow: 0 0 10px 2px #B78D65a7;
-  background: #fff;
-}
+    /* Form Inputs */
+    .form-floating input, 
+    .form-floating select {
+      border-radius: 13px !important;
+      border: 2px solid #eaeaeab5;
+      transition: border-color 0.35s cubic-bezier(.16,.86,.67,.66), box-shadow 0.25s;
+      background: rgba(255,255,255,0.97);
+      font-size: 1.04rem;
+    }
+    .form-floating input:focus, 
+    .form-floating select:focus {
+      border-color: #B78D65;
+      box-shadow: 0 0 10px 2px #B78D65a7;
+      background: #fff;
+    }
 
-/* Scoped ONLY for labels inside .bg-light.rounded.p-5.shadow */
-.bg-light.rounded.p-5.shadow .form-floating label,
-.bg-light.rounded.p-5.shadow label.form-label {
-  color: #a36f3eff;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  font-size: 1rem;
-}
+    /* Scoped ONLY for labels inside .bg-light.rounded.p-5.shadow */
+    .bg-light.rounded.p-5.shadow .form-floating label,
+    .bg-light.rounded.p-5.shadow label.form-label {
+      color: #a36f3eff;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      font-size: 1rem;
+    }
 
-/* File input */
-input[type="file"].form-control {
-  background: #faf6f3;
-  border-radius: 13px;
-  border: 2px solid #ece3d3;
-  color: #B78D65;
-  padding: 10px;
-  font-weight: 500;
-  margin-bottom: 4px;
-}
+    /* File input */
+    input[type="file"].form-control {
+      background: #faf6f3;
+      border-radius: 13px;
+      border: 2px solid #ece3d3;
+      color: #B78D65;
+      padding: 10px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
 
-/* Scoped H4 inside form box only */
-.bg-light.rounded.p-5.shadow h4 {
-  font-weight: 800;
-  color: #B78D65;
-  margin-bottom: 32px;
-  letter-spacing: .7px;
-  font-size: 2.04rem;
-  position: relative;
-}
-.bg-light.rounded.p-5.shadow h4:after {
-  display: block;
-  content: "";
-  width: 64px; height: 4px;
-  margin: 20px auto 0 auto;
-  border-radius: 2.5px;
-  background: linear-gradient(90deg,#fdeab6,#B78D65 70%);
-}
+    /* Scoped H4 inside form box only */
+    .bg-light.rounded.p-5.shadow h4 {
+      font-weight: 800;
+      color: #B78D65;
+      margin-bottom: 32px;
+      letter-spacing: .7px;
+      font-size: 2.04rem;
+      position: relative;
+    }
+    .bg-light.rounded.p-5.shadow h4:after {
+      display: block;
+      content: "";
+      width: 64px; height: 4px;
+      margin: 20px auto 0 auto;
+      border-radius: 2.5px;
+      background: linear-gradient(90deg,#fdeab6,#B78D65 70%);
+    }
 
-/* Scoped Buttons inside form box only */
-.bg-light.rounded.p-5.shadow .btn-primary {
-  background: linear-gradient(90deg, #B78D65 80%, #d6ad60 120%);
-  border: none;
-  border-radius: 30px;
-  font-weight: 700;
-  font-size: 1.08rem;
-  letter-spacing: 0.7px;
-  box-shadow: 0 4px 15px -7px #B78D65a2;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.22s, box-shadow 0.32s, transform 0.11s;
-}
-.bg-light.rounded.p-5.shadow .btn-primary:hover {
-  background: linear-gradient(90deg, #ab763e 50%, #ffc48d 120%);
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 7px 19px -6px #B78D65b5;
-}
+    /* Scoped Buttons inside form box only */
+    .bg-light.rounded.p-5.shadow .btn-primary {
+      background: linear-gradient(90deg, #B78D65 80%, #d6ad60 120%);
+      border: none;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1.08rem;
+      letter-spacing: 0.7px;
+      box-shadow: 0 4px 15px -7px #B78D65a2;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.22s, box-shadow 0.32s, transform 0.11s;
+    }
+    .bg-light.rounded.p-5.shadow .btn-primary:hover {
+      background: linear-gradient(90deg, #ab763e 50%, #ffc48d 120%);
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 7px 19px -6px #B78D65b5;
+    }
 
-.bg-light.rounded.p-5.shadow .btn-outline-secondary {
-  border: 2px solid #B78D65;
-  color: #B78D65;
-  border-radius: 30px;
-  font-weight: 600;
-  transition: all 0.19s;
-}
-.bg-light.rounded.p-5.shadow .btn-outline-secondary:hover,
-.bg-light.rounded.p-5.shadow .btn-outline-secondary:focus {
-  background: #B78D65;
-  color: #fff;
-  transform: scale(1.04);
-}
+    .bg-light.rounded.p-5.shadow .btn-outline-secondary {
+      border: 2px solid #B78D65;
+      color: #B78D65;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.19s;
+    }
+    .bg-light.rounded.p-5.shadow .btn-outline-secondary:hover,
+    .bg-light.rounded.p-5.shadow .btn-outline-secondary:focus {
+      background: #B78D65;
+      color: #fff;
+      transform: scale(1.04);
+    }
+    /* About Me Textarea */
+    .form-floating textarea {
+      border-radius: 13px !important;
+      border: 2px solid #eaeaeab5;
+      transition: border-color 0.35s cubic-bezier(.16,.86,.67,.66), box-shadow 0.25s;
+      background: rgba(255,255,255,0.97);
+      font-size: 1.04rem;
+      resize: none; /* prevents awkward resize handles */
+      padding-top: 20px; /* for better spacing inside */
+      line-height: 1.5;
+    }
 
-/* Responsive adjustment */
-@media (max-width: 600px) {
-  .bg-light.rounded.p-5.shadow {
-    padding: 18px 5px 18px 5px;
-  }
-}
+    /* Focus Effect */
+    .form-floating textarea:focus {
+      border-color: #B78D65;
+      box-shadow: 0 0 10px 2px #B78D65a7;
+      background: #fff;
+    }
+
+    /* Label styling (same as inputs but scoped for textarea too) */
+    .bg-light.rounded.p-5.shadow .form-floating textarea ~ label {
+      color: #a36f3eff;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      font-size: 1rem;
+    }
+
+
+    /* Responsive adjustment */
+    @media (max-width: 600px) {
+      .bg-light.rounded.p-5.shadow {
+        padding: 18px 5px 18px 5px;
+      }
+    }
 
 </style>
 
@@ -196,6 +223,15 @@ input[type="file"].form-control {
                   <label for="password">Password</label>
                 </div>
               </div>
+
+            <!--ABOUT ME-->
+            <div class="col-md-12">
+              <div class="form-floating">
+                <textarea class="form-control" name="about" id="about" placeholder="About Me" style="height: 120px" required></textarea>
+                <label for="about">About Me</label>
+              </div>
+            </div>
+
 
               <!-- District Dropdown -->
               <div class="col-md-6">

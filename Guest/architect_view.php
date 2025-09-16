@@ -225,13 +225,38 @@ $architect = mysqli_fetch_array($res2);
     transform: translateY(-3px);
     box-shadow: 0 12px 20px rgba(255, 255, 255, 0.3);
   }
-
-  @media (max-width: 768px) {
-    .view-architect-container {
-      grid-template-columns: 1fr;
-      padding: 20px;
-    }
+  .arch-about {
+  margin-top: 15px;
+  background: #faf7f4; /* lighter tone */
+  border-radius: 12px;
+  padding: 12px 16px;  /* reduced padding */
+  box-shadow: 0 4px 12px rgba(183,141,101,0.08);
+  text-align: left;
   }
+
+  .arch-about h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.5rem;       /* smaller title */
+    color: #b78d65;
+    font-weight: 700;
+    border-left: 3px solid #b78d65;
+    padding-left: 8px;
+  }
+
+  .arch-about p {
+    margin: 0;
+    font-size: 0.9rem;     /* smaller text */
+    color: #444;
+    line-height: 1.5;
+  }
+
+
+    @media (max-width: 768px) {
+      .view-architect-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+    }
 </style>
 
 <!-- Architect + Project Section -->
@@ -246,8 +271,10 @@ $architect = mysqli_fetch_array($res2);
       <h4><?php echo $architect['arch_name']; ?></h4>
       <ul class="arch-info">
         <li><i class="fas fa-user-tie"></i><span><?php echo $architect['status'] ?: "N/A"; ?></span></li>
-        <li><i class="fas fa-phone-alt"></i><span><?php echo $architect['phone'] ?: "N/A"; ?></span></li>
-        <li><i class="fas fa-envelope"></i><span><?php echo $architect['email'] ?: "N/A"; ?></span></li>
+        <div class="arch-about">
+          <h4>About Me</h4>
+          <p><?php echo $architect['about'] ?: "No details available."; ?></p>
+        </div>
       </ul>
     </div>
   </div>

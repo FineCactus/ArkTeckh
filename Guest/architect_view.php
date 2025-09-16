@@ -298,14 +298,15 @@ $architect = mysqli_fetch_array($res2);
   </div>
 </div>
 
-<!-- Book Now Button -->
-<!-- Book Now Button -->
-<form id="bookForm" action="contact_architect.php" method="get" class="text-center">
-  <input type="hidden" name="arch_id" value="<?php echo $architect['architect_id']; ?>">
-  <button type="button" class="book-btn" id="bookBtn">
-    <i class="fas fa-calendar-check"></i> Contact Architect
-  </button>
-</form>
+  <!-- Book Now Button -->
+  <form id="bookForm" action="contact_architect.php" method="get" class="text-center">
+    <input type="hidden" name="arch_id" value="<?php echo $architect['architect_id']; ?>">
+    <input type="hidden" name="project_id" value="<?php echo $project['prev_work_id']; ?>">
+    <button type="button" class="book-btn" id="bookBtn">
+      <i class="fas fa-calendar-check"></i> Contact Architect
+    </button>
+  </form>
+
 
 <script>
   document.getElementById("bookBtn").addEventListener("click", function() {

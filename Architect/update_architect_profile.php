@@ -44,7 +44,7 @@ $architect = mysqli_fetch_assoc($res);
       <div>
         <label for="location">Location</label>
         <input type="text" id="location" name="location"
-               value="<?php echo ($architect['location_id']); ?> "readonly>
+               value="<?php echo ($architect['arch_locations']); ?>" required>
       </div>
       <div>
         <label for="profile_pic">Profile Picture</label>

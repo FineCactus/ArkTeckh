@@ -54,14 +54,43 @@ $architect = mysqli_fetch_assoc($res);
                 <?php echo $architect['username'] ?? "Not provided"; ?>
             </div>
             <div class="detail">
-                <strong>Status</strong>
-                <?php echo $architect['status'] ?? "Not provided"; ?>
+                <strong>Location</strong>
+                <?php echo $architect['arch_locations'] ?? "Not provided"; ?>
             </div>
 
             <a href="update_architect_profile.php" class="update-btn">Update Profile</a>
         </div>
     </div>
 </main>
+
+<?php if (isset($_GET['status'])): ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    let status = "<?php echo $_GET['status']; ?>";
+
+    if (status === "success") {
+        Swal.fire({
+            icon: 'success',
+            title: 'Profile Updated!',
+            text: 'Your profile details were saved successfully.',
+            timer: 1000, 
+            iconColor: '#e9c6a5ff',
+            confirmButtonColor: '#B78D65'
+        });
+    } else if (status === "error") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Update Failed',
+            text: 'Something went wrong. Please try again.',
+        });
+    }
+
+    // Clean the URL (remove ?status=...)
+    window.history.replaceState({}, document.title, "architect_dashboard.php");
+});
+</script>
+<?php endif; ?>
 
 
 <?php include("footer.php"); ?>

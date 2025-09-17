@@ -223,7 +223,8 @@ function loginAlert() {
         icon: 'warning',
         title: 'Login Required',
         text: 'Please login to view project details!',
-        confirmButtonText: 'Go to Login'
+        confirmButtonText: 'Go to Login',
+        confirmButtonColor: '#B78D65'
     }).then(() => {
         window.location.href = 'login.php';
     });

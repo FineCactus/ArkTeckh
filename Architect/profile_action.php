@@ -11,6 +11,7 @@ if (isset($_POST['submit'])) {
     $res_old = $obj->executequery($sql_old);
     $old_data = mysqli_fetch_assoc($res_old);
     $old_pic = $old_data['profiles'];
+    $loc=$_POST['location'];
 
     $profile_pic = "";
     if (!empty($_FILES["photo"]["name"])) {
@@ -23,21 +24,23 @@ if (isset($_POST['submit'])) {
         move_uploaded_file($_FILES["photo"]["tmp_name"], "../uploads/" . $profile_pic);
 
         $sql = "UPDATE tbl_architects 
-                SET phone='$phone', email='$email', profiles='$profile_pic' 
+                SET phone='$phone', email='$email', profiles='$profile_pic', arch_locations='$loc' 
                 WHERE architect_id=$id";
     } else {
         
         $sql = "UPDATE tbl_architects 
-                SET phone='$phone', email='$email' 
+                SET phone='$phone', email='$email', arch_locations='$loc' 
                 WHERE architect_id=$id";
     }
 
     $result = $obj->executequery($sql);
 
     if ($result) {
-        echo "<script>alert('Saved Successfully');window.location='architect_dashboard.php'</script>";
+       header("Location: architect_dashboard.php?status=success");
+       exit();
     } else {
-        echo "<script>alert('Update failed');window.location='architect_dashboard.php'</script>";
+       header("Location: architect_dashboard.php?status=error");
+       exit();
     }
 }
 ?>

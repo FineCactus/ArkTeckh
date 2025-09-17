@@ -58,11 +58,6 @@ $project = mysqli_fetch_array($res2);
               <textarea name="message" class="form-control custom-input" rows="4" placeholder="Write your message..." required></textarea>
             </div>
 
-            <div class="mb-3">
-              <label class="form-label fw-bold">Preferred Free Time</label>
-              <input type="text" name="free_time" class="form-control custom-input" placeholder="Eg: Evening after 6 PM, Weekend, etc." required>
-            </div>
-
             <div class="d-grid">
               <button type="submit" class="btn btn-brown">
                 <i class="fas fa-paper-plane"></i> Send Message

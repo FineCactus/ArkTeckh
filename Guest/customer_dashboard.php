@@ -12,11 +12,12 @@ $cust_id = $_SESSION['customer_id'];
 $obj = new dboperation();
 
 // Fetch distinct architects this customer has messaged
-$sql = "SELECT DISTINCT a.architect_id, a.arch_name, a.email, a.phone 
+$sql = "SELECT DISTINCT a.architect_id, a.arch_name, a.status, a.profiles, a.arch_locations
         FROM tbl_messages m
         INNER JOIN tbl_architects a ON m.architect_id = a.architect_id
         WHERE m.user_id = '$cust_id'
         ORDER BY a.arch_name ASC";
+
 $res = $obj->executequery($sql);
 ?>
 
@@ -88,19 +89,28 @@ $res = $obj->executequery($sql);
       <div class="project-card mb-5">
         <div class="row align-items-center">
 
-          <!-- Left: Architect Initial (or placeholder) -->
+          <!-- Left: Architect Profile Picture -->
           <div class="col-md-3 d-flex justify-content-center">
-            <div class="glass text-center d-flex align-items-center justify-content-center" 
-                 style="width:120px;height:120px;font-size:2rem;font-weight:600;color:#fff;background:linear-gradient(135deg,#d8ad84ff,#B78D65);">
-              <?php echo strtoupper(substr($row['arch_name'],0,1)); ?>
-            </div>
+            <?php if (!empty($row['profiles'])) { ?>
+                <img src="../uploads/<?php echo $row['profiles']; ?>" 
+                    alt="Profile Picture" 
+                    style="width:120px;height:120px;object-fit:cover;
+                            border-radius:50%;border:3px solid #B78D65;">
+            <?php } else { ?>
+                <!-- Fallback: Letter in circle if no picture -->
+                <div class="glass text-center d-flex align-items-center justify-content-center" 
+                    style="width:120px;height:120px;font-size:2rem;font-weight:600;color:#fff;
+                            background:linear-gradient(135deg,#d8ad84ff,#B78D65);border-radius:50%;">
+                  <?php echo strtoupper(substr($row['arch_name'],0,1)); ?>
+                </div>
+            <?php } ?>
           </div>
 
           <!-- Middle: Architect Details -->
           <div class="col-md-7 p-4">
             <h4 class="fw-bold mb-2"><?php echo $row['arch_name']; ?></h4>
-            <p class="mb-1"><strong>Email:</strong> <?php echo $row['email']; ?></p>
-            <p class="mb-1"><strong>Phone:</strong> <?php echo $row['phone']; ?></p>
+            <p class="mb-1"><strong>Location:</strong> <?php echo $row['arch_locations']; ?></p>
+            <p class="mb-1"><strong>Status:</strong> <?php echo $row['status']; ?></p>
           </div>
 
           <!-- Right: View Messages Button -->

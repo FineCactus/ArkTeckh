@@ -123,6 +123,8 @@
       color: var(--text-color);
       border-bottom: 3px solid transparent;
       transition: all 0.3s ease;
+      color: #B78D65;
+      font-size: 1.2rem;
     }
 
     .tab:hover {
@@ -264,7 +266,7 @@
 
   <div class="auth-container">
     <div class="tabs">
-      <div class="tab active" id="customer-tab">LOGIN</div>
+      <div class="tab" id="customer-tab">ArkTech</div>
     </div>
 
     <!-- Customer Login Form -->

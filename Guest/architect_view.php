@@ -270,7 +270,6 @@ $architect = mysqli_fetch_array($res2);
       <img src="../uploads/<?php echo $architect['profiles'] ?: 'default.png'; ?>" alt="Architect">
       <h4><?php echo $architect['arch_name']; ?></h4>
       <ul class="arch-info">
-        <li><i class="fas fa-user-tie"></i><span><?php echo $architect['status'] ?: "N/A"; ?></span></li>
         <div class="arch-about">
           <h4>About Me</h4>
           <p><?php echo $architect['about'] ?: "No details available."; ?></p>

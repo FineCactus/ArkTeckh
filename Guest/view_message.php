@@ -39,6 +39,20 @@ if (mysqli_num_rows($res) > 0) {
     mysqli_data_seek($res, 0);
 }
 
+// Check if architect has sent any message
+$arch_sent = false;
+$sql_arch = "SELECT * FROM tbl_messages 
+             WHERE architect_id = '$arch_id' 
+               AND user_id = '$cust_id' 
+               AND sender = 'architect' 
+             LIMIT 1";
+$res_arch = $obj->executequery($sql_arch);
+
+if (mysqli_num_rows($res_arch) > 0) {
+    $arch_sent = true;
+}
+
+
 include("header.php");
 ?>
 <style>
@@ -165,10 +179,16 @@ include("header.php");
     </div>
 
     <!-- ✅ Message Form -->
-    <form method="post" class="chat-form">
-        <textarea name="message" rows="1" placeholder="Type your message..." required></textarea>
-        <button type="submit" name="send_message">Send</button>
-    </form>
+        <form method="post" class="chat-form">
+            <?php if ($arch_sent): ?>
+                <textarea name="message" rows="1" placeholder="Type your message..." required></textarea>
+                <button type="submit" name="send_message">Send</button>
+            <?php else: ?>
+                <textarea rows="1" disabled placeholder="You can send a message only after the architect replies"></textarea>
+                <button type="submit" disabled>Send</button>
+            <?php endif; ?>
+        </form>
+
 </div>
 
 <script>

@@ -42,30 +42,32 @@ $project = mysqli_fetch_array($res2);
         </div>
       </div>
 
-      <!-- Contact Form Card -->
-      <div class="contact-card shadow-lg">
-        <div class="contact-header text-center">
-          <h4><i class="fas fa-envelope-open-text"></i> Contact Architect</h4>
-        </div>
-        <div class="contact-body">
-          <form action="send_message.php" method="post">
-            <input type="hidden" name="architect_id" value="<?php echo $architect['architect_id']; ?>">
-            <input type="hidden" name="customer_id" value="<?php echo $_SESSION['customer_id']; ?>">
-            <input type="hidden" name="project_id" value="<?php echo $project['prev_work_id']; ?>">
+        <!-- Contact Form Card -->
+        <div class="contact-card shadow-lg">
+          <div class="contact-header text-center">
+            <h4><i class="fas fa-envelope-open-text"></i> Contact Architect</h4>
+          </div>
+          <div class="contact-body">
+            <form action="send_message.php" method="post">
+              <input type="hidden" name="architect_id" value="<?php echo $architect['architect_id']; ?>">
+              <input type="hidden" name="customer_id" value="<?php echo $_SESSION['customer_id']; ?>">
+              <input type="hidden" name="project_id" value="<?php echo $project['prev_work_id']; ?>">
+              <input type="hidden" name="message" value="I am interested in your work... Can you provide me your contact details?">
 
-            <div class="mb-3">
-              <label class="form-label fw-bold">Your Message</label>
-              <textarea name="message" class="form-control custom-input" rows="4" placeholder="Write your message..." required></textarea>
-            </div>
+              <div class="mb-3">
+                <label class="form-label fw-bold">Your Message</label>
+                <textarea class="form-control custom-input" rows="4" disabled>I am interested in your work... Can you provide me your contact details?</textarea>
+              </div>
 
-            <div class="d-grid">
-              <button type="submit" class="btn btn-brown">
-                <i class="fas fa-paper-plane"></i> Send Message
-              </button>
-            </div>
-          </form>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-brown">
+                  <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
+
 
     </div>
   </div>

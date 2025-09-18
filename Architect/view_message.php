@@ -2,7 +2,6 @@
 session_start();
 include("../dboperation.php");
 
-// Ensure architect is logged in
 if (!isset($_SESSION['architect_id'])) {
     header("Location: login.php");
     exit();
@@ -12,57 +11,16 @@ $arch_id = $_SESSION['architect_id'];
 $cust_id = isset($_GET['cust_id']) ? intval($_GET['cust_id']) : 0;
 $obj = new dboperation();
 
-// Fetch architect details
-$sql_arch = "SELECT arch_name, email, phone FROM tbl_architects WHERE architect_id = '$arch_id'";
-$res_arch = $obj->executequery($sql_arch);
-$arch = mysqli_fetch_assoc($res_arch);
-
-// Handle normal reply
-if (isset($_POST['send_message'])) {
-    $msg = mysqli_real_escape_string($obj->con, $_POST['message']);
-    $insert_sql = "INSERT INTO tbl_messages (user_id, architect_id, sender, message, free_time, created_at) 
-                   VALUES ('$cust_id', '$arch_id', 'architect', '$msg', '', NOW())";
-    $obj->executequery($insert_sql);
-
-    header("Location: view_message.php?cust_id=$cust_id");
-    exit();
-}
-
-// Handle Accept Work button
-if (isset($_POST['accept_work']) && !isset($_GET['accepted'])) {
-    $accept_msg = "Hello, I have accepted your work request. 
-You can contact me at:
-📞 " . $arch['phone'] . "
-📧 " . $arch['email'];
-
-    $insert_sql = "INSERT INTO tbl_messages (user_id, architect_id, sender, message, free_time, created_at) 
-                   VALUES ('$cust_id', '$arch_id', 'architect', '" . mysqli_real_escape_string($obj->con, $accept_msg) . "', '', NOW())";
-    $obj->executequery($insert_sql);
-
-    header("Location: view_message.php?cust_id=$cust_id&accepted=1");
-    exit();
-}
-
-// Fetch conversation
-$sql = "SELECT m.*, c.cname 
-        FROM tbl_messages m
-        INNER JOIN tbl_customer c ON m.user_id = c.customer_id
-        WHERE m.user_id = '$cust_id' AND m.architect_id = '$arch_id'
-        ORDER BY m.created_at ASC";
-$res = $obj->executequery($sql);
-
 // Get customer name for header
 $custName = "Customer";
-if (mysqli_num_rows($res) > 0) {
-    $firstRow = mysqli_fetch_assoc($res);
-    $custName = $firstRow['cname'];
-    mysqli_data_seek($res, 0); // reset pointer
+$sql = "SELECT cname FROM tbl_customer WHERE customer_id = '$cust_id'";
+$res = $obj->executequery($sql);
+if ($row = mysqli_fetch_assoc($res)) {
+    $custName = $row['cname'];
 }
 
-// ✅ only include header AFTER all redirects and processing
 include("header.php");
 ?>
-
 <style>
     body {
             background: #f2f2f2;
@@ -177,35 +135,76 @@ include("header.php");
 <div class="chat-container">
     <div class="chat-header">Chat with <?php echo $custName; ?></div>
     <div class="chat-box" id="chatBox">
-        <?php
-        if (mysqli_num_rows($res) > 0) {
-            while ($row = mysqli_fetch_assoc($res)) {
-                $senderClass = ($row['sender'] == 'architect') ? "architect" : "customer";
-
-                echo "
-                <div class='chat-message {$senderClass}'>
-                    <div class='message-text'>" . htmlspecialchars($row['message']) . "</div>
-                    <div class='message-time'>" . date("d M Y h:i A", strtotime($row['created_at'])) . "</div>
-                </div>";
-            }
-        } else {
-            echo "<p class='no-msg'>No messages found with this customer</p>";
-        }
-        ?>
+        <!-- Messages will be loaded dynamically -->
     </div>
 
     <!-- Message Form -->
-    <form method="post" class="chat-form">
-        <textarea name="message" rows="1" placeholder="Type your message..."></textarea>
-        <button type="submit" name="send_message" class="btn-send">Send</button>
-        <button type="submit" name="accept_work" class="btn-accept">Accept Work</button>
+    <form id="chatForm" class="chat-form">
+        <textarea name="message" rows="1" placeholder="Type your message..." required></textarea>
+        <input type="hidden" name="cust_id" value="<?php echo $cust_id; ?>">
+        <button type="submit" class="btn-send">Send</button>
+        <button type="button" id="acceptBtn" class="btn-accept">Accept Work</button>
     </form>
 </div>
 
 <script>
-    // auto scroll to bottom
-    var chatBox = document.getElementById("chatBox");
-    chatBox.scrollTop = chatBox.scrollHeight;
+const chatBox = document.getElementById("chatBox");
+const form = document.getElementById("chatForm");
+const acceptBtn = document.getElementById("acceptBtn");
+
+// Load messages
+function loadMessages() {
+    fetch("fetch_messages.php?cust_id=<?php echo $cust_id; ?>")
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === "success") {
+                chatBox.innerHTML = "";
+                data.messages.forEach(msg => {
+                    let div = document.createElement("div");
+                    div.className = "chat-message " + (msg.sender === "architect" ? "architect" : "customer");
+                    div.innerHTML = `
+                        <div class="message-text">${msg.message}</div>
+                        <div class="message-time">${msg.time}</div>
+                    `;
+                    chatBox.appendChild(div);
+                });
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        });
+}
+
+// Handle send message
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    let formData = new FormData(form);
+    fetch("view_message_action.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(() => {
+        form.reset();
+        loadMessages(); // refresh instantly
+    });
+});
+
+// Handle accept work
+acceptBtn.addEventListener("click", function() {
+    let formData = new FormData();
+    formData.append("cust_id", "<?php echo $cust_id; ?>");
+    formData.append("type", "accept");
+
+    fetch("view_message_action.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(() => loadMessages());
+});
+
+// Refresh messages every 5 sec
+setInterval(loadMessages, 5000);
+loadMessages(); // initial load
 </script>
 
 <?php include("footer.php"); ?>

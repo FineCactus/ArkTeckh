@@ -2,59 +2,36 @@
 session_start();
 include("../dboperation.php");
 
-// Ensure customer is logged in
+// ✅ Ensure customer is logged in
 if (!isset($_SESSION['customer_id'])) {
     header("Location: login.php");
     exit();
 }
 
-$cust_id = $_SESSION['customer_id'];
-$arch_id = isset($_GET['arch_id']) ? intval($_GET['arch_id']) : 0;
-$obj = new dboperation();
+$cust_id  = $_SESSION['customer_id'];
+$arch_id  = isset($_GET['arch_id']) ? intval($_GET['arch_id']) : 0;
+$obj      = new dboperation();
 
-// ✅ Handle customer sending message
-if (isset($_POST['send_message'])) {
-    $msg = mysqli_real_escape_string($obj->con, $_POST['message']);
-    $insert_sql = "INSERT INTO tbl_messages (user_id, architect_id, sender, message, free_time, created_at) 
-                   VALUES ('$cust_id', '$arch_id', 'customer', '$msg', '', NOW())";
-    $obj->executequery($insert_sql);
-
-    header("Location: view_message.php?arch_id=$arch_id");
-    exit();
-}
-
-// Fetch messages for this customer & architect
-$sql = "SELECT m.*, a.arch_name 
-        FROM tbl_messages m
-        INNER JOIN tbl_architects a ON m.architect_id = a.architect_id
-        WHERE m.user_id = '$cust_id' AND m.architect_id = '$arch_id'
-        ORDER BY m.created_at ASC";
-$res = $obj->executequery($sql);
-
-// Get architect name for header
+// ✅ Fetch architect name
 $archName = "Architect";
-if (mysqli_num_rows($res) > 0) {
-    $firstRow = mysqli_fetch_assoc($res);
-    $archName = $firstRow['arch_name'];
-    mysqli_data_seek($res, 0);
-}
-
-// Check if architect has sent any message
-$arch_sent = false;
-$sql_arch = "SELECT * FROM tbl_messages 
-             WHERE architect_id = '$arch_id' 
-               AND user_id = '$cust_id' 
-               AND sender = 'architect' 
-             LIMIT 1";
+$sql_arch = "SELECT arch_name FROM tbl_architects WHERE architect_id='$arch_id'";
 $res_arch = $obj->executequery($sql_arch);
-
-if (mysqli_num_rows($res_arch) > 0) {
-    $arch_sent = true;
+if ($row = mysqli_fetch_assoc($res_arch)) {
+    $archName = $row['arch_name'];
 }
 
+// ✅ Check if architect has replied at least once
+$arch_sent = mysqli_num_rows(
+    $obj->executequery("SELECT 1 FROM tbl_messages 
+                        WHERE user_id='$cust_id' 
+                          AND architect_id='$arch_id' 
+                          AND sender='architect' 
+                        LIMIT 1")
+) > 0;
 
 include("header.php");
 ?>
+
 <style>
     body {
         background: #f2f2f2;
@@ -161,40 +138,65 @@ include("header.php");
 <div class="chat-container">
     <div class="chat-header">Chat with <?php echo $archName; ?></div>
     <div class="chat-box" id="chatBox">
-        <?php
-        if (mysqli_num_rows($res) > 0) {
-            while ($row = mysqli_fetch_assoc($res)) {
-                $senderClass = ($row['sender'] == 'customer') ? "customer" : "architect";
-
-                echo "
-                <div class='chat-message {$senderClass}'>
-                    <div class='message-text'>" . htmlspecialchars($row['message']) . "</div>
-                    <div class='message-time'>" . date("d M Y h:i A", strtotime($row['created_at'])) . "</div>
-                </div>";
-            }
-        } else {
-            echo "<p class='no-msg'>No messages found with this architect</p>";
-        }
-        ?>
+        <!-- Messages will load dynamically -->
     </div>
 
     <!-- ✅ Message Form -->
-        <form method="post" class="chat-form">
-            <?php if ($arch_sent): ?>
-                <textarea name="message" rows="1" placeholder="Type your message..." required></textarea>
-                <button type="submit" name="send_message">Send</button>
-            <?php else: ?>
-                <textarea rows="1" disabled placeholder="You can send a message only after the architect replies"></textarea>
-                <button type="submit" disabled>Send</button>
-            <?php endif; ?>
-        </form>
-
+    <form id="chatForm" class="chat-form">
+        <textarea name="message" id="messageInput" rows="1" placeholder="Type your message..."
+            <?php echo $arch_sent ? "" : "disabled"; ?>></textarea>
+        <input type="hidden" name="arch_id" value="<?php echo $arch_id; ?>">
+        <button type="submit" <?php echo $arch_sent ? "" : "disabled"; ?>>Send</button>
+    </form>
 </div>
 
 <script>
-    // auto scroll to bottom
-    var chatBox = document.getElementById("chatBox");
-    chatBox.scrollTop = chatBox.scrollHeight;
+const chatBox = document.getElementById("chatBox");
+const form = document.getElementById("chatForm");
+const input = document.getElementById("messageInput");
+
+// Load messages
+function loadMessages() {
+    fetch("customer_fetch_messages.php?arch_id=<?php echo $arch_id; ?>")
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === "success") {
+                chatBox.innerHTML = "";
+                data.messages.forEach(msg => {
+                    let div = document.createElement("div");
+                    div.className = "chat-message " + (msg.sender === "customer" ? "customer" : "architect");
+                    div.innerHTML = `
+                        <div class="message-text">${msg.message}</div>
+                        <div class="message-time">${msg.time}</div>
+                    `;
+                    chatBox.appendChild(div);
+                });
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        });
+}
+
+// Handle send message
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    let formData = new FormData(form);
+
+    fetch("customer_message_action.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "success") {
+            input.value = "";
+            loadMessages(); // refresh instantly
+        }
+    });
+});
+
+// Refresh messages every 5 sec
+setInterval(loadMessages, 5000);
+loadMessages(); // initial load
 </script>
 
 <?php include("footer.php"); ?>

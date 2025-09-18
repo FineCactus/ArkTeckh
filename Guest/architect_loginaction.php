@@ -10,7 +10,7 @@
     $password=$_POST['password'];
     $photo1=$_FILES['photo1']['name'];
     $certificate=$_FILES['certificate']['name'];
-    $location_id = $_POST['location_id'];
+    $location = $_POST['location'];
     $about=$_POST['about'];
    if((!$username))
     {
@@ -34,7 +34,7 @@
     else
     {
 
-       $sqlquery1="INSERT INTO tbl_architects (arch_name,email,phone,username,passwords,about,profiles,certificate_of_licensce,location_id) VALUES('$arch_name','$email','$phone','$username','$password','$about','$photo1','$certificate','$location_id')";
+       $sqlquery1="INSERT INTO tbl_architects (arch_name,email,phone,username,passwords,about,profiles,certificate_of_licensce,arch_locations) VALUES('$arch_name','$email','$phone','$username','$password','$about','$photo1','$certificate','$location')";
         $result1=$obj->executequery($sqlquery1);
         if ($result1 == 1)
          {

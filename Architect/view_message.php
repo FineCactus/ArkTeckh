@@ -143,7 +143,7 @@ include("header.php");
         <textarea name="message" rows="1" placeholder="Type your message..." required></textarea>
         <input type="hidden" name="cust_id" value="<?php echo $cust_id; ?>">
         <button type="submit" class="btn-send">Send</button>
-        <button type="button" id="acceptBtn" class="btn-accept">Accept Work</button>
+        <button type="button" id="acceptBtn" class="btn-accept">Send Contact</button>
     </form>
 </div>
 

@@ -24,7 +24,7 @@ if ($arch_id > 0 && $message !== '') {
     echo json_encode([
         "status"  => "success",
         "sender"  => "customer",
-        "message" => nl2br(htmlspecialchars($message)),
+        "message" => nl2br( ($message)),
         "time"    => date("d M Y h:i A")
     ]);
     exit();

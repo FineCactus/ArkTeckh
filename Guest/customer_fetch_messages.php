@@ -24,7 +24,7 @@ $messages = [];
 while ($row = mysqli_fetch_assoc($res)) {
     $messages[] = [
         "sender"  => $row['sender'],
-        "message" => nl2br(htmlspecialchars($row['message'])),
+        "message" => nl2br( ($row['message'])),
         "time"    => date("d M Y h:i A", strtotime($row['created_at']))
     ];
 }

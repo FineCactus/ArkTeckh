@@ -249,14 +249,13 @@ $obj = new dboperation();
                 </div>
               </div>
 
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <select class="form-select" name="location_id" id="location" required>
-                    <option value="" selected disabled>Select Location</option>
-                  </select>
-                  <label for="location_id">Location</label>
-                </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" name="location" id="location" placeholder="Enter Location" required>
+                <label for="location">Location</label>
               </div>
+            </div>
+
 
               <div class="col-md-6">
                 <label for="profile_pic" class="form-label">Profile Picture</label>

@@ -36,16 +36,17 @@
 
        $sqlquery1="INSERT INTO tbl_architects (arch_name,email,phone,username,passwords,about,profiles,certificate_of_licensce,arch_locations) VALUES('$arch_name','$email','$phone','$username','$password','$about','$photo1','$certificate','$location')";
         $result1=$obj->executequery($sqlquery1);
-        if ($result1 == 1)
-         {
-            header("Location: login.php?status=success");
-            exit();
-        }
         
+          if($result1==1)
+        {
+           $cid=mysqli_insert_id($obj->con);
+          echo "<script>alert('Registration Succesfully!!');window.location='planview.php?cid=$cid'</script>";
+    
+        }
         else
         {
-            
-    }
+       echo "<script>alert('Registration Failed!!');window.location='architect_login.php'</script>";
+        }
     }
 }
 }

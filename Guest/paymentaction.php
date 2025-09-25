@@ -13,7 +13,7 @@ $res = $obj->executequery($sql);
 
 if ($res) 
     {
-     echo "<script>alert('Plan selected successfully! Please proceed with payment.');window.location='payment.php?cid=$jid'</script>";
+     echo "<script>alert('Plan selected successfully! Please proceed with payment.');window.location='paymentmain.php?cid=$jid'</script>";
 } else {
     echo "<div class='container my-5'><div class='alert alert-danger'>Error while selecting plan.</div></div>";
 }

@@ -10,7 +10,6 @@ $sql = "SELECT p.payid, p.amount, p.status, pl.plan_name, pl.plan_id, pl.duratio
 $res = $obj->executequery($sql);
 $row = mysqli_fetch_array($res);
 ?>
-
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -50,7 +49,7 @@ $row = mysqli_fetch_array($res);
                         </div>
 
                         <div class="d-grid">
-                            <button type="submit" name="pay" class="btn btn-success btn-lg">Submit Payment</button>
+                            <button type="submit" name="pay" class="btn btn-success">Submit Payment</button>
                         </div>
                     </form>
 
@@ -65,7 +64,7 @@ $row = mysqli_fetch_array($res);
                         $update1 = "UPDATE tbl_architects SET renewaldate='$ren',plan_id='$pid' WHERE architect_id='$architect_id'";
                         $result1 = $obj->executequery($update1);
                         if ($result) {
-                            echo "<script>alert('Payment Successful! Plan Activated.');window.location='architect_login.php'</script>";
+                            echo "<script>alert('Payment Successful! Plan Activated.');window.location='index.php'</script>";
                         } else {
                             echo "<div class='alert alert-danger mt-3'>Error updating payment status.</div>";
                         }

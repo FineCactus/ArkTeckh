@@ -1,4 +1,28 @@
-<?php include('./header.php');?>
+<?php 
+include('./header.php');
+include("../dboperation.php");
+
+// Get total number of customers
+$obj = new dboperation();
+$customer_sql = "SELECT COUNT(*) as total_customers FROM tbl_customer";
+$customer_res = $obj->executequery($customer_sql);
+$customer_count = mysqli_fetch_array($customer_res)['total_customers'];
+
+// Get total number of registered architects
+$architect_sql = "SELECT COUNT(*) as total_architects FROM tbl_architects";
+$architect_res = $obj->executequery($architect_sql);
+$architect_count = mysqli_fetch_array($architect_res)['total_architects'];
+
+// Get total number of projects uploaded
+$projects_sql = "SELECT COUNT(*) as total_projects FROM tbl_previous_works";
+$projects_res = $obj->executequery($projects_sql);
+$projects_count = mysqli_fetch_array($projects_res)['total_projects'];
+
+// Get number of pending architects
+$pending_sql = "SELECT COUNT(*) as pending_architects FROM tbl_architects WHERE status = 'Pending' OR status = ''";
+$pending_res = $obj->executequery($pending_sql);
+$pending_count = mysqli_fetch_array($pending_res)['pending_architects'];
+?>
         <div class="container">
           <div class="page-inner">
             <div
@@ -27,7 +51,7 @@
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
                           <p class="card-category">Visitors</p>
-                          <h4 class="card-title">1,294</h4>
+                          <h4 class="card-title"><?php echo $customer_count; ?></h4>
                         </div>
                       </div>
                     </div>
@@ -48,7 +72,7 @@
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
                           <p class="card-category">Subscribers</p>
-                          <h4 class="card-title">1303</h4>
+                          <h4 class="card-title"><?php echo $architect_count; ?></h4>
                         </div>
                       </div>
                     </div>
@@ -68,8 +92,8 @@
                       </div>
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
-                          <p class="card-category">Sales</p>
-                          <h4 class="card-title">$ 1,345</h4>
+                          <p class="card-category">Projects</p>
+                          <h4 class="card-title"><?php echo $projects_count; ?></h4>
                         </div>
                       </div>
                     </div>
@@ -89,8 +113,8 @@
                       </div>
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
-                          <p class="card-category">Order</p>
-                          <h4 class="card-title">576</h4>
+                          <p class="card-category">Pending</p>
+                          <h4 class="card-title"><?php echo $pending_count; ?></h4>
                         </div>
                       </div>
                     </div>
@@ -100,8 +124,6 @@
             </div>
                       <!-- Projects table -->
                       <?php
-                        include("../dboperation.php");
-                        $obj = new dboperation();
                         $sql = "SELECT * FROM tbl_architects";
                         $res = $obj->executequery($sql);
                         ?>

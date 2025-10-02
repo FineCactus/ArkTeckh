@@ -3,9 +3,27 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-include("header.php");
+// Check if architect is logged in
+if (!isset($_SESSION['architect_id'])) {
+    header("Location: ../Guest/login.php");
+    exit();
+}
+
 include_once("../dboperation.php");
 $obj = new dboperation();
+
+// Check if architect has a valid paid subscription
+$architect_id = $_SESSION['architect_id'];
+$subscription_query = "SELECT * FROM tbl_subscriptionplan WHERE architect_id='$architect_id' AND status='Paid' AND renewaldate >= CURDATE() ORDER BY renewaldate DESC LIMIT 1";
+$subscription_result = $obj->executequery($subscription_query);
+
+if (mysqli_num_rows($subscription_result) == 0) {
+    // No valid subscription found, redirect to planview.php
+    header("Location: planview.php");
+    exit();
+}
+
+include("header.php");
 
 $sql="SELECT * FROM tbl_architects";
 $res=$obj->executequery($sql);

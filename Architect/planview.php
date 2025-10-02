@@ -1,10 +1,21 @@
 <?php 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Check if architect is logged in
+if (!isset($_SESSION['architect_id'])) {
+    header("Location: ../Guest/login.php");
+    exit();
+}
+
 include("header.php");
 include_once("../dboperation.php");
 $obj = new dboperation();
 $sql = "SELECT * FROM tbl_plan";
 $result = $obj->executequery($sql);
-$cid = $_GET["cid"];
+
+$architect_id = $_SESSION['architect_id'];
 ?>
 
 <style>
@@ -146,7 +157,7 @@ $cid = $_GET["cid"];
                         <form action="paymentaction.php" method="post">
                             <input type="hidden" name="plan_id" value="<?php echo $row['plan_id']; ?>">
                             <input type="hidden" name="amount" value="<?php echo $row['amount']; ?>">
-                            <input type="hidden" name="cid" value="<?php echo $cid; ?>">
+                            <input type="hidden" name="architect_id" value="<?php echo $architect_id; ?>">
                             <button type="submit" class="btn-subscribe">Choose  <?php echo $row['plan_name']; ?></button>
                         </form>
                     </div>

@@ -143,11 +143,6 @@ if (session_status() === PHP_SESSION_NONE) {
                         <span class="sub-item">Category</span>
                       </a>
                     </li>
-                    <li>
-                      <a href="subscription.php">
-                        <span class="sub-item">Subscription</span>
-                      </a>
-                    </li>
                   </ul>
                 </div>
               </li>
@@ -189,6 +184,10 @@ if (session_status() === PHP_SESSION_NONE) {
                     <li>
                         <a href="category_edit.php">
                         <span class="sub-item">Category Edit</span></a>
+                    </li>
+                    <li>
+                        <a href="subscription.php">
+                        <span class="sub-item">Subscription Edit</span></a>
                     </li>
                   </ul>  
                 </div>

@@ -205,88 +205,6 @@
     </div>
     <!-- Project End -->
 
-
-    <!-- Appointment Start 
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h4 class="section-title">Appointment</h4>
-                    <h1 class="display-5 mb-4">Make An Appointment To Start Your Dream Project</h1>
-                    <p class="mb-4">Ready to bring your vision to life? Book a consultation with our experts and take the first step toward your dream home or space. Whether it’s designing, renovating, or building — we’re here to guide you with personalized support and creative solutions.</p>
-                    <div class="row g-4">
-                        <div class="col-12">
-                            <div class="d-flex">
-                                <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-light" style="width: 65px; height: 65px;">
-                                    <i class="fa fa-2x fa-phone-alt text-primary"></i>
-                                </div>
-                                <div class="ms-4">
-                                    <p class="mb-2">Call Us Now</p>
-                                    <h3 class="mb-0">+91 9554785241</h3>
-                                    <h3 class="mb-0">+91 9847870034</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="d-flex">
-                                <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-light" style="width: 65px; height: 65px;">
-                                    <i class="fa fa-2x fa-envelope-open text-primary"></i>
-                                </div>
-                                <div class="ms-4">
-                                    <p class="mb-2">Mail Us Now</p>
-                                    <h3 class="mb-0">archteckbooking@gmail.com</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="row g-3">
-                        <div class="col-12 col-sm-6">
-                            <input type="text" class="form-control" placeholder="Your Name" style="height: 55px;">
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <input type="email" class="form-control" placeholder="Your Email" style="height: 55px;">
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <input type="text" class="form-control" placeholder="Your Mobile" style="height: 55px;">
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <select class="form-select" style="height: 55px;">
-                                <option selected>Choose Service</option>
-                                <option value="1">Service 1</option>
-                                <option value="2">Service 2</option>
-                                <option value="3">Service 3</option>
-                            </select>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <div class="date" id="date" data-target-input="nearest">
-                                <input type="text"
-                                    class="form-control datetimepicker-input"
-                                    placeholder="Choose Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <div class="time" id="time" data-target-input="nearest">
-                                <input type="text"
-                                    class="form-control datetimepicker-input"
-                                    placeholder="Choose Date" data-target="#time" data-toggle="datetimepicker" style="height: 55px;">
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <textarea class="form-control" rows="5" placeholder="Message"></textarea>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Book Appointment</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
- Appointment End -->
-
-
     <!-- Testimonial Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -329,7 +247,7 @@
         Swal.fire({
           icon: 'success',
           title: 'Registration Successful!',
-          text: 'You have been successfully registered.',
+          text: 'Please wait for admins approval.',
         });
       }
 

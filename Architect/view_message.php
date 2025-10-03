@@ -3,7 +3,7 @@ session_start();
 include("../dboperation.php");
 
 if (!isset($_SESSION['architect_id'])) {
-    header("Location: login.php");
+    header("Location: ../Guest/login.php");
     exit();
 }
 

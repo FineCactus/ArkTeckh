@@ -20,63 +20,70 @@ $architect_id = $_SESSION['architect_id'];
 
 <style>
     body {
-        background: #5a5858ff;
-        font-family: 'Poppins', sans-serif;
-        color: #fff;
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        font-family: 'Open Sans', sans-serif;
+        color: #252525;
     }
 
     .pricing-section {
         padding: 80px 0;
+        min-height: 70vh;
     }
 
     .section-title {
         font-size: 2.5rem;
-        font-weight: 800;
+        font-weight: 600;
         margin-bottom: 15px;
-        color: #fff;
+        color: #252525;
+        font-family: 'Teko', sans-serif;
     }
 
     .section-subtitle {
         font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.7);
+        color: #6c757d;
+        margin-bottom: 50px;
     }
 
     .pricing-card {
-        background: #1c1c1c;
+        background: #ffffff;
         border-radius: 15px;
-        padding: 40px 25px;
-        border: 2px solid transparent;
+        padding: 40px 30px;
+        border: 2px solid #f8f9fa;
         transition: all 0.3s ease;
         position: relative;
         display: flex;
         flex-direction: column;
         height: 100%;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     }
 
     .pricing-card:hover {
-        transform: translateY(-6px);
+        transform: translateY(-8px);
         border-color: #B78D65;
-        box-shadow: 0 8px 25px rgba(229, 9, 20, 0.5);
+        box-shadow: 0 15px 35px rgba(183, 141, 101, 0.2);
     }
 
     .plan-name {
         font-size: 1.5rem;
-        font-weight: bold;
+        font-weight: 600;
         margin-bottom: 15px;
-        color: #fff;
+        color: #252525;
+        font-family: 'Teko', sans-serif;
     }
 
     .price {
         font-size: 3rem;
-        font-weight: 900;
-        margin: 10px 0;
+        font-weight: 600;
+        margin: 15px 0;
         color: #B78D65;
+        font-family: 'Teko', sans-serif;
     }
 
     .price span {
         font-size: 1rem;
         font-weight: 400;
-        color: rgba(255, 255, 255, 0.6);
+        color: #6c757d;
+        font-family: 'Open Sans', sans-serif;
     }
 
     .features {
@@ -87,47 +94,82 @@ $architect_id = $_SESSION['architect_id'];
     }
 
     .features li {
-        margin-bottom: 12px;
+        margin-bottom: 15px;
         font-size: 1rem;
-        color: rgba(255, 255, 255, 0.85);
+        color: #495057;
+        padding-left: 25px;
+        position: relative;
     }
 
     .features li::before {
         content: "✓";
         color: #B78D65;
-        margin-right: 10px;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1.1rem;
     }
 
     .btn-subscribe {
         display: inline-block;
-        padding: 12px 28px;
-        background: #e50914;
-        color: #fff;
-        font-weight: bold;
-        border-radius: 4px;
+        padding: 15px 30px;
+        background: #B78D65;
+        color: #ffffff;
+        font-weight: 600;
+        border-radius: 8px;
         text-decoration: none;
         transition: all 0.3s ease;
         border: none;
         width: 100%;
+        font-size: 1rem;
+        margin-top: auto;
     }
 
     .btn-subscribe:hover {
-        background: #B78D65;
-        transform: scale(1.05);
+        background: #a6784f;
+        transform: translateY(-2px);
         text-decoration: none;
-        color: #fff;
+        color: #ffffff;
+        box-shadow: 0 8px 20px rgba(183, 141, 101, 0.3);
     }
 
     .popular-tag {
-        background: #f70707ff;
-        color: #fff;
-        font-size: 0.8rem;
-        padding: 4px 12px;
-        border-radius: 12px;
+        background: linear-gradient(45deg, #B78D65, #a6784f);
+        color: #ffffff;
+        font-size: 0.85rem;
+        padding: 6px 15px;
+        border-radius: 20px;
         position: absolute;
         top: 20px;
         right: 20px;
-        font-weight: bold;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .container {
+        max-width: 1200px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .pricing-section {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .pricing-card {
+            margin-bottom: 30px;
+            padding: 30px 25px;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+        }
     }
 </style>
 

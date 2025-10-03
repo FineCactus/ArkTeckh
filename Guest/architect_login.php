@@ -2,6 +2,17 @@
 include('header.php'); 
 include_once("../dboperation.php");
 $obj = new dboperation();
+
+// Get logged-in customer details
+$customer_data = null;
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    $query = "SELECT * FROM tbl_customer WHERE username = '$username'";
+    $result = $obj->executequery($query);
+    if ($result && mysqli_num_rows($result) > 0) {
+        $customer_data = mysqli_fetch_assoc($result);
+    }
+}
 ?>
 
 <script src="../jquery-3.6.0.min.js"></script>
@@ -76,6 +87,22 @@ $obj = new dboperation();
       padding: 10px;
       font-weight: 500;
       margin-bottom: 4px;
+    }
+
+    /* Readonly input styling */
+    .form-floating input[readonly], 
+    .form-floating select[readonly] {
+      background: #f8f9fa !important;
+      border-color: #e0e0e0 !important;
+      color: #6c757d !important;
+      cursor: not-allowed;
+    }
+    
+    .form-floating input[readonly]:focus, 
+    .form-floating select[readonly]:focus {
+      background: #f8f9fa !important;
+      border-color: #e0e0e0 !important;
+      box-shadow: none !important;
     }
 
     /* Scoped H4 inside form box only */
@@ -186,26 +213,44 @@ $obj = new dboperation();
       <div class="col-lg-10 wow fadeInUp" data-wow-delay="0.2s">
         <div class="bg-light rounded p-5 shadow">
           <h4 class="mb-4 text-center">Create Architect Account</h4>
+          <?php if ($customer_data): ?>
+          <?php else: ?>
+            <div class="alert alert-warning text-center mb-3">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              Please <a href="login.php" class="text-decoration-none"><strong>login</strong></a> to auto-fill your details, or enter them manually below.
+            </div>
+          <?php endif; ?>
           <form action="architect_loginaction.php" method="POST" enctype="multipart/form-data">
             <div class="row g-3">
 
+              <!-- Hidden field for customer ID -->
+              <?php if ($customer_data): ?>
+              <input type="hidden" name="customer_id" value="<?php echo $customer_data['customer_id']; ?>">
+              <?php endif; ?>
+
               <div class="col-md-12">
                 <div class="form-floating">
-                  <input type="text" class="form-control" name="architectname" id="name" placeholder="Full Name" required>
+                  <input type="text" class="form-control" name="architectname" id="name" placeholder="Full Name" 
+                         value="<?php echo $customer_data ? ($customer_data['cname']) : ''; ?>" 
+                         <?php echo $customer_data ? 'readonly' : ''; ?> required>
                   <label for="name">Full Name</label>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" 
+                         value="<?php echo $customer_data ? ($customer_data['email']) : ''; ?>" 
+                         <?php echo $customer_data ? 'readonly' : ''; ?> required>
                   <label for="email">Email Address</label>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" required>
+                  <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" 
+                         value="<?php echo $customer_data ? ($customer_data['phone']) : ''; ?>" 
+                         <?php echo $customer_data ? 'readonly' : ''; ?> required>
                   <label for="phone">Phone Number</label>
                 </div>
               </div>
@@ -232,26 +277,11 @@ $obj = new dboperation();
               </div>
             </div>
 
-
-              <!-- District Dropdown -->
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <select class="form-select" name="district_id" id="district_id" required>
-                    <option value="" selected disabled>Select District</option>
-                    <?php
-                      $locs = $obj->executequery("SELECT * FROM tbl_district");
-                      while ($row = mysqli_fetch_assoc($locs)) {
-                        echo "<option value='{$row['district_id']}'>{$row['district_name']}</option>";
-                      }
-                    ?>
-                  </select>
-                  <label for="district_id">District</label>
-                </div>
-              </div>
-
-            <div class="col-md-6">
+            <div class="col-md-12">
               <div class="form-floating">
-                <input type="text" class="form-control" name="location" id="location" placeholder="Enter Location" required>
+                <input type="text" class="form-control" name="location" id="location" placeholder="Enter Location" 
+                       value="<?php echo ($customer_data && $customer_data['locations'] !== '0') ?($customer_data['locations']) : ''; ?>" 
+                       <?php echo ($customer_data && $customer_data['locations'] !== '0') ? 'readonly' : ''; ?> required>
                 <label for="location">Location</label>
               </div>
             </div>
@@ -297,6 +327,15 @@ $obj = new dboperation();
           icon: 'warning',
           title: 'Already Exists',
           text: 'Username already exists!',
+        });
+      } else if (status === "already_registered") {
+        Swal.fire({
+          icon: 'info',
+          title: 'Already Registered',
+          text: 'You are already registered as an architect!',
+          confirmButtonText: 'Go to Login'
+        }).then(() => {
+          window.location.href = 'login.php';
         });
       } else if (status === "error") {
         Swal.fire({

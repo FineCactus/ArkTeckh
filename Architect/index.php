@@ -159,4 +159,5 @@ $res = $obj->executequery($sql);
   <?php } ?>
 </div>
 </div>
+
 <?php include("footer.php"); ?>

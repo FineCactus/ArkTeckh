@@ -105,12 +105,56 @@ $res = $obj->executequery($sql);
         const id = this.getAttribute("data-id");
         Swal.fire({
           title: 'Accept Architect?',
+          text: 'This will send an acceptance email to the architect.',
           icon: 'question',
           showCancelButton: true,
           confirmButtonText: 'Accept',
+          cancelButtonText: 'Cancel'
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = `architect_status_update.php?id=${id}&status=Accepted`;
+            // Show loading alert
+            Swal.fire({
+              title: 'Processing...',
+              text: 'Accepting architect and sending email notification.',
+              icon: 'info',
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+              showConfirmButton: false,
+              didOpen: () => {
+                Swal.showLoading();
+              }
+            });
+
+            // Make AJAX request
+            fetch(`architect_status_update.php?id=${id}&status=Accepted&ajax=1`)
+              .then(response => response.json())
+              .then(data => {
+                if (data.success) {
+                  Swal.fire({
+                    title: 'Success!',
+                    text: 'Architect has been accepted and notified via email.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                  }).then(() => {
+                    location.reload();
+                  });
+                } else {
+                  Swal.fire({
+                    title: 'Error!',
+                    text: data.message || 'Failed to accept architect.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                  });
+                }
+              })
+              .catch(error => {
+                Swal.fire({
+                  title: 'Error!',
+                  text: 'Network error occurred. Please try again.',
+                  icon: 'error',
+                  confirmButtonText: 'OK'
+                });
+              });
           }
         });
       });

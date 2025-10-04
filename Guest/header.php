@@ -122,49 +122,43 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('registerBtn').addEventListener('click', function (e) {
-        e.preventDefault();
-        Swal.fire({
-            title: 'Do you wish to register as an architect?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, Register',
-            cancelButtonText: 'No, Cancel',
-            confirmButtonColor: '#B78D65',
-            cancelButtonColor: 'rgba(232, 93, 93, 1)'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = 'architect_login.php';
-            }
-        });
-    });
-});
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // SweetAlert for REGISTER (already there)
-    document.getElementById('registerBtn').addEventListener('click', function (e) {
-        e.preventDefault();
-        Swal.fire({
-            title: 'Do you wish to register as an architect?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, Register',
-            cancelButtonText: 'No, Cancel',
-            confirmButtonColor: '#B78D65',
-            cancelButtonColor: 'rgba(232, 93, 93, 1)'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = 'architect_login.php';
-            }
-        });
-    });
-
     // Check if user is logged in (using PHP session variable)
     var isLoggedIn = <?php echo isset($_SESSION['username']) ? 'true' : 'false'; ?>;
 
-    // Attach SweetAlert for protected links
+    // SweetAlert for REGISTER - require login first
+    document.getElementById('registerBtn').addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        if (!isLoggedIn) {
+            // User not logged in - show login prompt first
+            Swal.fire({
+                title: 'Please Login First',
+                text: 'You need to login before you can register as an architect',
+                icon: 'warning',
+                confirmButtonText: 'Go to Login',
+                confirmButtonColor: '#B78D65'
+            }).then(() => {
+                window.location.href = '/ArkTech/Guest/login.php';
+            });
+        } else {
+            // User is logged in - show architect registration prompt
+            Swal.fire({
+                title: 'Do you wish to register as an architect?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, Register',
+                cancelButtonText: 'No, Cancel',
+                confirmButtonColor: '#B78D65',
+                cancelButtonColor: 'rgba(232, 93, 93, 1)'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'architect_login.php';
+                }
+            });
+        }
+    });
+
+    // Attach SweetAlert for other protected links
     document.querySelectorAll('.require-login').forEach(function (link) {
         link.addEventListener('click', function (e) {
             if (!isLoggedIn) {

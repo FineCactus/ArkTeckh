@@ -6,6 +6,7 @@ if (isset($_POST['submit'])) {
     $id     = $_POST['architect_id'];
     $phone  = $_POST['phone'];
     $email  = $_POST['email'];
+    $about  = $_POST['about'];
 
     $sql_old = "SELECT profiles FROM tbl_architects WHERE architect_id=$id";
     $res_old = $obj->executequery($sql_old);
@@ -24,12 +25,12 @@ if (isset($_POST['submit'])) {
         move_uploaded_file($_FILES["photo"]["tmp_name"], "../uploads/" . $profile_pic);
 
         $sql = "UPDATE tbl_architects 
-                SET phone='$phone', email='$email', profiles='$profile_pic', arch_locations='$loc' 
+                SET phone='$phone', email='$email', profiles='$profile_pic', arch_locations='$loc', about='$about' 
                 WHERE architect_id=$id";
     } else {
         
         $sql = "UPDATE tbl_architects 
-                SET phone='$phone', email='$email', arch_locations='$loc' 
+                SET phone='$phone', email='$email', arch_locations='$loc', about='$about' 
                 WHERE architect_id=$id";
     }
 

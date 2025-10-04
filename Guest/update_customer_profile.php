@@ -263,7 +263,7 @@ $customer = mysqli_fetch_assoc($res);
                             <img src="<?php echo $customer['cprofile'] ? '../uploads/'.$customer['cprofile'] : '../uploads/default.png'; ?>"
                                  class="profile-image" alt="Profile Picture" id="profileImagePreview">
                         </div>
-                        <h3 class="profile-name"><?php echo htmlspecialchars($customer['cname']); ?></h3>
+                        <h3 class="profile-name"><?php echo  ($customer['cname']); ?></h3>
                         <p class="profile-status">Valued Customer</p>
                         
                         <div class="profile-info">
@@ -272,15 +272,15 @@ $customer = mysqli_fetch_assoc($res);
                             <div class="info-details">
                                 <div class="detail-item">
                                     <span class="detail-label">📍 Location:</span>
-                                    <span class="detail-value"><?php echo htmlspecialchars($customer['locations']); ?></span>
+                                    <span class="detail-value"><?php echo  ($customer['locations']); ?></span>
                                 </div>
                                 <div class="detail-item">
                                     <span class="detail-label">📱 Phone:</span>
-                                    <span class="detail-value"><?php echo htmlspecialchars($customer['phone']); ?></span>
+                                    <span class="detail-value"><?php echo  ($customer['phone']); ?></span>
                                 </div>
                                 <div class="detail-item">
                                     <span class="detail-label">🏠 Address:</span>
-                                    <span class="detail-value"><?php echo htmlspecialchars($customer['addres']); ?></span>
+                                    <span class="detail-value"><?php echo  ($customer['addres']); ?></span>
                                 </div>
                             </div>
                         </div>
@@ -297,7 +297,7 @@ $customer = mysqli_fetch_assoc($res);
                             <div class="form-group">
                                 <label class="form-label">Full Name</label>
                                 <input type="text" class="form-control" name="cname"
-                                       value="<?php echo htmlspecialchars($customer['cname']); ?>" readonly>
+                                       value="<?php echo  ($customer['cname']); ?>" readonly>
                                 <small class="text-muted">Name cannot be changed</small>
                             </div>
 
@@ -307,14 +307,14 @@ $customer = mysqli_fetch_assoc($res);
                                     <div class="form-group">
                                         <label class="form-label">Email Address</label>
                                         <input type="email" class="form-control" name="email"
-                                               value="<?php echo htmlspecialchars($customer['email']); ?>" required>
+                                               value="<?php echo  ($customer['email']); ?>" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Phone Number</label>
                                         <input type="text" class="form-control" name="phone"
-                                               value="<?php echo htmlspecialchars($customer['phone']); ?>" required>
+                                               value="<?php echo  ($customer['phone']); ?>" required>
                                     </div>
                                 </div>
                             </div>
@@ -325,14 +325,14 @@ $customer = mysqli_fetch_assoc($res);
                                     <div class="form-group">
                                         <label class="form-label">Address</label>
                                         <input type="text" class="form-control" name="addres"
-                                               value="<?php echo htmlspecialchars($customer['addres']); ?>" required>
+                                               value="<?php echo  ($customer['addres']); ?>" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Location</label>
                                         <input type="text" class="form-control" name="locations"
-                                               value="<?php echo htmlspecialchars($customer['locations']); ?>" required>
+                                               value="<?php echo  ($customer['locations']); ?>" required>
                                     </div>
                                 </div>
                             </div>

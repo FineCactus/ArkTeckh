@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 03, 2025 at 11:02 AM
+-- Generation Time: Oct 04, 2025 at 08:37 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -64,24 +64,16 @@ CREATE TABLE IF NOT EXISTS `tbl_architects` (
   `status` varchar(20) NOT NULL,
   `plan_id` int NOT NULL,
   `renewaldate` date NOT NULL,
-  PRIMARY KEY (`architect_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`architect_id`),
+  UNIQUE KEY `unique_cust_id` (`cust_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_architects`
 --
 
 INSERT INTO `tbl_architects` (`cust_id`, `architect_id`, `arch_name`, `about`, `profiles`, `email`, `phone`, `username`, `passwords`, `certificate_of_licensce`, `arch_locations`, `status`, `plan_id`, `renewaldate`) VALUES
-(0, 2, 'Ashish', 'I am a passionate architect with a strong interest in designing functional and sustainable spaces that blend creativity with practicality. With experience in residential and commercial projects, I focus on creating designs that reflect both modern aesthetics and client needs. I believe architecture is not just about buildings, but about shaping experiences and improving lives. I am constantly exploring new trends, materials, and technologies to deliver innovative solutions while ensuring quality and efficiency.', 'testimonials-4.jpg', 'amen12@gmail.com', 9447820276, 'architect', '1', 'branding-3.jpg', 'Thodupuzha', 'Accepted', 0, '0000-00-00'),
-(0, 3, 'Amen', 'I am a passionate architect with a strong interest in designing functional and sustainable spaces that blend creativity with practicality. With experience in residential and commercial projects, I focus on creating designs that reflect both modern aesthetics and client needs. I believe architecture is not just about buildings, but about shaping experiences and improving lives. I am constantly exploring new trends, materials, and technologies to deliver innovative solutions while ensuring quality and efficiency.', 'testimonials-5.jpg', 'amen12@gmail.com', 9447820276, 'amen12', '123', 'app-2.jpg', 'Muvattupuzha', 'Accepted', 0, '0000-00-00'),
-(0, 4, 'Rejo Joseph', 'I am a passionate architect with a strong interest in designing functional and sustainable spaces that blend creativity with practicality. With experience in residential and commercial projects, I focus on creating designs that reflect both modern aesthetics and client needs. I believe architecture is not just about buildings, but about shaping experiences and improving lives. I am constantly exploring new trends, materials, and technologies to deliver innovative solutions while ensuring quality and efficiency.', 'testimonials-4.jpg', 'rejojoseph@gmail.com', 9947948925, 'rejo', 'rejo', 'books-2.jpg', 'Nadukkara', 'Accepted', 0, '0000-00-00'),
-(0, 5, 'Ashok', 'I am a passionate architect with a strong interest in designing functional and sustainable spaces that blend creativity with practicality. With experience in residential and commercial projects, I focus on creating designs that reflect both modern aesthetics and client needs. I believe architecture is not just about buildings, but about shaping experiences and improving lives. I am constantly exploring new trends, materials, and technologies to deliver innovative solutions while ensuring quality and efficiency.', 'mj___photograph_y-20240118-0004.jpg', 'ashokkj@gmail.com', 9447820275, 'Ashok', '1', 'portfolio_pic1.jpg', 'Vannappuram', 'Accepted', 0, '0000-00-00'),
-(0, 6, 'Felix Johnson', 'I am a passionate architect with a strong interest in designing functional and sustainable spaces that blend creativity with practicality. With experience in residential and commercial projects, I focus on creating designs that reflect both modern aesthetics and client needs. I believe architecture is not just about buildings, but about shaping experiences and improving lives. I am constantly exploring new trends, materials, and technologies to deliver innovative solutions while ensuring quality and efficiency.', 'testimonials-5.jpg', 'felixjohnson@gmail.com', 9847870035, 'felix', '1', 'WebWizard.webp', '', 'Accepted', 0, '0000-00-00'),
-(0, 7, 'Nikhitha', 'I am an home design engineer...My creativity exceeds beyond your limit ', 'testimonials-3.jpg', 'nikithabiby@gmail.com', 9847852125, 'nikki', 'nikki', 'product-1.jpg', 'Chittoor', 'Accepted', 0, '0000-00-00'),
-(0, 8, 'ashin', '111', 'Screenshot 2025-01-28 190323.png', 'michaelshadow02@gmail.com', 984787002345, 'roottt', '1', 'Screenshot 2025-08-20 210618.png', 'ann', 'Accepted', 1, '2026-09-22'),
-(0, 11, 'Amal Binoy', 'I am a house planning designer', 'Screenshot 2025-08-20 210618.png', 'amal@santhigiricollege.com', 9847870035, 'amal', '1', 'Screenshot 2025-01-28 190323.png', 'Maruthoor', 'Accepted', 0, '0000-00-00'),
-(0, 12, 'Ashin Aji', 'I am a Interior designer', 'main.jpg', 'michaelshadow02@gmail.com', 9447820276, 'ashin', '1', 'HTML5.webp', 'Muvattupuzha', 'Accepted', 1, '2026-10-02'),
-(0, 13, 'Alen John', 'I am a designer', 'main.jpg', 'michaelshadow02@gmail.com', 9447820276, 'alen', '1', 'main.jpg', 'Muvattupuzha', 'Accepted', 1, '2026-10-02');
+(1, 1, 'Ashin Aji', 'I am a house designer and planner.', 'testimonial-2.jpg', 'michaelshadow02@gmail.com', 9447820276, 'ashinaji', '123', 'my image.jpg', 'Vazhakulam', 'Accepted', 1, '2026-10-03');
 
 -- --------------------------------------------------------
 
@@ -142,17 +134,14 @@ CREATE TABLE IF NOT EXISTS `tbl_customer` (
   `locations` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `cprofile` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_customer`
 --
 
 INSERT INTO `tbl_customer` (`customer_id`, `cname`, `addres`, `email`, `phone`, `username`, `passwords`, `locations`, `cprofile`) VALUES
-(1, 'Ajith', 'Kuzhumbil', 'ashin@gmail.com', '9847870035', 'ashin', 'ashin', 'Thodupuzha', ''),
-(2, 'Nikhil', 'Palakattu', 'alenjohn@gmail.com', '9847870035', 'alen', 'alen', '0', 'IMG_2089.JPG'),
-(3, 'Ashok', 'Thuruthipillil', 'ashishshoby@gmail.com', '9447820276', 'ashok', 'ashok', 'Muvattupuzha', 'IMG_20250827_162409691_HDR_PORTRAIT.jpg'),
-(4, 'Ashin', 'Kanjiramkunnel', 'ashinaji02@gmail.com', '9447820276', 'finecactus', '123456', 'Vazhakulam', 'my image.jpg');
+(1, 'Ashin Aji', 'Kanjiramkunnel', 'michaelshadow02@gmail.com', '9447820276', 'ashin', 'Ashin@123', 'Vazhakulam', 'testimonials-4.jpg');
 
 -- --------------------------------------------------------
 
@@ -262,40 +251,16 @@ CREATE TABLE IF NOT EXISTS `tbl_messages` (
   `free_time` varchar(500) NOT NULL,
   `created_at` timestamp NOT NULL,
   PRIMARY KEY (`msg_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_messages`
 --
 
 INSERT INTO `tbl_messages` (`msg_id`, `user_id`, `architect_id`, `sender`, `message`, `free_time`, `created_at`) VALUES
-(1, 1, 5, 'customer', 'Hello Are you available', '', '2025-09-17 17:15:53'),
-(2, 1, 2, 'customer', 'Hello are you available ', '', '2025-09-17 17:16:46'),
-(4, 1, 2, 'customer', 'Hello', '', '2025-09-17 17:21:02'),
-(5, 1, 2, 'customer', 'I am interested in your work... Can you provide me your contact details?', '', '2025-09-17 17:24:11'),
-(6, 1, 5, 'architect', 'yes', '', '2025-09-17 17:28:54'),
-(7, 1, 2, 'architect', 'Yeah Sure', '', '2025-09-17 17:29:32'),
-(8, 1, 2, 'customer', 'Provide me your contact details please', '', '2025-09-17 17:30:04'),
-(9, 1, 2, 'customer', 'Are you free right now', '', '2025-09-18 04:14:31'),
-(10, 1, 2, 'architect', 'yes i am\r\n', '', '2025-09-18 04:16:19'),
-(17, 1, 2, 'customer', 'hello\r\n', '', '2025-09-18 04:30:52'),
-(18, 1, 2, 'architect', 'are you free right now', '', '2025-09-18 04:31:20'),
-(14, 1, 2, 'architect', 'hi\r\n', '', '2025-09-18 04:18:52'),
-(15, 1, 2, 'architect', 'Hello, . \r\nYou can contact me at:\r\n📞 9447820276\r\n📧 amen12@gmail.com', '', '2025-09-18 04:18:54'),
-(19, 1, 2, 'architect', 'Hello,\nYou can contact me at:\n📞 9447820276\n📧 amen12@gmail.com', '', '2025-09-18 04:31:28'),
-(20, 3, 5, 'customer', 'I am interested in your work... Can you provide me your contact details?', '', '2025-09-18 08:15:37'),
-(21, 3, 5, 'architect', 'Hello,\nYou can contact me at:\n📞 9447820275\n📧 ashokkj@gmail.com', '', '2025-09-18 08:16:09'),
-(22, 1, 5, 'customer', 'I am interested in your work... Can you provide me your contact details?', '', '2025-09-18 08:30:03'),
-(23, 1, 5, 'architect', 'Hello,\nYou can contact me at:\n📞 9447820275\n📧 ashokkj@gmail.com', '', '2025-09-18 08:30:49'),
-(24, 2, 2, 'customer', 'I am interested in your work... Can you provide me your contact details?', '', '2025-09-18 10:16:17'),
-(25, 2, 2, 'architect', 'Hello,\nYou can contact me at:\n📞 9447820276\n📧 amen12@gmail.com', '', '2025-09-18 10:16:58'),
-(26, 1, 5, 'customer', 'I am interested in your work... Can you provide me your contact details?', '', '2025-09-20 15:27:50'),
-(27, 1, 2, 'customer', 'I am interested in your work... Can you provide me your contact details?', '', '2025-09-24 07:13:04'),
-(28, 1, 5, 'architect', 'hello', '', '2025-09-24 07:14:06'),
-(29, 1, 5, 'architect', 'Hello,\nYou can contact me at:\n📞 9447820275\n📧 ashokkj@gmail.com', '', '2025-09-24 07:14:09'),
-(30, 1, 5, 'customer', 'I am interested in your work... Can you provide me your contact details?', '', '2025-10-01 16:52:44'),
-(31, 1, 5, 'architect', 'Hello,\nYou can contact me at:\n📞 9447820275\n📧 ashokkj@gmail.com', '', '2025-10-01 16:54:16'),
-(32, 1, 13, 'customer', 'I am interested in your work... Can you provide me your contact details?', '', '2025-10-02 12:43:52');
+(1, 1, 1, 'customer', 'I am interested in your work... Can you provide me your contact details?', '', '2025-10-03 17:11:39'),
+(2, 1, 1, 'architect', 'Hello,\nYou can contact me at:\n📞 9447820276\n📧 michaelshadow02@gmail.com', '', '2025-10-03 17:14:05'),
+(3, 1, 1, 'customer', 'Thanks....I will contact you soon', '', '2025-10-03 17:14:52');
 
 -- --------------------------------------------------------
 
@@ -340,20 +305,14 @@ CREATE TABLE IF NOT EXISTS `tbl_previous_works` (
   `image3` varchar(500) NOT NULL,
   `created_at` date NOT NULL,
   PRIMARY KEY (`prev_work_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_previous_works`
 --
 
 INSERT INTO `tbl_previous_works` (`prev_work_id`, `architect_id`, `title`, `descriptions`, `category_id`, `project_location`, `image1`, `image2`, `image3`, `created_at`) VALUES
-(5, 5, 'Office Renovation', 'Office renovation is the process of upgrading, redesigning, or restructuring an existing workplace to improve its functionality, aesthetics, and efficiency. It may involve changes such as modernizing interiors, optimizing layouts, upgrading furniture and fixtures, improving lighting and ventilation, or incorporating new technology. The goal of office renovation is to create a comfortable, productive, and inspiring environment that reflects the company’s culture, supports employee well-being, and leaves a positive impression on clients and visitors.', 1, 'Muvattupuzha', 'mj___photograph_y-20240118-0002.jpg', '1757585441_mj___photograph_y-20240118-0009.jpg', 'mj___photograph_y-20240118-0007.jpg', '2025-09-10'),
-(7, 2, 'Construction', 'Best House planning', 2, 'Kattapana', 'app-1.jpg', 'app-2.jpg', 'app-3.jpg', '2025-09-14'),
-(8, 2, 'Plantation', 'Best Garden designs', 3, 'Kothamangalam', 'books-3.jpg', 'branding-1.jpg', '1757930194_app-2.jpg', '2025-09-14'),
-(11, 5, 'Office Renovation', 'Makes it work friendly environment', 4, 'Muttom', 'app-1.jpg', '1757924238_branding-2.jpg', '1757914468_branding-3.jpg', '2025-09-14'),
-(10, 5, 'Modification', 'Best Modifications', 5, 'Madakkathanam', '1757872431_branding-3.jpg', '1757930245_branding-2.jpg', 'books-3.jpg', '2025-09-14'),
-(12, 5, 'Home Architecture', 'Designing best houses', 1, 'Adimaly', 'app-3.jpg', '1759337695_MyBharat_Quiz_Certificate.png', 'app-1.jpg', '2025-09-18'),
-(13, 13, 'Designing', 'fdfsf', 1, 'Ambalamukal', 'main.jpg', 'main.jpg', 'main.jpg', '2025-10-02');
+(1, 1, 'Auditorium Hall ', 'Recently builded an auditorium which can hold upto 3000 people at a time.', 1, 'Muvattupuzha', 'carousel-1.jpg', 'carousel-3.jpg', 'carousel-2.jpg', '2025-10-03');
 
 -- --------------------------------------------------------
 
@@ -371,27 +330,14 @@ CREATE TABLE IF NOT EXISTS `tbl_subscriptionplan` (
   `renewaldate` date NOT NULL,
   `regdate` date NOT NULL,
   PRIMARY KEY (`payid`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_subscriptionplan`
 --
 
 INSERT INTO `tbl_subscriptionplan` (`payid`, `plan_id`, `architect_id`, `status`, `amount`, `renewaldate`, `regdate`) VALUES
-(1, 1, 8, 'Paid', 500, '2026-09-22', '2025-09-22'),
-(2, 1, 8, '', 500, '0000-00-00', '2025-09-22'),
-(3, 1, 8, '', 500, '0000-00-00', '2025-09-22'),
-(4, 1, 8, '', 500, '0000-00-00', '2025-09-22'),
-(5, 1, 8, '', 500, '0000-00-00', '2025-09-22'),
-(6, 1, 9, 'Paid', 500, '2026-09-22', '2025-09-22'),
-(7, 1, 9, '', 500, '0000-00-00', '2025-09-22'),
-(8, 1, 9, '', 500, '0000-00-00', '2025-09-22'),
-(9, 2, 0, '', 100, '0000-00-00', '2025-09-22'),
-(10, 1, 0, '', 500, '0000-00-00', '2025-09-22'),
-(11, 1, 10, 'Paid', 500, '2026-09-25', '2025-09-25'),
-(12, 1, 12, 'Paid', 500, '2026-10-02', '2025-10-02'),
-(13, 2, 0, '', 100, '0000-00-00', '2025-10-02'),
-(14, 1, 13, 'Paid', 500, '2026-10-02', '2025-10-02');
+(11, 1, 1, 'Paid', 600, '2026-10-03', '2025-10-03');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

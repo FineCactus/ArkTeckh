@@ -14,7 +14,6 @@ if (isset($_SESSION['username'])) {
     }
 }
 ?>
-
 <script src="../jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function () {

@@ -20,6 +20,7 @@ try {
     $mail->setFrom('arktechdesigners@gmail.com');
     $mail->addAddress($mailtoaddress);
     // Email subject and body
+    $mail->isHTML(true); // Set email format to HTML
     $mail->Subject = '"Welcome to Ark Tech Designers"';
     $mail->Body    = $bodyContent;
     // Optional: Add attachments

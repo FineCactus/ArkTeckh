@@ -124,7 +124,7 @@ while ($month_row = mysqli_fetch_array($month_result)) {
                       </div>
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
-                          <p class="card-category">Subscribers</p>
+                          <p class="card-category">Architects</p>
                           <h4 class="card-title"><?php echo $total_architects; ?></h4>
                         </div>
                       </div>
@@ -283,8 +283,6 @@ while ($month_row = mysqli_fetch_array($month_result)) {
               </div>
             </div>
             
-            
-
         <!-- Chart.js CDN -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         

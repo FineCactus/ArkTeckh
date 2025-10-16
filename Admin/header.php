@@ -192,6 +192,27 @@ if (session_status() === PHP_SESSION_NONE) {
                   </ul>  
                 </div>
               </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#charts">
+                  <i class="far fa-chart-bar"></i>
+                  <p>Reports</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="charts">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="report.php">
+                        <span class="sub-item">Main Report</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="paymentreport.php">
+                        <span class="sub-item">Payment Report</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div> 
+              </li>
             </ul>
           </div>
         </div>
@@ -465,14 +486,14 @@ if (session_status() === PHP_SESSION_NONE) {
                               <span class="text">Reports</span>
                             </div>
                           </a>
-                          <a class="col-6 col-md-4 p-0" href="#">
+                          <a class="col-6 col-md-4 p-0" href="paymentreport.php">
                             <div class="quick-actions-item">
                               <div
                                 class="avatar-item bg-success rounded-circle"
                               >
-                                <i class="fas fa-envelope"></i>
+                                <i class="fas fa-credit-card"></i>
                               </div>
-                              <span class="text">Emails</span>
+                              <span class="text">Payments</span>
                             </div>
                           </a>
                         </div>

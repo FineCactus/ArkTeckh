@@ -71,7 +71,7 @@ $pending_count = mysqli_fetch_array($pending_res)['pending_architects'];
                       </div>
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
-                          <p class="card-category">Subscribers</p>
+                          <p class="card-category">Architects</p>
                           <h4 class="card-title"><?php echo $architect_count; ?></h4>
                         </div>
                       </div>

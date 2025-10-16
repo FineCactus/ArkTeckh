@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 04, 2025 at 08:37 AM
+-- Generation Time: Oct 06, 2025 at 08:37 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `tbl_customer` (
 --
 
 INSERT INTO `tbl_customer` (`customer_id`, `cname`, `addres`, `email`, `phone`, `username`, `passwords`, `locations`, `cprofile`) VALUES
-(1, 'Ashin Aji', 'Kanjiramkunnel', 'michaelshadow02@gmail.com', '9447820276', 'ashin', 'Ashin@123', 'Vazhakulam', 'testimonials-4.jpg');
+(1, 'Ashin Aji', 'Kanjiramkunnel', 'michaelshadow02@gmail.com', '9447820276', 'ashin', 'Ashin@123', 'Vazhakulam', 'testimonial-2.jpg');
 
 -- --------------------------------------------------------
 
@@ -175,65 +175,6 @@ INSERT INTO `tbl_district` (`district_id`, `district_name`) VALUES
 (12, 'Wayanad'),
 (13, 'Kannur'),
 (14, 'Kasaragod');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_location`
---
-
-DROP TABLE IF EXISTS `tbl_location`;
-CREATE TABLE IF NOT EXISTS `tbl_location` (
-  `location_id` int NOT NULL AUTO_INCREMENT,
-  `location_name` varchar(50) NOT NULL,
-  `district_id` int NOT NULL,
-  PRIMARY KEY (`location_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tbl_location`
---
-
-INSERT INTO `tbl_location` (`location_id`, `location_name`, `district_id`) VALUES
-(1, 'Padmanabhaswamy Temple', 1),
-(2, 'Kovalam Beach', 1),
-(3, 'Shanghumukham Beach', 1),
-(4, 'Napier Museum', 1),
-(5, 'Kuthiramalika Palace', 1),
-(6, 'Kanakakunnu Palace', 1),
-(7, 'Poovar Island', 1),
-(8, 'Veli Tourist Village', 1),
-(9, 'Neyyar Dam & Wildlife Sanctuary', 1),
-(10, 'Agasthyakoodam', 1),
-(11, 'Ashtamudi Lake', 2),
-(12, 'Kollam Beach', 2),
-(13, 'Thangassery Lighthouse', 2),
-(14, 'Palaruvi Waterfalls', 2),
-(15, 'Jatayu Earth’s Center', 2),
-(16, 'Thenmala Eco-Tourism', 2),
-(17, 'Munroe Island', 2),
-(18, 'Kottarakkara Ganapathy Temple', 2),
-(19, 'Rameshwara Temple', 2),
-(20, 'Sasthamkotta Lake', 2),
-(21, 'Sabarimala Temple', 3),
-(22, 'Perunthenaruvi Waterfalls', 3),
-(23, 'Konni Elephant Training Center', 3),
-(24, 'Gavi', 3),
-(25, 'Ranni', 0),
-(26, 'Pandalam', 3),
-(27, 'Konni', 3),
-(28, 'Thiruvalla', 3),
-(29, 'Chengannur', 3),
-(30, 'Kozhencherry', 3),
-(31, 'Elanthoor', 3),
-(32, 'Ambalappuzha', 4),
-(33, 'Chengannur', 4),
-(34, 'Cherthala', 4),
-(35, 'Haripad', 4),
-(36, 'Kayamkulam', 4),
-(37, 'Mavelikkara', 4),
-(38, 'Karthikappally', 4),
-(39, 'Muvattupuzha', 7);
 
 -- --------------------------------------------------------
 
@@ -305,14 +246,15 @@ CREATE TABLE IF NOT EXISTS `tbl_previous_works` (
   `image3` varchar(500) NOT NULL,
   `created_at` date NOT NULL,
   PRIMARY KEY (`prev_work_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_previous_works`
 --
 
 INSERT INTO `tbl_previous_works` (`prev_work_id`, `architect_id`, `title`, `descriptions`, `category_id`, `project_location`, `image1`, `image2`, `image3`, `created_at`) VALUES
-(1, 1, 'Auditorium Hall ', 'Recently builded an auditorium which can hold upto 3000 people at a time.', 1, 'Muvattupuzha', 'carousel-1.jpg', 'carousel-3.jpg', 'carousel-2.jpg', '2025-10-03');
+(1, 1, 'Auditorium Hall ', 'Recently builded an auditorium which can hold upto 3000 people at a time.', 1, 'Muvattupuzha', 'carousel-1.jpg', 'carousel-3.jpg', 'carousel-2.jpg', '2025-10-03'),
+(2, 1, 'adas', 'dadasd', 1, 'Muvattupuzha', 'about-1.jpg', 'house.jpg', 'carousel-2.jpg', '2025-10-05');
 
 -- --------------------------------------------------------
 

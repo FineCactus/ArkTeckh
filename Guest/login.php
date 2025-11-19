@@ -255,9 +255,40 @@
       transform: translateY(-3px);
       box-shadow: 0 12px 20px rgba(255, 255, 255, 0.3);
     }
+
+    /* Home button styles */
+    .home-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--light-brown), var(--dark-brown));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(183,141,101,0.4);
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .home-btn:hover {
+      transform: translateY(-2px) scale(1.1);
+      box-shadow: 0 8px 20px rgba(183,141,101,0.6);
+      color: white;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Home button -->
+  <a href="../Customer/index.php" class="home-btn" title="Home">
+    <i class="fas fa-home"></i>
+  </a>
 
   <!-- Floating glowing orbs -->
   <div class="orb"></div>

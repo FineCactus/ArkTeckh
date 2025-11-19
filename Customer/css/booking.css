@@ -1,0 +1,22 @@
+.project-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.book-btn {
+  margin-top: 10px;
+}

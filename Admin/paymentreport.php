@@ -95,6 +95,9 @@ if ($plan_result) {
                 <h6 class="op-7 mb-2">Premium Subscription Payments and Revenue Analytics</h6>
             </div>
             <div class="ms-md-auto py-2 py-md-0">
+                <a href="export_paymentreport.php?month=<?php echo urlencode($filter_month); ?>&amp;plan=<?php echo urlencode($filter_plan); ?>" class="btn btn-success btn-round me-2">
+                    Export CSV
+                </a>
                 <a href="report.php" class="btn btn-secondary btn-round me-2">
                     <i class="fas fa-chart-bar"></i> Main Reports
                 </a>

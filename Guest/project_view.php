@@ -152,7 +152,32 @@ $project = mysqli_fetch_array($res);
       padding: 20px;
     }
   }
+
+  /* Back Button */
+  .back-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #B78D65;
+    background: rgba(183, 141, 101, 0.1);
+    border: 2px solid #B78D65;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+    margin-left: 20px;
+  }
+  .back-btn:hover {
+    background: #B78D65;
+    color: white;
+    transform: translateX(-5px);
+  }
 </style>
+
+<div class="container">
+  <a href="javascript:history.back()" class="back-btn">← Back</a>
+</div>
 
 <div class="project-view-container">
   <h2>Project Details</h2>

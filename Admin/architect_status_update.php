@@ -13,8 +13,11 @@ if (isset($_GET['id']) && isset($_GET['status'])) {
     $architectId = intval($architectId);
     $status = ($status === 'Accepted' || $status === 'Rejected') ? $status : 'Pending';
 
-    // Get architect details before updating status
-    $selectSql = "SELECT arch_name, email, username, passwords FROM tbl_architects WHERE architect_id = $architectId";
+    // Get architect details with customer credentials before updating status
+    $selectSql = "SELECT a.arch_name, a.email, c.username, c.passwords 
+                  FROM tbl_architects a 
+                  JOIN tbl_customer c ON a.cust_id = c.customer_id 
+                  WHERE a.architect_id = $architectId";
     $architectDetails = $obj->executequery($selectSql);
     $row = mysqli_fetch_array($architectDetails);
 

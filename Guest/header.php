@@ -85,7 +85,7 @@ if (session_status() === PHP_SESSION_NONE) {
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="#" class="nav-item nav-link active" id="registerBtn">REGISTER</a>
+            <a href="#" class="nav-item nav-link active" id="registerBtn">HOSTING</a>
             <a href="index.php" class="nav-item nav-link">HOME</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">ABOUT</a>
@@ -141,20 +141,48 @@ document.addEventListener('DOMContentLoaded', function () {
                 window.location.href = '/ArkTech/Guest/login.php';
             });
         } else {
-            // User is logged in - show architect registration prompt
-            Swal.fire({
-                title: 'Do you wish to register as an architect?',
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, Register',
-                cancelButtonText: 'No, Cancel',
-                confirmButtonColor: '#B78D65',
-                cancelButtonColor: 'rgba(232, 93, 93, 1)'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = 'architect_login.php';
-                }
-            });
+            // User is logged in - check if they have an architect account
+            fetch('check_architect_account.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.hasArchAccount) {
+                        // User already has architect account - automatically login and redirect
+                        window.location.href = 'check_architect_account.php?redirect=true';
+                    } else {
+                        // User doesn't have architect account - show registration prompt
+                        Swal.fire({
+                            title: 'Register as an Architect',
+                            text: 'You don\'t have an architect account yet. Would you like to register as an architect now?',
+                            icon: 'question',
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes, Register Now',
+                            cancelButtonText: 'No, Cancel',
+                            confirmButtonColor: '#B78D65',
+                            cancelButtonColor: 'rgba(232, 93, 93, 1)'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = 'architect_login.php';
+                            }
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking architect account:', error);
+                    // Fallback to original behavior
+                    Swal.fire({
+                        title: 'Do you wish to register as an architect?',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, Register',
+                        cancelButtonText: 'No, Cancel',
+                        confirmButtonColor: '#B78D65',
+                        cancelButtonColor: 'rgba(232, 93, 93, 1)'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = 'architect_login.php';
+                        }
+                    });
+                });
         }
     });
 

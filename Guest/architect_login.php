@@ -254,19 +254,7 @@ if (isset($_SESSION['username'])) {
                 </div>
               </div>
 
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
-                  <label for="username">Username</label>
-                </div>
-              </div>
 
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
-                  <label for="password">Password</label>
-                </div>
-              </div>
 
             <!--ABOUT ME-->
             <div class="col-md-12">

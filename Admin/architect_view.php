@@ -3,7 +3,9 @@ include("header.php");
 include("../dboperation.php");
 $obj = new dboperation();
 
-$sql = "SELECT * FROM tbl_architects";
+$sql = "SELECT a.*, c.username as customer_username 
+        FROM tbl_architects a 
+        JOIN tbl_customer c ON a.cust_id = c.customer_id";
 $res = $obj->executequery($sql);
 ?>
 
@@ -41,7 +43,7 @@ $res = $obj->executequery($sql);
                       <td><?=($row["arch_name"]) ?></td>
                       <td><?=($row["email"]) ?></td>
                       <td><?=($row["phone"]) ?></td>
-                      <td><?=($row["username"]) ?></td>
+                      <td><?=($row["customer_username"]) ?></td>
                       <td>
                         <?php if (!empty($row["profiles"])): ?>
                           <img src="../uploads/<?= $row["profiles"] ?>" alt="Profile Pic" width="60" height="60" style="object-fit:cover;border-radius:50%;">
@@ -79,7 +81,6 @@ $res = $obj->executequery($sql);
               </table>
             </div>
           </div>
-
         </div>
       </div>
     </div>

@@ -85,7 +85,8 @@ if (session_status() === PHP_SESSION_NONE) {
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="project1.php" class="nav-item nav-link active" id="registerBtn">HOSTING</a>
+            <a href="/ArkTech/Guest/index.php" class="nav-item nav-link active">HOME</a>
+            <a href="project1.php" class="nav-item nav-link" id="registerBtn">UPLOAD</a>
             <a href="index.php" class="nav-item nav-link">DASHBOARD</a>
             <a href="architect_view.php" class="nav-item nav-link">WORKS</a>
         </div>

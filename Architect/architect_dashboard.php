@@ -11,7 +11,10 @@ if (!isset($_SESSION['architect_id'])) {
 
 $architect_id = $_SESSION['architect_id'];
 
-$sql = "SELECT * FROM tbl_architects WHERE architect_id='$architect_id'";
+$sql = "SELECT a.*, c.username as customer_username 
+        FROM tbl_architects a 
+        JOIN tbl_customer c ON a.cust_id = c.customer_id 
+        WHERE a.architect_id='$architect_id'";
 $res = $obj->executequery($sql);
 $architect = mysqli_fetch_assoc($res);
 ?>
@@ -51,7 +54,7 @@ $architect = mysqli_fetch_assoc($res);
             </div>
             <div class="detail">
                 <strong>Username</strong>
-                <?php echo $architect['username'] ?? "Not provided"; ?>
+                <?php echo $architect['customer_username'] ?? "Not provided"; ?>
             </div>
             <div class="detail">
                 <strong>Location</strong>

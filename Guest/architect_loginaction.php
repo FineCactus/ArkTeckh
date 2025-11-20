@@ -6,15 +6,13 @@
     $arch_name=$_POST['architectname'];
     $email=$_POST['email'];
     $phone=$_POST['phone'];
-    $username=$_POST['username'];
-    $password=$_POST['password'];
     $customer_id = isset($_POST['customer_id']) ? $_POST['customer_id'] : 0;
     $photo1=$_FILES['photo1']['name'];
     $certificate=$_FILES['certificate']['name'];
     $location = $_POST['location'];
     $about=$_POST['about'];
     
-   if(empty($arch_name) || empty($email) || empty($phone) || empty($username) || empty($password))
+   if(empty($arch_name) || empty($email) || empty($phone))
     {
         header("Location: architect_login.php?status=empty");
         exit();
@@ -36,20 +34,9 @@
         }
     }
     
-    // Check if username already exists in architects table
-    $sqlquery="SELECT * FROM tbl_architects where username='$username'";
-    $result=$obj->executequery($sqlquery);
-    
-    $rows=mysqli_num_rows($result);
-    if($rows >= 1)
+    // Insert architect record
     {
-           header("Location: architect_login.php?status=exist");
-            exit();
-    
-    }
-    else
-    {
-       $sqlquery1="INSERT INTO tbl_architects (cust_id,arch_name,email,phone,username,passwords,about,profiles,certificate_of_licensce,arch_locations,status) VALUES('$customer_id','$arch_name','$email','$phone','$username','$password','$about','$photo1','$certificate','$location','Pending')";
+       $sqlquery1="INSERT INTO tbl_architects (cust_id,arch_name,email,phone,about,profiles,certificate_of_licensce,arch_locations,status) VALUES('$customer_id','$arch_name','$email','$phone','$about','$photo1','$certificate','$location','Pending')";
         $result1=$obj->executequery($sqlquery1);       
           if($result1==1)
         {

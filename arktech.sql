@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 19, 2025 at 05:46 AM
+-- Generation Time: Nov 20, 2025 at 02:15 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -58,8 +58,6 @@ CREATE TABLE IF NOT EXISTS `tbl_architects` (
   `profiles` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` bigint NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `passwords` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `certificate_of_licensce` varchar(200) NOT NULL,
   `arch_locations` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `status` varchar(20) NOT NULL,
@@ -67,16 +65,17 @@ CREATE TABLE IF NOT EXISTS `tbl_architects` (
   `renewaldate` date NOT NULL,
   PRIMARY KEY (`architect_id`),
   UNIQUE KEY `unique_cust_id` (`cust_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_architects`
 --
 
-INSERT INTO `tbl_architects` (`cust_id`, `architect_id`, `arch_name`, `about`, `profiles`, `email`, `phone`, `username`, `passwords`, `certificate_of_licensce`, `arch_locations`, `status`, `plan_id`, `renewaldate`) VALUES
-(1, 1, 'Ashin Aji', 'I am a house designer and planner.', 'testimonial-2.jpg', 'michaelshadow02@gmail.com', 9447820276, 'ashinaji', '123', 'my image.jpg', 'Vazhakulam', 'Accepted', 1, '2026-10-10'),
-(2, 2, 'Michael Shanto', 'Passionate and detail-oriented architect dedicated to designing functional, aesthetic, and sustainable spaces. Skilled in turning creative ideas into practical designs that meet client needs and enhance everyday living.', 'team-3.jpg', 'michaelshadow02@gmail.com', 9447820276, 'michael', 'michael12', 'Screenshot 2025-10-15 165451.png', 'Vannappuram', 'Accepted', 2, '2025-11-16'),
-(3, 3, 'Amal Binoy', 'I am a renowned architect', 'Screenshot 2025-08-20 210618.png', 'amal@santhigiricollege.com', 9847870035, 'amal', '123', 'Screenshot 2025-10-05 162603.png', 'Aarakuzha', 'Accepted', 1, '2026-10-16');
+INSERT INTO `tbl_architects` (`cust_id`, `architect_id`, `arch_name`, `about`, `profiles`, `email`, `phone`, `certificate_of_licensce`, `arch_locations`, `status`, `plan_id`, `renewaldate`) VALUES
+(1, 1, 'Ashin Aji', 'I am a house designer and planner.', '68e2c211b90f5_owner1.jpeg', 'michaelshadow02@gmail.com', 9447820276, 'my image.jpg', 'Vazhakulam', 'Accepted', 1, '2026-10-10'),
+(2, 2, 'Michael Shanto', 'Passionate and detail-oriented architect dedicated to designing functional, aesthetic, and sustainable spaces. Skilled in turning creative ideas into practical designs that meet client needs and enhance everyday living.', 'team-3.jpg', 'michaelshadow02@gmail.com', 9447820276, 'Screenshot 2025-10-15 165451.png', 'Vannappuram', 'Accepted', 2, '2025-11-16'),
+(3, 3, 'Amal Binoy', 'I am a renowned architect', 'Screenshot 2025-08-20 210618.png', 'amal@santhigiricollege.com', 9847870035, 'Screenshot 2025-10-05 162603.png', 'Aarakuzha', 'Accepted', 1, '2026-10-16'),
+(4, 4, 'Ashin Aji', 'I am a professional interior designer', 'client-img.png', 'hiashinaji@gmail.com', 9447820276, 'license2.jpg', 'Vazhakulam', 'Accepted', 2, '2025-12-20');
 
 -- --------------------------------------------------------
 
@@ -137,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `tbl_customer` (
   `locations` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `cprofile` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_customer`
@@ -146,7 +145,9 @@ CREATE TABLE IF NOT EXISTS `tbl_customer` (
 INSERT INTO `tbl_customer` (`customer_id`, `cname`, `addres`, `email`, `phone`, `username`, `passwords`, `locations`, `cprofile`) VALUES
 (1, 'Ashin Aji', 'Kanjiramkunnel', 'michaelshadow02@gmail.com', '9447820276', 'ashin', 'Ashin@123', 'Vazhakulam', 'testimonial-2.jpg'),
 (2, 'Michael Shanto', 'Vamattathil', 'michaelshadow02@gmail.com', '9447820276', 'michael', 'michael123', 'Vannappuram', 'team-3.jpg'),
-(3, 'Amal Binoy', 'Vamattathil', 'amal@santhigiricollege.com', '09847870035', 'amal', 'amal123', 'Aarakuzha', 'IMG_0194.JPG');
+(3, 'Amal Binoy', 'Vamattathil', 'amal@santhigiricollege.com', '09847870035', 'amal', 'amal123', 'Aarakuzha', '68e1ed66a1997_owner2.jpeg'),
+(4, 'Ashin Aji', 'Kanjiramkunnel', 'hiashinaji@gmail.com', '9447820276', 'root', 'ashin@123', 'Vazhakulam', 'client-img.png'),
+(5, 'Ashin Aji', 'Kanjiramkunnel', 'hiashinaji@gmail.com', '9447820276', 'roots', 'ashinaji', 'Vazhakulam', '691c6f8068e16_owner1.jpeg');
 
 -- --------------------------------------------------------
 
@@ -197,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `tbl_messages` (
   `free_time` varchar(500) NOT NULL,
   `created_at` timestamp NOT NULL,
   PRIMARY KEY (`msg_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_messages`
@@ -213,7 +214,9 @@ INSERT INTO `tbl_messages` (`msg_id`, `user_id`, `architect_id`, `sender`, `mess
 (7, 3, 1, 'architect', 'Hello,\nYou can contact me at:\n📞 9447820276\n📧 michaelshadow02@gmail.com', '', '2025-10-16 09:50:51'),
 (8, 3, 1, 'architect', 'I will contact you soon', '', '2025-10-16 09:51:06'),
 (9, 3, 1, 'customer', 'Okei', '', '2025-10-16 09:51:31'),
-(10, 1, 1, 'customer', 'hi', '', '2025-11-13 16:00:33');
+(10, 1, 1, 'customer', 'hi', '', '2025-11-13 16:00:33'),
+(11, 3, 3, 'customer', 'I am interested in your work... Can you provide me your contact details?', '', '2025-11-19 09:38:23'),
+(12, 3, 3, 'architect', 'Hello,\nYou can contact me at:\n📞 9847870035\n📧 amal@santhigiricollege.com', '', '2025-11-19 09:38:30');
 
 -- --------------------------------------------------------
 
@@ -285,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `tbl_subscriptionplan` (
   `renewaldate` date NOT NULL,
   `regdate` date NOT NULL,
   PRIMARY KEY (`payid`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbl_subscriptionplan`
@@ -293,6 +296,7 @@ CREATE TABLE IF NOT EXISTS `tbl_subscriptionplan` (
 
 INSERT INTO `tbl_subscriptionplan` (`payid`, `plan_id`, `architect_id`, `status`, `amount`, `renewaldate`, `regdate`) VALUES
 (14, 1, 1, 'Paid', 600, '2025-10-14', '2025-10-10'),
+(18, 2, 4, 'Paid', 100, '2025-12-20', '2025-11-19'),
 (16, 2, 2, 'Paid', 100, '2025-11-16', '2025-10-16'),
 (17, 1, 3, 'Paid', 600, '2026-10-16', '2025-10-16');
 COMMIT;

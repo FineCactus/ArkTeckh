@@ -28,23 +28,27 @@ $result= $obj->executequery($sqlquery);
    } 
 }
 
-$sqlquery= "select * from tbl_architects where username='$username' and passwords='$password' and status='Accepted'";
-$result = $obj->executequery($sqlquery);
+// Check if user has architect account and can login with customer credentials
+$sqlquery_arch_customer = "SELECT a.*, c.username as customer_username 
+                          FROM tbl_architects a 
+                          JOIN tbl_customer c ON a.cust_id = c.customer_id 
+                          WHERE c.username='$username' AND c.passwords='$password' AND a.status='Accepted'";
+$result_arch = $obj->executequery($sqlquery_arch_customer);
 
-if(mysqli_num_rows($result) == 1) 
+if(mysqli_num_rows($result_arch) == 1) 
 {
-   $row = mysqli_fetch_array($result);
+   $row = mysqli_fetch_array($result_arch);
    $_SESSION["username"] = $username;
-   $_SESSION["architect_id"] =$row["architect_id"];
+   $_SESSION["architect_id"] = $row["architect_id"];
+   $_SESSION["customer_id"] = $row["cust_id"]; // Also set customer_id for backward compatibility
    header("location:../Architect/index.php");
    exit();
 } 
- else {
-   
-         // Invalid login, display an error message
-         header("Location: login.php?status=error");
-         exit();
-      }
+else {
+   // Invalid login, display an error message
+   header("Location: login.php?status=error");
+   exit();
+}
    // }
 
 
